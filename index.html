@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/main.css"/>
+  <link rel="stylesheet" href="css/main.css?v=2"/>
 </head>
 <body>
 
@@ -109,18 +109,18 @@
     <div class="hero-vis" id="heroVis">
       <div class="orb orb1"></div>
       <div class="orb orb2"></div>
-      <canvas id="robot-canvas"></canvas>
+      <canvas id="robot-canvas" aria-hidden="true"></canvas>
       <div class="hud-panel hud-tl">
-        <div class="hud-label">// rag.pipeline</div>
-        <div class="hud-value">ACTIVE</div>
+        <span class="hud-label">// rag.pipeline</span>
+        <span class="hud-value">ACTIVE</span>
       </div>
       <div class="hud-panel hud-tr">
-        <div class="hud-label">// agent.status</div>
-        <div class="hud-value hud-value-green">ONLINE</div>
+        <span class="hud-label">// agent.status</span>
+        <span class="hud-value hud-value-green">ONLINE</span>
       </div>
       <div class="hud-panel hud-br">
-        <div class="hud-label">// llm.latency</div>
-        <div class="hud-value">~180ms</div>
+        <span class="hud-label">// llm.latency</span>
+        <span class="hud-value">~180ms</span>
       </div>
     </div>
   </div>
@@ -388,7 +388,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/hero-three.js"></script>
-<script type="module" src="js/app.js"></script>
+<script src="js/hero-three.js?v=2"></script>
+<script type="module" src="js/app.js?v=2"></script>
 </body>
 </html>
