@@ -9,6 +9,8 @@ import {
   terminalAgentLines,
 } from './data.js';
 
+document.documentElement.classList.add('js-ready');
+
 function initTyping() {
   const typEl = document.getElementById('typing-el');
   if (!typEl) {
@@ -148,10 +150,22 @@ function initScrollReveal() {
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
   );
 
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  function observeRevealElements(root = document) {
+    root.querySelectorAll('.reveal:not([data-reveal-observed])').forEach((el) => {
+      el.dataset.revealObserved = 'true';
+      observer.observe(el);
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+        el.classList.add('vis');
+      }
+    });
+  }
+
+  observeRevealElements();
+  return observeRevealElements;
 }
 
 function initNavActive() {
@@ -367,7 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProjects();
   initBuildingBlock();
   initTerminal();
-  initScrollReveal();
+  const observeRevealElements = initScrollReveal();
+  observeRevealElements(document.getElementById('projectsGrid'));
+  observeRevealElements(document.getElementById('skillsGrid'));
+  observeRevealElements(document.getElementById('buildingBlock'));
   initNavActive();
   initContactForm();
   initMobileMenu();
