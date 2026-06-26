@@ -87,7 +87,8 @@ function renderProjects() {
     return;
   }
 
-  grid.innerHTML = projects
+  try {
+    grid.innerHTML = projects
     .map((p) => {
       const status = statusLabels[p.status];
       const tagsHtml = p.tags
@@ -105,7 +106,7 @@ function renderProjects() {
       const featuredBadge = p.featured ? '<span class="proj-featured-badge">FEATURED</span>' : '';
 
       return `
-      <article class="proj-card reveal${featuredClass}">
+      <article class="proj-card${featuredClass}">
         ${featuredBadge}
         <div class="proj-num">Project ${p.num}</div>
         <div class="proj-card-body">
@@ -139,6 +140,10 @@ function renderProjects() {
       </article>`;
     })
     .join('');
+  } catch (err) {
+    console.error('Failed to render projects:', err);
+    grid.innerHTML = '<p class="s-desc">Unable to load projects. Please refresh the page.</p>';
+  }
 }
 
 function initScrollReveal() {
@@ -382,9 +387,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initBuildingBlock();
   initTerminal();
   const observeRevealElements = initScrollReveal();
-  observeRevealElements(document.getElementById('projectsGrid'));
-  observeRevealElements(document.getElementById('skillsGrid'));
-  observeRevealElements(document.getElementById('buildingBlock'));
   initNavActive();
   initContactForm();
   initMobileMenu();

@@ -749,6 +749,13 @@ html.js-ready .reveal.vis {
   transform: translateY(0);
 }
 
+/* JS-rendered cards must always be visible */
+#projectsGrid .proj-card,
+#skillsGrid .skill-card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* MOBILE NAV MENU */
 .mobile-menu {
   display: none; position: fixed; inset: 0; z-index: 200;
