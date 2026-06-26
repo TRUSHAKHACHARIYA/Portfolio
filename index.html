@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Trusha Khachariya — AI/ML Engineer specializing in LLM applications, RAG systems, and AI agents. Assistant Software Engineer at 7Span, Ahmedabad."/>
+  <meta name="author" content="Trusha Khachariya"/>
+  <meta name="theme-color" content="#04080f"/>
+  <meta property="og:title" content="Trusha Khachariya — AI/ML Engineer"/>
+  <meta property="og:description" content="AI/ML Engineer building LLM-powered applications, RAG systems, and production-ready NLP solutions."/>
+  <meta property="og:type" content="website"/>
+  <title>Trusha Khachariya — AI/ML Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-ring"></div>
+      TK
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="hamburger" id="burgerBtn" aria-label="Open menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+      <a href="#contact" class="hire-btn">Hire Me</a>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileCloseBtn" aria-label="Close menu" role="button" tabindex="0">×</span>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        Available for opportunities
+      </div>
+      <h1 class="hero-title">
+        <span class="name">Trusha<br/></span>
+        <span class="surname">Khachariya</span>
+      </h1>
+      <div class="hero-role">Asst. Software Engineer · AWS Certified AI Practitioner</div>
+      <div class="hero-typing" id="typing-el"></div>
+      <p class="hero-desc">
+        AI/ML Engineer specializing in LLM-based applications, RAG systems, and AI agents.
+        Building scalable intelligent systems with FastAPI, LangChain, and vector databases —
+        focused on production-ready NLP and semantic search.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n">1+</div>
+          <div class="stat-l">Years Exp</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">4</div>
+          <div class="stat-l">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">1</div>
+          <div class="stat-l">Cert</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">2</div>
+          <div class="stat-l">Degrees</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-vis">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="holo-card holo-corners" id="holoCard">
+        <div class="holo-corners"></div>
+        <div class="hc3"></div><div class="hc4"></div>
+        <div class="holo-scan"></div>
+        <div class="holo-label">// identity.json</div>
+        <div class="holo-avatar">TK</div>
+        <div class="holo-name">Trusha Khachariya</div>
+        <div class="holo-role-tag">AI/ML Engineer · 7Span · Ahmedabad</div>
+        <div class="holo-divider"></div>
+        <div class="holo-skills">
+          <span class="holo-tag">LangChain</span>
+          <span class="holo-tag">RAG</span>
+          <span class="holo-tag">LangGraph</span>
+          <span class="holo-tag">FastAPI</span>
+          <span class="holo-tag">Qdrant</span>
+          <span class="holo-tag">NLP</span>
+          <span class="holo-tag">Pinecone</span>
+          <span class="holo-tag">Python</span>
+        </div>
+        <div class="holo-cert">
+          <div class="holo-cert-dot"></div>
+          AWS Certified AI Practitioner
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="s-label">About</div>
+        <h2 class="s-title">The Mind Behind<br/>the <span class="accent">Machine</span></h2>
+        <p class="about-para">I'm an AI/ML Engineer specializing in LLM-based applications, Retrieval-Augmented Generation (RAG), and AI agents — currently working as an Assistant Software Engineer at 7Span in Ahmedabad.</p>
+        <p class="about-para">Experienced in building scalable AI systems using FastAPI, LangChain, and vector databases like Qdrant and Pinecone, with a strong focus on NLP and semantic search.</p>
+        <p class="about-para">I'm passionate about developing production-ready intelligent applications — from multi-agent resume chatbots to document intelligence platforms powered by RAG and LLMs.</p>
+        <div class="about-tags">
+          <span class="tag">LLM Engineering</span>
+          <span class="tag">RAG Systems</span>
+          <span class="tag">NLP</span>
+          <span class="tag">AI Agents</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Vector Databases</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="terminal">
+          <div class="t-header">
+            <div class="t-dot t-red"></div>
+            <div class="t-dot t-yel"></div>
+            <div class="t-dot t-grn"></div>
+            <span class="t-title">profile.json</span>
+          </div>
+          <div class="t-body">
+            <div><span class="t-prompt">❯</span> <span class="t-cmd">cat profile.json</span></div>
+            <div class="terminal-json">
+              <span class="t-brace">{</span><br/>
+              &nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Trusha Khachariya"</span>,<br/>
+              &nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Asst. Software Engineer"</span>,<br/>
+              &nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-val">"Ahmedabad, India"</span>,<br/>
+              &nbsp;&nbsp;<span class="t-key">"focus"</span>: [<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"LLMs"</span>, <span class="t-val">"RAG"</span>, <span class="t-val">"AI Agents"</span><br/>
+              &nbsp;&nbsp;],<br/>
+              &nbsp;&nbsp;<span class="t-key">"company"</span>: <span class="t-val">"7Span"</span>,<br/>
+              &nbsp;&nbsp;<span class="t-key">"cert"</span>: <span class="t-val">"AWS AI Practitioner"</span>,<br/>
+              &nbsp;&nbsp;<span class="t-key">"github"</span>: <span class="t-val">"@TRUSHAKHACHARIYA"</span>,<br/>
+              &nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val status-open">"open_to_opportunities"</span><br/>
+              <span class="t-brace">}</span>
+            </div>
+            <div class="terminal-cursor"><span class="t-prompt">❯</span> <span class="t-cursor">_</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-label">Skills</div>
+      <h2 class="s-title">Core <span class="accent">Capabilities</span></h2>
+      <p class="s-desc">Tools and techniques I work with daily — from research to production deployment.</p>
+    </div>
+    <div class="skills-cats reveal">
+      <button class="cat-btn active" type="button" data-filter="all">All</button>
+      <button class="cat-btn" type="button" data-filter="ml">AI / ML</button>
+      <button class="cat-btn" type="button" data-filter="nlp">NLP / LLM</button>
+      <button class="cat-btn" type="button" data-filter="mlops">Frameworks &amp; DB</button>
+      <button class="cat-btn" type="button" data-filter="lang">Languages</button>
+    </div>
+    <div class="skills-grid reveal" id="skillsGrid"></div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-label">Projects</div>
+      <h2 class="s-title">Things I've <span class="accent">Built</span></h2>
+      <p class="s-desc">Production AI systems from 7Span and personal GitHub — LLM agents, RAG platforms, and SaaS products.</p>
+    </div>
+    <div class="projects-grid">
+
+      <article class="proj-card reveal">
+        <div class="proj-num">Project 01</div>
+        <h3 class="proj-title">Resume Chatbot</h3>
+        <div class="proj-source">7Span · AIML Developer · 3 months</div>
+        <p class="proj-desc">AI-powered resume chatbot using FastAPI, LangGraph, and LangChain with a multi-agent architecture. Integrates OpenAI/Claude LLMs to understand queries and generate structured resume content via REST APIs and conversational workflows.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">FastAPI</span>
+          <span class="proj-tag">LangGraph</span>
+          <span class="proj-tag">LangChain</span>
+          <span class="proj-tag">NLP</span>
+          <span class="proj-tag">LLM Agents</span>
+        </div>
+        <div class="proj-links">
+          <span class="proj-link-muted">Internal · 7Span</span>
+        </div>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="proj-num">Project 02</div>
+        <h3 class="proj-title">Denny Solution</h3>
+        <div class="proj-source">7Span · AIML Developer · 2 months</div>
+        <p class="proj-desc">RAG document intelligence platform built with Streamlit. Features document upload with PDF ingestion, basic semantic search, and advanced deep search (V2) with two-stage retrieval and intelligent re-ranking using OpenAI and Ragie APIs.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Streamlit</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">OpenAI API</span>
+          <span class="proj-tag">RAG</span>
+          <span class="proj-tag">Vector Search</span>
+          <span class="proj-tag">Ragie</span>
+        </div>
+        <div class="proj-links">
+          <span class="proj-link-muted">Internal · 7Span</span>
+        </div>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="proj-num">Project 03</div>
+        <h3 class="proj-title">DocWise</h3>
+        <div class="proj-source">Personal SaaS</div>
+        <p class="proj-desc">Secure multi-document AI workspace for teams and research professionals. Query large document libraries with RAG, verifiable source citations, Claude-powered chat, Pinecone semantic search, BullMQ ingestion, multi-tenant auth, and usage-based billing.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Next.js</span>
+          <span class="proj-tag">TypeScript</span>
+          <span class="proj-tag">Fastify</span>
+          <span class="proj-tag">Pinecone</span>
+          <span class="proj-tag">RAG</span>
+          <span class="proj-tag">Claude</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/TRUSHAKHACHARIYA/DocWise" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
+        </div>
+      </article>
+
+      <article class="proj-card reveal">
+        <div class="proj-num">Project 04</div>
+        <h3 class="proj-title">WhatsApp Bot (WapiSend)</h3>
+        <div class="proj-source">Personal SaaS</div>
+        <p class="proj-desc">Multi-tenant WhatsApp Business SaaS for small businesses. Integrates Meta WhatsApp Cloud API with menu bot and FAQ engine, lead pipeline, broadcast campaigns, JWT auth, Razorpay billing, and a FastAPI + Next.js full-stack architecture.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Next.js</span>
+          <span class="proj-tag">FastAPI</span>
+          <span class="proj-tag">PostgreSQL</span>
+          <span class="proj-tag">Redis</span>
+          <span class="proj-tag">WhatsApp API</span>
+          <span class="proj-tag">TypeScript</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section section-alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-label">Experience</div>
+      <h2 class="s-title">Where I've <span class="accent">Worked</span></h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-date">Sep 2025 — Present</div>
+        <div class="tl-role">Asst. Software Engineer</div>
+        <div class="tl-company">7Span · Ahmedabad · Full-time</div>
+        <ul class="tl-bullets">
+          <li>Building production-ready LLM applications, RAG pipelines, and AI agent systems</li>
+          <li>Developing scalable backends with FastAPI, LangChain, and LangGraph</li>
+          <li>Working with vector databases (Qdrant, Pinecone) for semantic search solutions</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jan 2025 — Jul 2025</div>
+        <div class="tl-role">AI/ML Engineering Intern</div>
+        <div class="tl-company">7Span · Ahmedabad · Internship</div>
+        <ul class="tl-bullets">
+          <li>Developed Resume Chatbot with multi-agent LangGraph architecture and REST API</li>
+          <li>Built Denny Solution — RAG document platform with two-stage retrieval and re-ranking</li>
+          <li>Gained hands-on experience with OpenAI, Claude, and Ragie APIs in production</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-label">Education</div>
+      <h2 class="s-title">Degrees &amp; <span class="accent">Certifications</span></h2>
+    </div>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <span class="edu-icon">🎓</span>
+        <div class="edu-degree">B.E. Computer Science Engineering<br/>(AI &amp; Machine Learning)</div>
+        <div class="edu-school">New L J Institute of Engineering &amp; Technology, Ahmedabad</div>
+        <div class="edu-period">Oct 2023 — Jun 2025</div>
+      </div>
+      <div class="edu-card">
+        <span class="edu-icon">📐</span>
+        <div class="edu-degree">Diploma — Computer Engineering</div>
+        <div class="edu-school">OM Engineering College, Junagadh</div>
+        <div class="edu-period">Jun 2020 — Jul 2023</div>
+      </div>
+    </div>
+    <div class="cert-list reveal">
+      <div class="cert-card">
+        <div class="cert-badge">🏅</div>
+        <div>
+          <div class="cert-title">AWS Certified AI Practitioner</div>
+          <div class="cert-sub">Amazon Web Services · Verified Credential</div>
+          <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" target="_blank" rel="noopener noreferrer" class="cert-link">Verify on Credly →</a>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-badge">🎓</div>
+        <div>
+          <div class="cert-title">Distinction Course Completion</div>
+          <div class="cert-sub">Distinction App</div>
+          <a href="https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="s-label">Contact</div>
+      <h2 class="s-title">Let's <span class="accent">Connect</span></h2>
+      <p class="s-desc">Open to new opportunities, collaborations, and interesting AI projects. Let's build something remarkable.</p>
+    </div>
+    <div class="contact-grid reveal">
+      <div>
+        <div class="contact-info-block">
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val">trusha@7span.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-val">Ahmedabad, Gujarat, India</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">💼</span>
+            <div>
+              <div class="contact-label">Status</div>
+              <div class="contact-val status-open">Open to opportunities</div>
+            </div>
+          </div>
+        </div>
+        <div class="socials-grid">
+          <a href="https://github.com/TRUSHAKHACHARIYA" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon">🐙</span>
+            <span class="social-name">GitHub</span>
+          </a>
+          <a href="https://www.linkedin.com/in/trusha-khachariya-tk" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon">💼</span>
+            <span class="social-name">LinkedIn</span>
+          </a>
+          <a href="https://medium.com/@khachariyatrusha" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon">✍️</span>
+            <span class="social-name">Medium</span>
+          </a>
+          <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon">🏅</span>
+            <span class="social-name">Credly</span>
+          </a>
+          <a href="https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <span class="social-icon">🎓</span>
+            <span class="social-name">Distinction</span>
+          </a>
+          <a href="mailto:trusha@7span.com" class="social-btn">
+            <span class="social-icon">📧</span>
+            <span class="social-name">Email</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <form class="form" id="contactForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="contact-name">Name</label>
+              <input class="form-input" id="contact-name" name="name" type="text" placeholder="Your name" required/>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="contact-email">Email</label>
+              <input class="form-input" id="contact-email" name="email" type="email" placeholder="your@email.com" required/>
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="contact-subject">Subject</label>
+            <input class="form-input" id="contact-subject" name="subject" type="text" placeholder="Project idea / Opportunity"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea class="form-textarea" id="contact-message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 · Trusha Khachariya</div>
+    <div class="footer-socials">
+      <a href="mailto:trusha@7span.com" class="footer-s" title="Email">✉</a>
+      <a href="https://www.linkedin.com/in/trusha-khachariya-tk" class="footer-s" title="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
+      <a href="https://github.com/TRUSHAKHACHARIYA" class="footer-s" title="GitHub" target="_blank" rel="noopener noreferrer">🐙</a>
+      <a href="https://medium.com/@khachariyatrusha" class="footer-s" title="Medium" target="_blank" rel="noopener noreferrer">✍</a>
+    </div>
+    <div class="footer-copy"><span class="footer-brand">TK</span> · AI/ML Engineer · Ahmedabad</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/hero-three.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
