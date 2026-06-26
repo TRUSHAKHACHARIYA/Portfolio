@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Trusha Khachariya — AI/ML Engineer specializing in LLM applications, RAG systems, and AI agents. Assistant Software Engineer at 7Span, Ahmedabad."/>
+  <meta name="description" content="Trusha Khachariya — AI/ML Engineer building LLM-powered SaaS · LangChain · RAG · FastAPI"/>
   <meta name="author" content="Trusha Khachariya"/>
   <meta name="theme-color" content="#04080f"/>
   <meta property="og:title" content="Trusha Khachariya — AI/ML Engineer"/>
-  <meta property="og:description" content="AI/ML Engineer building LLM-powered applications, RAG systems, and production-ready NLP solutions."/>
+  <meta property="og:description" content="Building LLM-powered SaaS · LangChain · RAG · FastAPI · AI Agents"/>
   <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://trusha-portfolio.vercel.app"/>
+  <meta property="og:image" content="https://trusha-portfolio.vercel.app/assets/og-preview.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Trusha Khachariya — AI/ML Engineer"/>
+  <meta name="twitter:description" content="Building LLM-powered SaaS · LangChain · RAG · FastAPI"/>
+  <meta name="twitter:image" content="https://trusha-portfolio.vercel.app/assets/og-preview.jpg"/>
   <title>Trusha Khachariya — AI/ML Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -20,6 +26,7 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
+      <span class="nav-logo-icon">🤖</span>
       <div class="nav-logo-ring"></div>
       TK
     </div>
@@ -35,6 +42,7 @@
       <div class="hamburger" id="burgerBtn" aria-label="Open menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
+      <a href="assets/Trusha_Khachariya.pdf" download class="resume-btn" id="resumeBtn">Resume ↓</a>
       <a href="#contact" class="hire-btn">Hire Me</a>
     </div>
   </div>
@@ -53,13 +61,14 @@
 <section id="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-overlay"></div>
+  <div class="hero-scanlines"></div>
   <div class="hero-grid-lines"></div>
 
   <div class="hero-content">
     <div>
       <div class="hero-eyebrow">
         <div class="eyebrow-dot"></div>
-        Available for opportunities
+        // system.status — READY TO DEPLOY
       </div>
       <h1 class="hero-title">
         <span class="name">Trusha<br/></span>
@@ -75,53 +84,43 @@
       <div class="hero-ctas">
         <a href="#projects" class="btn-primary">View Projects</a>
         <a href="#contact" class="btn-outline">Get In Touch</a>
+        <a href="#" class="btn-outline" id="calendlyBtn" hidden>Book a Call →</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-n">1+</div>
-          <div class="stat-l">Years Exp</div>
+          <div class="stat-n">18+</div>
+          <div class="stat-l">Months Exp</div>
         </div>
         <div class="stat">
-          <div class="stat-n">4</div>
-          <div class="stat-l">Projects</div>
+          <div class="stat-n">6+</div>
+          <div class="stat-l">Systems Built</div>
         </div>
         <div class="stat">
-          <div class="stat-n">1</div>
-          <div class="stat-l">Cert</div>
+          <div class="stat-n">AWS</div>
+          <div class="stat-l">Certified</div>
         </div>
         <div class="stat">
-          <div class="stat-n">2</div>
-          <div class="stat-l">Degrees</div>
+          <div class="stat-n">5+</div>
+          <div class="stat-l">LLM APIs</div>
         </div>
       </div>
     </div>
 
-    <div class="hero-vis">
+    <div class="hero-vis" id="heroVis">
       <div class="orb orb1"></div>
       <div class="orb orb2"></div>
-      <div class="holo-card holo-corners" id="holoCard">
-        <div class="holo-corners"></div>
-        <div class="hc3"></div><div class="hc4"></div>
-        <div class="holo-scan"></div>
-        <div class="holo-label">// identity.json</div>
-        <div class="holo-avatar">TK</div>
-        <div class="holo-name">Trusha Khachariya</div>
-        <div class="holo-role-tag">AI/ML Engineer · 7Span · Ahmedabad</div>
-        <div class="holo-divider"></div>
-        <div class="holo-skills">
-          <span class="holo-tag">LangChain</span>
-          <span class="holo-tag">RAG</span>
-          <span class="holo-tag">LangGraph</span>
-          <span class="holo-tag">FastAPI</span>
-          <span class="holo-tag">Qdrant</span>
-          <span class="holo-tag">NLP</span>
-          <span class="holo-tag">Pinecone</span>
-          <span class="holo-tag">Python</span>
-        </div>
-        <div class="holo-cert">
-          <div class="holo-cert-dot"></div>
-          AWS Certified AI Practitioner
-        </div>
+      <canvas id="robot-canvas"></canvas>
+      <div class="hud-panel hud-tl">
+        <div class="hud-label">// rag.pipeline</div>
+        <div class="hud-value">ACTIVE</div>
+      </div>
+      <div class="hud-panel hud-tr">
+        <div class="hud-label">// agent.status</div>
+        <div class="hud-value hud-value-green">ONLINE</div>
+      </div>
+      <div class="hud-panel hud-br">
+        <div class="hud-label">// llm.latency</div>
+        <div class="hud-value">~180ms</div>
       </div>
     </div>
   </div>
@@ -148,6 +147,10 @@
           <span class="tag">FastAPI</span>
           <span class="tag">Vector Databases</span>
         </div>
+        <div class="building-block reveal">
+          <div class="building-label">// currently_building.log</div>
+          <div id="buildingBlock"></div>
+        </div>
       </div>
       <div class="reveal">
         <div class="terminal">
@@ -155,7 +158,7 @@
             <div class="t-dot t-red"></div>
             <div class="t-dot t-yel"></div>
             <div class="t-dot t-grn"></div>
-            <span class="t-title">profile.json</span>
+            <span class="t-title">agent_session.log</span>
           </div>
           <div class="t-body">
             <div><span class="t-prompt">❯</span> <span class="t-cmd">cat profile.json</span></div>
@@ -173,6 +176,7 @@
               &nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val status-open">"open_to_opportunities"</span><br/>
               <span class="t-brace">}</span>
             </div>
+            <div id="terminalAgentOutput"></div>
             <div class="terminal-cursor"><span class="t-prompt">❯</span> <span class="t-cursor">_</span></div>
           </div>
         </div>
@@ -206,81 +210,7 @@
       <h2 class="s-title">Things I've <span class="accent">Built</span></h2>
       <p class="s-desc">Production AI systems from 7Span and personal GitHub — LLM agents, RAG platforms, and SaaS products.</p>
     </div>
-    <div class="projects-grid">
-
-      <article class="proj-card reveal">
-        <div class="proj-num">Project 01</div>
-        <h3 class="proj-title">Resume Chatbot</h3>
-        <div class="proj-source">7Span · AIML Developer · 3 months</div>
-        <p class="proj-desc">AI-powered resume chatbot using FastAPI, LangGraph, and LangChain with a multi-agent architecture. Integrates OpenAI/Claude LLMs to understand queries and generate structured resume content via REST APIs and conversational workflows.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">Python</span>
-          <span class="proj-tag">FastAPI</span>
-          <span class="proj-tag">LangGraph</span>
-          <span class="proj-tag">LangChain</span>
-          <span class="proj-tag">NLP</span>
-          <span class="proj-tag">LLM Agents</span>
-        </div>
-        <div class="proj-links">
-          <span class="proj-link-muted">Internal · 7Span</span>
-        </div>
-      </article>
-
-      <article class="proj-card reveal">
-        <div class="proj-num">Project 02</div>
-        <h3 class="proj-title">Denny Solution</h3>
-        <div class="proj-source">7Span · AIML Developer · 2 months</div>
-        <p class="proj-desc">RAG document intelligence platform built with Streamlit. Features document upload with PDF ingestion, basic semantic search, and advanced deep search (V2) with two-stage retrieval and intelligent re-ranking using OpenAI and Ragie APIs.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">Streamlit</span>
-          <span class="proj-tag">Python</span>
-          <span class="proj-tag">OpenAI API</span>
-          <span class="proj-tag">RAG</span>
-          <span class="proj-tag">Vector Search</span>
-          <span class="proj-tag">Ragie</span>
-        </div>
-        <div class="proj-links">
-          <span class="proj-link-muted">Internal · 7Span</span>
-        </div>
-      </article>
-
-      <article class="proj-card reveal">
-        <div class="proj-num">Project 03</div>
-        <h3 class="proj-title">DocWise</h3>
-        <div class="proj-source">Personal SaaS</div>
-        <p class="proj-desc">Secure multi-document AI workspace for teams and research professionals. Query large document libraries with RAG, verifiable source citations, Claude-powered chat, Pinecone semantic search, BullMQ ingestion, multi-tenant auth, and usage-based billing.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">Next.js</span>
-          <span class="proj-tag">TypeScript</span>
-          <span class="proj-tag">Fastify</span>
-          <span class="proj-tag">Pinecone</span>
-          <span class="proj-tag">RAG</span>
-          <span class="proj-tag">Claude</span>
-        </div>
-        <div class="proj-links">
-          <a href="https://github.com/TRUSHAKHACHARIYA/DocWise" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
-        </div>
-      </article>
-
-      <article class="proj-card reveal">
-        <div class="proj-num">Project 04</div>
-        <h3 class="proj-title">WhatsApp Bot (WapiSend)</h3>
-        <div class="proj-source">Personal SaaS</div>
-        <p class="proj-desc">Multi-tenant WhatsApp Business SaaS for small businesses. Integrates Meta WhatsApp Cloud API with menu bot and FAQ engine, lead pipeline, broadcast campaigns, JWT auth, Razorpay billing, and a FastAPI + Next.js full-stack architecture.</p>
-        <div class="proj-tags">
-          <span class="proj-tag">Next.js</span>
-          <span class="proj-tag">FastAPI</span>
-          <span class="proj-tag">PostgreSQL</span>
-          <span class="proj-tag">Redis</span>
-          <span class="proj-tag">WhatsApp API</span>
-          <span class="proj-tag">TypeScript</span>
-        </div>
-        <div class="proj-links">
-          <a href="https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
-        </div>
-      </article>
-
-    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
   </div>
 </section>
 
@@ -372,7 +302,7 @@
             <span class="contact-icon">✉️</span>
             <div>
               <div class="contact-label">Email</div>
-              <div class="contact-val">trusha@7span.com</div>
+              <div class="contact-val" data-email>khachariyatrusha@gmail.com</div>
             </div>
           </div>
           <div class="contact-item">
@@ -411,7 +341,7 @@
             <span class="social-icon">🎓</span>
             <span class="social-name">Distinction</span>
           </a>
-          <a href="mailto:trusha@7span.com" class="social-btn">
+          <a href="mailto:khachariyatrusha@gmail.com" data-email-link class="social-btn">
             <span class="social-icon">📧</span>
             <span class="social-name">Email</span>
           </a>
@@ -448,7 +378,7 @@
   <div class="footer-inner">
     <div class="footer-copy">© 2026 · Trusha Khachariya</div>
     <div class="footer-socials">
-      <a href="mailto:trusha@7span.com" class="footer-s" title="Email">✉</a>
+      <a href="mailto:khachariyatrusha@gmail.com" data-email-link class="footer-s" title="Email">✉</a>
       <a href="https://www.linkedin.com/in/trusha-khachariya-tk" class="footer-s" title="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
       <a href="https://github.com/TRUSHAKHACHARIYA" class="footer-s" title="GitHub" target="_blank" rel="noopener noreferrer">🐙</a>
       <a href="https://medium.com/@khachariyatrusha" class="footer-s" title="Medium" target="_blank" rel="noopener noreferrer">✍</a>
