@@ -4,7 +4,6 @@
   "private": true,
   "description": "Trusha Khachariya — AI/ML Engineer Portfolio",
   "scripts": {
-    "dev": "npx serve .",
-    "preview": "npx serve ."
+    "dev": "npx serve ."
   }
 }
