@@ -548,6 +548,29 @@ function initCursor() {
   window.bindCursorHoverables = bindHoverables;
 }
 
+function initVercelAnalytics() {
+  const { hostname } = window.location;
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+  if (isLocal) {
+    return;
+  }
+
+  fetch('/_vercel/insights/script.js', { method: 'HEAD' })
+    .then((res) => {
+      const type = res.headers.get('content-type') || '';
+      if (!res.ok || !type.includes('javascript')) {
+        return;
+      }
+
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      const script = document.createElement('script');
+      script.src = '/_vercel/insights/script.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })
+    .catch(() => {});
+}
+
 function applySiteConfig() {
   document.querySelectorAll('[data-email]').forEach((el) => {
     el.textContent = siteConfig.email;
@@ -622,6 +645,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initNavAnchorScroll();
     initContactForm();
     initScrollTop();
+    initVercelAnalytics();
     initMobileMenu();
     if (!useGsapMotion) {
       initGlitchHover();
