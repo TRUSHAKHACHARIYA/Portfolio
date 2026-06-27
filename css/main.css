@@ -988,54 +988,28 @@ html.gsap-motion #projectsGrid .proj-card {
 .terminal-json { margin-top: 12px; }
 .terminal-cursor { margin-top: 14px; }
 
-body.custom-cursor,
-body.custom-cursor a,
-body.custom-cursor button,
-body.custom-cursor input,
-body.custom-cursor textarea { cursor: none !important; }
+/* CURSOR — default arrow sitewide; pointer/text only where needed */
+a[href],
+button,
+[role="button"],
+label[for],
+.hamburger,
+.scroll-top,
+.form-submit,
+.resume-btn,
+.hire-btn,
+.btn-primary,
+.btn-outline,
+.proj-link,
+.social-btn,
+.mobile-close,
+.cert-link {
+  cursor: pointer;
+}
 
-.custom-cursor {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  margin-left: -4px;
-  margin-top: -4px;
-  background: var(--cyan);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  opacity: 0;
-  transition: transform 0.12s ease, opacity 0.2s;
-  mix-blend-mode: screen;
-}
-body.custom-cursor .custom-cursor {
-  opacity: 1;
-}
-.custom-cursor-ring {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  margin-left: -16px;
-  margin-top: -16px;
-  border: 1px solid rgba(0, 212, 255, 0.4);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  opacity: 0;
-  transition: transform 0.25s ease, width 0.2s, height 0.2s, margin 0.2s;
-}
-body.custom-cursor .custom-cursor-ring {
-  opacity: 1;
-}
-.custom-cursor.is-hovering {
-  transform: scale(2.5);
-  opacity: 0.55;
-}
-.custom-cursor-ring.is-hovering {
-  width: 44px;
-  height: 44px;
-  margin-left: -22px;
-  margin-top: -22px;
+.form-input,
+.form-textarea {
+  cursor: text;
 }
 
 /* PRELOADER */

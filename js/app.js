@@ -175,10 +175,6 @@ function renderProjects() {
   grid.closest('#projects')?.querySelectorAll('.reveal').forEach((el) => el.classList.add('vis'));
   grid.classList.add('vis');
 
-  if (window.bindCursorHoverables) {
-    window.bindCursorHoverables();
-  }
-
   if (useGsapMotion) {
     refreshScrollAnimations();
   }
@@ -498,56 +494,6 @@ function initTokenCounter() {
   }, 2200);
 }
 
-function initCursor() {
-  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900) {
-    return;
-  }
-
-  const dot = document.createElement('div');
-  dot.className = 'custom-cursor';
-  dot.id = 'cursorDot';
-
-  const ring = document.createElement('div');
-  ring.className = 'custom-cursor-ring';
-  ring.id = 'cursorRing';
-
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-
-  let active = false;
-
-  document.addEventListener('mousemove', (e) => {
-    if (!active) {
-      active = true;
-      document.body.classList.add('custom-cursor');
-    }
-    dot.style.left = `${e.clientX}px`;
-    dot.style.top = `${e.clientY}px`;
-    ring.style.left = `${e.clientX}px`;
-    ring.style.top = `${e.clientY}px`;
-  });
-
-  function bindHoverables() {
-    document.querySelectorAll('a, button, input, textarea, [role="button"], .proj-card, .skill-cat-card').forEach((el) => {
-      if (el.dataset.cursorBound) {
-        return;
-      }
-      el.dataset.cursorBound = 'true';
-      el.addEventListener('mouseenter', () => {
-        dot.classList.add('is-hovering');
-        ring.classList.add('is-hovering');
-      });
-      el.addEventListener('mouseleave', () => {
-        dot.classList.remove('is-hovering');
-        ring.classList.remove('is-hovering');
-      });
-    });
-  }
-
-  bindHoverables();
-  window.bindCursorHoverables = bindHoverables;
-}
-
 function initVercelAnalytics() {
   const { hostname } = window.location;
   const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
@@ -651,10 +597,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       initGlitchHover();
     }
     initTokenCounter();
-    initCursor();
-    if (window.bindCursorHoverables) {
-      window.bindCursorHoverables();
-    }
 
     if (useGsapMotion) {
       initScrollAnimations();
