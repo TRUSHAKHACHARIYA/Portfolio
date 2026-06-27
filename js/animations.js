@@ -108,6 +108,7 @@ function initLenis() {
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
+    smoothTouch: false,
   });
 
   lenis.on('scroll', window.ScrollTrigger.update);
@@ -117,14 +118,54 @@ function initLenis() {
   });
   window.gsap.ticker.lagSmoothing(0);
 
+  window.ScrollTrigger.scrollerProxy(document.documentElement, {
+    scrollTop(value) {
+      if (arguments.length) {
+        lenis.scrollTo(value, { immediate: true });
+      }
+      return lenis.scroll;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    pinType: document.documentElement.style.transform ? 'transform' : 'fixed',
+  });
+
+  window.ScrollTrigger.defaults({ scroller: document.documentElement });
+  window.ScrollTrigger.addEventListener('refresh', () => lenis.resize());
+  window.ScrollTrigger.refresh();
+
   document.documentElement.classList.add('lenis', 'lenis-smooth');
+}
+
+function scrollReveal(target, vars, trigger = {}) {
+  return window.gsap.from(target, {
+    ...vars,
+    immediateRender: false,
+    scrollTrigger: {
+      toggleActions: 'play none none none',
+      once: true,
+      ...trigger,
+    },
+  });
 }
 
 function hidePreloader() {
   const preloader = document.getElementById('preloader');
-  if (preloader) {
-    preloader.style.display = 'none';
+  if (!preloader) {
+    return;
   }
+  preloader.style.display = 'none';
+  preloader.style.pointerEvents = 'none';
+  if (typeof window.gsap !== 'undefined') {
+    window.gsap.set(preloader, { clearProps: 'all' });
+  }
+  preloader.remove();
 }
 
 function runPreloader(onComplete) {
@@ -332,10 +373,12 @@ function animateSectionTitles() {
       duration: 0.55,
       ease: 'power3.out',
       stagger: 0.025,
+      immediateRender: false,
       scrollTrigger: {
         trigger: title,
         start: 'top 80%',
         toggleActions: 'play none none none',
+        once: true,
       },
     });
   });
@@ -351,40 +394,32 @@ function animateBodyText() {
       duration: 0.5,
       ease: 'power2.out',
       stagger: 0.025,
+      immediateRender: false,
       scrollTrigger: {
         trigger: el,
         start: 'top 85%',
         toggleActions: 'play none none none',
+        once: true,
       },
     });
   });
 
   document.querySelectorAll('.proj-desc').forEach((el) => {
-    window.gsap.from(el, {
+    scrollReveal(el, {
       opacity: 0,
       y: 20,
       duration: 0.6,
       ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 88%',
-        toggleActions: 'play none none none',
-      },
-    });
+    }, { trigger: el, start: 'top 88%' });
   });
 
   document.querySelectorAll('.tl-bullets li').forEach((el) => {
-    window.gsap.from(el, {
+    scrollReveal(el, {
       opacity: 0,
       x: -16,
       duration: 0.45,
       ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 90%',
-        toggleActions: 'play none none none',
-      },
-    });
+    }, { trigger: el, start: 'top 90%' });
   });
 }
 
@@ -447,67 +482,47 @@ function animateMagneticButtons() {
 function animateCards() {
   const projectsGrid = document.querySelector('.projects-grid');
   if (projectsGrid && projectsGrid.children.length) {
-    window.gsap.from('.proj-card', {
+    scrollReveal('.proj-card', {
       opacity: 0,
       y: 40,
       duration: 0.6,
       ease: 'power2.out',
       stagger: { amount: 0.5, from: 'start' },
-      scrollTrigger: {
-        trigger: projectsGrid,
-        start: 'top 75%',
-        toggleActions: 'play none none none',
-      },
-    });
+    }, { trigger: projectsGrid, start: 'top 75%' });
   }
 
   const skillsGrid = document.querySelector('.skills-grid');
   if (skillsGrid && skillsGrid.children.length) {
-    window.gsap.from('.skill-cat-card', {
+    scrollReveal('.skill-cat-card', {
       opacity: 0,
       y: 30,
       scale: 0.95,
       duration: 0.4,
       ease: 'back.out(1.4)',
       stagger: { amount: 0.8, grid: 'auto' },
-      scrollTrigger: {
-        trigger: skillsGrid,
-        start: 'top 78%',
-        toggleActions: 'play none none none',
-      },
-    });
+    }, { trigger: skillsGrid, start: 'top 78%' });
   }
 
   const eduGrid = document.querySelector('.edu-grid');
   if (eduGrid) {
-    window.gsap.from('.edu-card', {
+    scrollReveal('.edu-card', {
       opacity: 0,
       y: 28,
       duration: 0.5,
       ease: 'power2.out',
       stagger: 0.15,
-      scrollTrigger: {
-        trigger: eduGrid,
-        start: 'top 78%',
-        toggleActions: 'play none none none',
-      },
-    });
+    }, { trigger: eduGrid, start: 'top 78%' });
   }
 
   const certList = document.querySelector('.cert-list');
   if (certList) {
-    window.gsap.from('.cert-card', {
+    scrollReveal('.cert-card', {
       opacity: 0,
       y: 24,
       duration: 0.5,
       ease: 'power2.out',
       stagger: 0.12,
-      scrollTrigger: {
-        trigger: certList,
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-      },
-    });
+    }, { trigger: certList, start: 'top 80%' });
   }
 }
 
@@ -517,38 +532,13 @@ function animateTimelineItems() {
     return;
   }
 
-  window.gsap.from('.timeline-item', {
+  scrollReveal('.timeline-item', {
     opacity: 0,
     x: -30,
     duration: 0.6,
     ease: 'power2.out',
     stagger: 0.2,
-    scrollTrigger: {
-      trigger: timeline,
-      start: 'top 75%',
-      toggleActions: 'play none none none',
-    },
-  });
-}
-
-function initPinnedExperience() {
-  if (window.innerWidth <= 900) {
-    return;
-  }
-
-  const sticky = document.getElementById('expSticky');
-  const container = document.querySelector('#experience .exp-layout');
-  if (!sticky || !container) {
-    return;
-  }
-
-  window.ScrollTrigger.create({
-    trigger: container,
-    start: 'top 15%',
-    end: 'bottom 85%',
-    pin: sticky,
-    pinSpacing: false,
-  });
+  }, { trigger: timeline, start: 'top 75%' });
 }
 
 function animateTerminal() {
@@ -619,9 +609,8 @@ function initScrollProgress() {
     width: '100%',
     ease: 'none',
     scrollTrigger: {
-      trigger: document.body,
-      start: 'top top',
-      end: 'bottom bottom',
+      start: 0,
+      end: 'max',
       scrub: 0.3,
     },
   });
@@ -665,9 +654,9 @@ export function initScrollAnimations() {
   animateNavScramble();
   animateTerminal();
   initScrollProgress();
-  initPinnedExperience();
 
-  window.ScrollTrigger.refresh();
+  window.requestAnimationFrame(() => window.ScrollTrigger.refresh());
+  window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
 }
 
 export function refreshScrollAnimations() {

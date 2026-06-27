@@ -93,10 +93,23 @@
     );
 
     const mouse = { x: 0, y: 0 };
+    let heroInView = true;
+
     window.addEventListener('mousemove', (e) => {
       mouse.x = (e.clientX / window.innerWidth - 0.5) * 0.4;
       mouse.y = (e.clientY / window.innerHeight - 0.5) * 0.4;
     });
+
+    const heroSection = document.getElementById('hero');
+    if (heroSection && typeof IntersectionObserver !== 'undefined') {
+      const heroObserver = new IntersectionObserver(
+        ([entry]) => {
+          heroInView = entry.isIntersecting;
+        },
+        { root: null, threshold: 0, rootMargin: '0px' }
+      );
+      heroObserver.observe(heroSection);
+    }
 
     function resize() {
       const w = canvas.clientWidth || window.innerWidth;
@@ -114,6 +127,9 @@
 
     function animate() {
       requestAnimationFrame(animate);
+      if (!heroInView) {
+        return;
+      }
       points.rotation.y += 0.0003;
       points.rotation.x += 0.0001;
       camera.position.x += (mouse.x - camera.position.x) * 0.03;
