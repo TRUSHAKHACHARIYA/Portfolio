@@ -243,7 +243,16 @@ function initContactForm() {
           throw new Error('Form submission failed');
         }
       } else {
-        await new Promise((r) => setTimeout(r, 1200));
+        btn.textContent = 'Use email link instead ↑';
+        btn.style.background = '#ff9f43';
+        btn.style.color = 'var(--bg)';
+        setTimeout(() => {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 3500);
+        return;
       }
 
       btn.textContent = '✓ Message Sent!';
@@ -593,6 +602,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (err) {
     console.error('Portfolio init failed:', err);
+    initSkills();
+    renderProjects();
     document.documentElement.classList.add('app-ready');
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('vis'));
     revealHeroContent();

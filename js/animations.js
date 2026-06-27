@@ -144,13 +144,22 @@ function initLenis() {
 }
 
 function scrollReveal(target, vars, trigger = {}) {
+  const { opacity, ...motionVars } = vars;
+
   return window.gsap.from(target, {
-    ...vars,
+    ...motionVars,
+    ...(opacity !== undefined ? { autoAlpha: opacity } : {}),
     immediateRender: false,
     scrollTrigger: {
       toggleActions: 'play none none none',
       once: true,
       ...trigger,
+      onEnter: (self) => {
+        trigger.onEnter?.(self);
+      },
+    },
+    onComplete: () => {
+      window.gsap.set(target, { clearProps: 'opacity,visibility' });
     },
   });
 }
@@ -482,8 +491,8 @@ function animateMagneticButtons() {
 function animateCards() {
   const projectsGrid = document.querySelector('.projects-grid');
   if (projectsGrid && projectsGrid.children.length) {
+    window.gsap.set('.proj-card', { autoAlpha: 1 });
     scrollReveal('.proj-card', {
-      opacity: 0,
       y: 40,
       duration: 0.6,
       ease: 'power2.out',
@@ -493,8 +502,8 @@ function animateCards() {
 
   const skillsGrid = document.querySelector('.skills-grid');
   if (skillsGrid && skillsGrid.children.length) {
+    window.gsap.set('.skill-cat-card', { autoAlpha: 1 });
     scrollReveal('.skill-cat-card', {
-      opacity: 0,
       y: 30,
       scale: 0.95,
       duration: 0.4,
@@ -626,7 +635,11 @@ export function bootstrapAnimations({ onHeroComplete } = {}) {
     return Promise.resolve();
   }
 
-  window.gsap.registerPlugin(window.ScrollTrigger, window.SplitText, window.TextPlugin);
+  const plugins = [window.ScrollTrigger, window.TextPlugin].filter(Boolean);
+  if (window.SplitText) {
+    plugins.push(window.SplitText);
+  }
+  window.gsap.registerPlugin(...plugins);
   document.documentElement.classList.add('gsap-motion');
   initLenis();
 

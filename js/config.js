@@ -1,8 +1,9 @@
 export const siteConfig = {
   email: 'khachariyatrusha@gmail.com',
   calendlyUrl: 'https://calendly.com/khachariyatrusha',
-  formspreeEndpoint: '',
+  // Sign up at https://formspree.io and paste your form endpoint below
+  formspreeEndpoint: 'https://formspree.io/f/xeebgbgr',
   resumePath: 'assets/Trusha_Khachariya.pdf',
-  siteUrl: 'https://trusha-portfolio.vercel.app',
-  ogImage: 'assets/og-preview.jpg',
+  siteUrl: 'https://portfolio-seven-phi-zyohdnoii5.vercel.app',
+  ogImage: 'https://portfolio-seven-phi-zyohdnoii5.vercel.app/assets/og-preview.jpg',
 };

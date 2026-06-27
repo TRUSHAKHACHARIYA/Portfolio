@@ -255,6 +255,17 @@ nav {
   color: var(--t3); margin-top: 2px;
 }
 
+@keyframes gentle-float {
+  0%, 100% { transform: perspective(800px) rotateY(3deg); }
+  50% { transform: perspective(800px) rotateY(-3deg); }
+}
+
+@media (hover: none) {
+  .hero-vis {
+    animation: gentle-float 4s ease-in-out infinite;
+  }
+}
+
 /* hero right — 3D robot mascot */
 .hero-vis {
   position: relative;
@@ -865,6 +876,12 @@ html.gsap-motion.js-ready .reveal.vis {
 #projectsGrid {
   opacity: 1 !important;
   transform: none !important;
+}
+
+#skillsGrid .skill-cat-card,
+#projectsGrid .proj-card {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* MOBILE NAV MENU */

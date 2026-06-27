@@ -9,18 +9,19 @@
   <meta property="og:title" content="Trusha Khachariya — AI/ML Engineer"/>
   <meta property="og:description" content="Building LLM-powered SaaS · LangChain · RAG · FastAPI · AI Agents"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://trusha-portfolio.vercel.app"/>
-  <meta property="og:image" content="https://trusha-portfolio.vercel.app/assets/og-preview.jpg"/>
+  <meta property="og:url" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app"/>
+  <meta property="og:image" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app/assets/og-preview.jpg"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Trusha Khachariya — AI/ML Engineer"/>
   <meta name="twitter:description" content="Building LLM-powered SaaS · LangChain · RAG · FastAPI"/>
-  <meta name="twitter:image" content="https://trusha-portfolio.vercel.app/assets/og-preview.jpg"/>
+  <meta name="twitter:image" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app/assets/og-preview.jpg"/>
   <title>Trusha Khachariya — AI/ML Engineer</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/main.css?v=11"/>
+  <link rel="stylesheet" href="css/main.css?v=12"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
@@ -54,7 +55,7 @@
       <div class="hamburger" id="burgerBtn" aria-label="Open menu" role="button" tabindex="0">
         <span></span><span></span><span></span>
       </div>
-      <a href="assets/Trusha_Khachariya.pdf" download class="resume-btn" id="resumeBtn">Resume ↓</a>
+      <a href="assets/Trusha_Khachariya.pdf" download="Trusha_Khachariya_Resume.pdf" class="resume-btn" id="resumeBtn">Resume ↓</a>
       <a href="#contact" class="hire-btn">Hire Me</a>
     </div>
   </div>
@@ -80,7 +81,7 @@
     <div class="hero-copy">
       <div class="hero-eyebrow">
         <div class="eyebrow-dot"></div>
-        // system.status — READY TO DEPLOY
+        // available_for_opportunities: true
       </div>
       <h1 class="hero-title">
         <span class="name">Trusha</span>
@@ -124,24 +125,24 @@
       <div class="orb orb2"></div>
       <canvas id="robot-canvas" aria-hidden="true"></canvas>
       <div class="hud-panel hud-float hud-tl">
-        <span class="hud-label">// rag.pipeline</span>
-        <span class="hud-value">ACTIVE</span>
+        <span class="hud-label">// github.repos</span>
+        <span class="hud-value">8+ public</span>
       </div>
       <div class="hud-panel hud-float hud-tr">
-        <span class="hud-label">// model.loaded</span>
-        <span class="hud-value">Claude Sonnet</span>
+        <span class="hud-label">// aws.cert</span>
+        <span class="hud-value hud-value-green">ACTIVE ●</span>
       </div>
       <div class="hud-panel hud-float hud-ml">
         <span class="hud-label">// vector.db</span>
         <span class="hud-value hud-value-green">pgvector ●</span>
       </div>
       <div class="hud-panel hud-float hud-bl">
-        <span class="hud-label">// tokens/s</span>
-        <span class="hud-value" id="hudTokens">48</span>
+        <span class="hud-label">// status</span>
+        <span class="hud-value hud-value-green">open_to_work</span>
       </div>
       <div class="hud-panel hud-float hud-br">
-        <span class="hud-label">// llm.latency</span>
-        <span class="hud-value">~180ms</span>
+        <span class="hud-label">// stack.focus</span>
+        <span class="hud-value">RAG · Agents</span>
       </div>
     </div>
   </div>
@@ -214,7 +215,13 @@
       <h2 class="s-title">Core <span class="accent">Capabilities</span></h2>
       <p class="s-desc">Technologies and frameworks I use to build production AI systems — grouped by domain.</p>
     </div>
-    <div class="skills-grid" id="skillsGrid"></div>
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🤖</span><span class="skill-cat-title">AI / ML Core</span></div><ul class="skill-cat-list"><li>LLMs &amp; RAG</li><li>Machine Learning</li><li>NLP / Semantic Search</li><li>Prompt Engineering</li></ul></div>
+      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🔀</span><span class="skill-cat-title">Orchestration</span></div><ul class="skill-cat-list"><li>LangChain</li><li>LangGraph</li><li>LangSmith</li><li>n8n / Make.com</li></ul></div>
+      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🗄️</span><span class="skill-cat-title">Infra &amp; Storage</span></div><ul class="skill-cat-list"><li>pgvector / Supabase</li><li>Qdrant / Pinecone</li><li>FastAPI / BullMQ</li><li>Next.js 14</li></ul></div>
+      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">⚡</span><span class="skill-cat-title">LLM APIs</span></div><ul class="skill-cat-list"><li>Claude API (Sonnet)</li><li>OpenAI GPT-4</li><li>Ragie.ai</li><li>AWS</li></ul></div>
+      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🐍</span><span class="skill-cat-title">Languages</span></div><ul class="skill-cat-list"><li>Python</li><li>TypeScript</li><li>SQL</li><li>JavaScript</li></ul></div>
+    </div>
   </div>
 </section>
 
@@ -225,7 +232,53 @@
       <h2 class="s-title">Things I've <span class="accent">Built</span></h2>
       <p class="s-desc">Production AI systems from 7Span and personal GitHub — LLM agents, RAG platforms, and SaaS products.</p>
     </div>
-    <div class="projects-grid" id="projectsGrid"></div>
+    <div class="projects-grid" id="projectsGrid">
+      <article class="proj-card featured">
+        <span class="proj-featured-badge">FEATURED</span>
+        <div class="proj-num">Project 01</div>
+        <div class="proj-card-body">
+          <div class="proj-card-main">
+            <div class="proj-header"><h3 class="proj-title">DocWise</h3><span class="proj-status status-live">● LIVE</span></div>
+            <div class="proj-source">Personal SaaS</div>
+            <p class="proj-desc">Secure multi-document AI workspace — RAG, Claude chat, Pinecone search, and multi-tenant auth.</p>
+            <div class="proj-links"><a href="https://github.com/TRUSHAKHACHARIYA/DocWise" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="proj-card">
+        <div class="proj-num">Project 02</div>
+        <div class="proj-card-body">
+          <div class="proj-card-main">
+            <div class="proj-header"><h3 class="proj-title">BOTIQ AI</h3><span class="proj-status status-live">● LIVE</span></div>
+            <div class="proj-source">Personal SaaS · WhatsApp for Indian SMBs</div>
+            <p class="proj-desc">Multi-tenant WhatsApp Business SaaS with menu bot, lead pipeline, and Razorpay billing.</p>
+            <div class="proj-links"><a href="https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div>
+          </div>
+        </div>
+      </article>
+      <article class="proj-card">
+        <div class="proj-num">Project 06</div>
+        <div class="proj-card-body">
+          <div class="proj-card-main">
+            <div class="proj-header"><h3 class="proj-title">Resume Chatbot</h3><span class="proj-status status-archived">○ ARCHIVED</span></div>
+            <div class="proj-source">7Span · AIML Developer · 3 months</div>
+            <p class="proj-desc">AI resume chatbot with FastAPI, LangGraph, and LangChain multi-agent architecture.</p>
+            <div class="proj-links"><span class="proj-link-muted">Private · NDA · 7Span</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="proj-card">
+        <div class="proj-num">Project 07</div>
+        <div class="proj-card-body">
+          <div class="proj-card-main">
+            <div class="proj-header"><h3 class="proj-title">Denny Solution</h3><span class="proj-status status-archived">○ ARCHIVED</span></div>
+            <div class="proj-source">7Span · AIML Developer · 2 months</div>
+            <p class="proj-desc">RAG document intelligence platform with two-stage retrieval and re-ranking.</p>
+            <div class="proj-links"><span class="proj-link-muted">Private · NDA · 7Span</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -407,8 +460,8 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/robot-scene.js?v=11"></script>
-<script src="js/hero-three.js?v=11"></script>
-<script type="module" src="js/app.js?v=11"></script>
+<script src="js/robot-scene.js?v=12"></script>
+<script src="js/hero-three.js?v=12"></script>
+<script type="module" src="js/app.js?v=12"></script>
 </body>
 </html>

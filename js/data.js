@@ -153,7 +153,7 @@ export const projects = [
       { icon: '⛓️', label: 'LangChain' },
       { icon: '💬', label: 'NLP' },
     ],
-    links: { muted: 'Internal · 7Span' },
+    links: { muted: 'Private · NDA · 7Span' },
   },
   {
     num: '07',
@@ -169,7 +169,7 @@ export const projects = [
       { icon: '🤖', label: 'RAG' },
       { icon: '📄', label: 'Ragie' },
     ],
-    links: { muted: 'Internal · 7Span' },
+    links: { muted: 'Private · NDA · 7Span' },
   },
   {
     num: '08',

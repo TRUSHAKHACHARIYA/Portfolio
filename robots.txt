@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-seven-phi-zyohdnoii5.vercel.app/sitemap.xml
