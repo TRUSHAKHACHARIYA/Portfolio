@@ -4,232 +4,226 @@ window.initMascotRobot = function initMascotRobot(canvas, container) {
   renderer.setClearColor(0x000000, 0);
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.15;
+  renderer.toneMappingExposure = 1.2;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-  camera.position.set(0.15, 0.35, 4.6);
+  const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+  camera.position.set(0, 0.4, 6.8);
 
-  scene.add(new THREE.AmbientLight(0x0a1628, 0.55));
+  scene.add(new THREE.AmbientLight(0x050d1a, 1.0));
 
-  const keyLight = new THREE.DirectionalLight(0x00d4ff, 1.35);
-  keyLight.position.set(-4, 3, 5);
-  scene.add(keyLight);
+  const cyanKey = new THREE.DirectionalLight(0x00d4ff, 3.0);
+  cyanKey.position.set(-2, 3, 4);
+  scene.add(cyanKey);
 
-  const fillLight = new THREE.DirectionalLight(0x7b5ea7, 0.75);
-  fillLight.position.set(5, 1, 3);
-  scene.add(fillLight);
+  const purpleFill = new THREE.DirectionalLight(0x7b5ea7, 1.5);
+  purpleFill.position.set(3, 1, 2);
+  scene.add(purpleFill);
 
-  const rimLight = new THREE.DirectionalLight(0xaeefff, 0.45);
-  rimLight.position.set(0, 2, -4);
+  const rimLight = new THREE.DirectionalLight(0xaaccff, 1.0);
+  rimLight.position.set(0, 5, -3);
   scene.add(rimLight);
 
-  const chestLight = new THREE.PointLight(0x00d4ff, 1.8, 4);
-  const visorLight = new THREE.PointLight(0x00d4ff, 2.2, 3);
+  const chestGlow = new THREE.PointLight(0x00d4ff, 4.0, 6);
+  const groundGlow = new THREE.PointLight(0x00ff88, 2.0, 4);
+  groundGlow.position.set(0, -2.5, 0);
 
-  function bodyMaterial(intensity) {
-    return new THREE.MeshStandardMaterial({
-      color: 0x091525,
-      emissive: 0x00d4ff,
-      emissiveIntensity: intensity,
-      metalness: 0.92,
-      roughness: 0.14,
-    });
+  const bodyMat = new THREE.MeshStandardMaterial({
+    color: 0x0a1628,
+    metalness: 0.9,
+    roughness: 0.2,
+    emissive: 0x001122,
+    emissiveIntensity: 0.3,
+  });
+
+  const panelMat = new THREE.MeshStandardMaterial({
+    color: 0x060e18,
+    metalness: 0.85,
+    roughness: 0.25,
+    emissive: 0x001122,
+    emissiveIntensity: 0.15,
+  });
+
+  const visorMat = new THREE.MeshStandardMaterial({
+    color: 0x00d4ff,
+    emissive: 0x00d4ff,
+    emissiveIntensity: 1.2,
+    roughness: 0.0,
+    metalness: 0.0,
+  });
+
+  const haloMat = new THREE.MeshStandardMaterial({
+    color: 0x00d4ff,
+    emissive: 0x00d4ff,
+    emissiveIntensity: 2.0,
+    transparent: true,
+    opacity: 0.85,
+  });
+
+  const platformMat = new THREE.MeshStandardMaterial({
+    color: 0x030a14,
+    emissive: 0x00d4ff,
+    emissiveIntensity: 0.4,
+    metalness: 0.8,
+    roughness: 0.3,
+  });
+
+  const edgeMat = new THREE.LineBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.6 });
+
+  function box(w, h, d, mat, x, y, z) {
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+    mesh.position.set(x, y, z);
+    return mesh;
   }
 
-  function glowMaterial(color, intensity) {
-    return new THREE.MeshStandardMaterial({
-      color,
-      emissive: color,
-      emissiveIntensity: intensity,
-      metalness: 0.15,
-      roughness: 0.08,
-      transparent: true,
-      opacity: 0.95,
-    });
+  function cyl(rt, rb, h, seg, mat, x, y, z) {
+    const mesh = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg), mat);
+    mesh.position.set(x, y, z);
+    return mesh;
   }
 
-  function addEdgeGlow(mesh, opacity) {
-    const edges = new THREE.LineSegments(
-      new THREE.EdgesGeometry(mesh.geometry),
-      new THREE.LineBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: opacity || 0.5 })
-    );
-    mesh.add(edges);
+  function addEdges(mesh) {
+    const lines = new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry), edgeMat);
+    mesh.add(lines);
   }
 
-  const mascot = new THREE.Group();
-  mascot.rotation.y = 0.28;
-
-  const bodyMat = bodyMaterial(0.08);
-  const darkMat = bodyMaterial(0.04);
-
-  const platform = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.2, 0.14, 6), bodyMaterial(0.22));
-  platform.position.y = -1.42;
-  mascot.add(platform);
-  addEdgeGlow(platform, 0.35);
-
-  const platformRing = new THREE.Mesh(
-    new THREE.RingGeometry(0.82, 1.28, 6),
-    new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.18, side: THREE.DoubleSide })
-  );
-  platformRing.rotation.x = -Math.PI / 2;
-  platformRing.position.y = -1.34;
-  mascot.add(platformRing);
-
-  const platformPulse = new THREE.Mesh(
-    new THREE.RingGeometry(0.55, 0.95, 32),
-    new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.08, side: THREE.DoubleSide })
-  );
-  platformPulse.rotation.x = -Math.PI / 2;
-  platformPulse.position.y = -1.33;
-  mascot.add(platformPulse);
-
-  const hip = new THREE.Mesh(new THREE.SphereGeometry(0.42, 24, 24), darkMat);
-  hip.scale.set(1.35, 0.55, 1);
-  hip.position.y = -1.05;
-  mascot.add(hip);
-
-  const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.52, 0.68, 1.05, 32), bodyMat);
-  torso.position.y = -0.38;
-  mascot.add(torso);
-  addEdgeGlow(torso);
-
-  const chestPlate = new THREE.Mesh(new THREE.BoxGeometry(0.78, 0.62, 0.38), darkMat);
-  chestPlate.position.set(0, -0.22, 0.28);
-  mascot.add(chestPlate);
-  addEdgeGlow(chestPlate, 0.35);
-
-  const chestCore = new THREE.Mesh(new THREE.SphereGeometry(0.14, 20, 20), glowMaterial(0x00d4ff, 2));
-  chestCore.position.set(0, -0.18, 0.48);
-  mascot.add(chestCore);
-  chestLight.position.copy(chestCore.position);
-  mascot.add(chestLight);
-
-  const haloRing = new THREE.Mesh(
-    new THREE.TorusGeometry(0.82, 0.018, 8, 80),
-    new THREE.MeshBasicMaterial({ color: 0x00d4ff, transparent: true, opacity: 0.65 })
-  );
-  haloRing.rotation.x = Math.PI / 2;
-  haloRing.position.y = -0.62;
-  mascot.add(haloRing);
-
+  const robot = new THREE.Group();
   const headGroup = new THREE.Group();
-  headGroup.position.y = 0.52;
-  mascot.add(headGroup);
+  headGroup.position.y = 1.35;
+  robot.add(headGroup);
 
-  const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 0.18, 16), darkMat);
-  neck.position.y = -0.08;
-  headGroup.add(neck);
+  const helmet = box(1.1, 1.1, 1.1, bodyMat, 0, 0, 0);
+  headGroup.add(helmet);
+  addEdges(helmet);
 
-  const head = new THREE.Mesh(new THREE.SphereGeometry(0.46, 32, 32), bodyMat);
-  head.scale.set(1.05, 1.08, 0.92);
-  headGroup.add(head);
-  addEdgeGlow(head);
-
-  const facePlate = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.38, 0.12), darkMat);
-  facePlate.position.set(0, -0.02, 0.38);
-  headGroup.add(facePlate);
-
-  const visor = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.14, 0.06), glowMaterial(0x00d4ff, 2.4));
-  visor.position.set(0, 0.02, 0.46);
+  const visor = box(0.7, 0.3, 0.15, visorMat, 0, 0.05, 0.58);
   headGroup.add(visor);
 
-  const leftEye = new THREE.Mesh(new THREE.SphereGeometry(0.055, 16, 16), glowMaterial(0x00ffff, 3));
-  leftEye.position.set(-0.14, 0.02, 0.48);
-  headGroup.add(leftEye);
+  const neck = cyl(0.15, 0.2, 0.3, 12, panelMat, 0, -0.72, 0);
+  headGroup.add(neck);
 
-  const rightEye = new THREE.Mesh(new THREE.SphereGeometry(0.055, 16, 16), glowMaterial(0x00ffff, 3));
-  rightEye.position.set(0.14, 0.02, 0.48);
-  headGroup.add(rightEye);
+  const torso = box(1.4, 1.6, 0.9, bodyMat, 0, -0.15, 0);
+  robot.add(torso);
+  addEdges(torso);
 
-  visorLight.position.set(0, 0.52, 0.9);
-  headGroup.add(visorLight);
+  const chestPlate = box(0.95, 1.1, 0.12, panelMat, 0, -0.1, 0.48);
+  robot.add(chestPlate);
 
-  const antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.38, 8), darkMat);
-  antenna.position.set(0, 0.52, 0);
-  headGroup.add(antenna);
+  chestGlow.position.set(0, 0.5, 0.8);
+  robot.add(chestGlow);
 
-  const antennaTip = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 16), glowMaterial(0x00ff88, 2.2));
-  antennaTip.position.set(0, 0.74, 0);
-  headGroup.add(antennaTip);
-
-  function createArm(side) {
-    const arm = new THREE.Group();
+  function createLimb(side) {
     const sign = side === 'left' ? -1 : 1;
+    const group = new THREE.Group();
 
-    const shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 16), bodyMat);
-    shoulder.position.set(sign * 0.72, -0.05, 0);
-    arm.add(shoulder);
+    const shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.35, 16, 16), bodyMat);
+    shoulder.position.set(sign * 0.95, 0.45, 0);
+    group.add(shoulder);
 
-    const upper = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.13, 0.48, 16), bodyMat);
-    upper.position.set(sign * 0.82, -0.28, 0.05);
-    upper.rotation.z = sign * 0.45;
-    arm.add(upper);
-    addEdgeGlow(upper, 0.4);
+    const upperArm = cyl(0.18, 0.18, 1.1, 12, bodyMat, sign * 1.05, -0.15, 0);
+    upperArm.rotation.z = sign * 0.35;
+    group.add(upperArm);
 
-    const forearm = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.1, 0.42, 16), darkMat);
-    forearm.position.set(sign * 1.02, -0.62, 0.12);
-    forearm.rotation.z = sign * 0.85;
-    arm.add(forearm);
+    const handMat = bodyMat.clone();
+    handMat.emissiveIntensity = 0.45;
+    const hand = new THREE.Mesh(new THREE.SphereGeometry(0.22, 16, 16), handMat);
+    hand.position.set(sign * 1.22, -0.78, 0.08);
+    group.add(hand);
 
-    const hand = new THREE.Mesh(new THREE.SphereGeometry(0.1, 12, 12), bodyMat);
-    hand.position.set(sign * 1.08, -0.88, 0.18);
-    arm.add(hand);
-
-    return arm;
+    return group;
   }
 
-  const leftArm = createArm('left');
-  const rightArm = createArm('right');
-  mascot.add(leftArm, rightArm);
+  robot.add(createLimb('left'), createLimb('right'));
 
-  const orbitCount = 120;
-  const orbitPositions = new Float32Array(orbitCount * 3);
-  for (let i = 0; i < orbitCount; i++) {
-    const angle = (i / orbitCount) * Math.PI * 2;
-    const radius = 1.15 + Math.random() * 0.35;
-    orbitPositions[i * 3] = Math.cos(angle) * radius;
-    orbitPositions[i * 3 + 1] = (Math.random() - 0.5) * 1.6;
-    orbitPositions[i * 3 + 2] = Math.sin(angle) * radius * 0.45;
+  const hip = box(1.2, 0.4, 0.8, bodyMat, 0, -1.05, 0);
+  robot.add(hip);
+
+  function createLeg(side) {
+    const sign = side === 'left' ? -1 : 1;
+    const group = new THREE.Group();
+
+    const leg = cyl(0.22, 0.22, 1.1, 12, bodyMat, sign * 0.35, -1.75, 0);
+    group.add(leg);
+
+    const foot = box(0.35, 0.2, 0.5, bodyMat, sign * 0.35, -2.35, 0.12);
+    group.add(foot);
+
+    return group;
   }
+
+  robot.add(createLeg('left'), createLeg('right'));
+
+  const haloRing = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.03, 8, 60), haloMat);
+  haloRing.rotation.x = 0.3;
+  haloRing.position.y = -0.35;
+  robot.add(haloRing);
+
+  const platform = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.4, 0.12, 6), platformMat);
+  platform.position.y = -2.55;
+  robot.add(platform);
+  addEdges(platform);
+
+  const glowCanvas = document.createElement('canvas');
+  glowCanvas.width = 256;
+  glowCanvas.height = 256;
+  const ctx = glowCanvas.getContext('2d');
+  const grad = ctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+  grad.addColorStop(0, 'rgba(0,212,255,0.35)');
+  grad.addColorStop(0.45, 'rgba(0,212,255,0.08)');
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, 256, 256);
+  const glowTex = new THREE.CanvasTexture(glowCanvas);
+  const glowDisc = new THREE.Mesh(
+    new THREE.PlaneGeometry(3, 3),
+    new THREE.MeshBasicMaterial({ map: glowTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending })
+  );
+  glowDisc.rotation.x = -Math.PI / 2;
+  glowDisc.position.y = -2.48;
+  robot.add(glowDisc);
+
   const orbitGeo = new THREE.BufferGeometry();
-  orbitGeo.setAttribute('position', new THREE.BufferAttribute(orbitPositions, 3));
+  const orbitCount = 80;
+  const orbitPos = new Float32Array(orbitCount * 3);
+  for (let i = 0; i < orbitCount; i++) {
+    const a = (i / orbitCount) * Math.PI * 2;
+    const r = 1.35 + Math.random() * 0.25;
+    orbitPos[i * 3] = Math.cos(a) * r;
+    orbitPos[i * 3 + 1] = (Math.random() - 0.5) * 2.2;
+    orbitPos[i * 3 + 2] = Math.sin(a) * r * 0.35;
+  }
+  orbitGeo.setAttribute('position', new THREE.BufferAttribute(orbitPos, 3));
   const orbitPoints = new THREE.Points(
     orbitGeo,
     new THREE.PointsMaterial({
       color: 0x00d4ff,
-      size: 0.035,
+      size: 0.04,
       transparent: true,
       opacity: 0.55,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     })
   );
-  mascot.add(orbitPoints);
+  robot.add(orbitPoints);
 
-  scene.add(mascot);
+  robot.position.y = -0.15;
+  robot.scale.setScalar(0.52);
+  scene.add(robot);
+  scene.add(groundGlow);
 
   const mouse = { x: 0, y: 0 };
-  let hovered = false;
-  let wake = 0;
-
   container.addEventListener('mousemove', (e) => {
     const r = container.getBoundingClientRect();
     mouse.x = (e.clientX - r.left) / r.width - 0.5;
     mouse.y = (e.clientY - r.top) / r.height - 0.5;
   });
-  container.addEventListener('mouseenter', () => {
-    hovered = true;
-  });
-  container.addEventListener('mouseleave', () => {
-    hovered = false;
-    mouse.x = 0;
-    mouse.y = 0;
-  });
 
   function resize() {
-    const w = canvas.clientWidth;
-    const h = canvas.clientHeight;
+    const w = canvas.clientWidth || container.clientWidth || 480;
+    const h = canvas.clientHeight || container.clientHeight || 520;
+    if (w < 1 || h < 1) {
+      return;
+    }
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -238,43 +232,36 @@ window.initMascotRobot = function initMascotRobot(canvas, container) {
   resize();
   window.addEventListener('resize', resize);
 
+  const resizeObserver = typeof ResizeObserver !== 'undefined'
+    ? new ResizeObserver(() => resize())
+    : null;
+  if (resizeObserver) {
+    resizeObserver.observe(container);
+  }
+
   const clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
-    const bob = Math.sin(t * 1.8) * 0.045;
-    const pulse = 0.75 + Math.sin(t * 3.2) * 0.25;
-    const targetWake = hovered ? 1 : 0;
-    wake += (targetWake - wake) * 0.06;
 
-    mascot.position.y = bob;
-    platformPulse.scale.setScalar(1 + Math.sin(t * 2.4) * 0.08);
-    platformPulse.material.opacity = 0.06 + wake * 0.12 + Math.sin(t * 3) * 0.03;
+    robot.position.y = -0.15 + Math.sin(t * 0.8) * 0.08;
 
-    haloRing.rotation.z += 0.012 + wake * 0.008;
+    headGroup.rotation.y = Math.sin(t * 0.5) * 0.06;
+    headGroup.rotation.x = Math.sin(t * 0.3) * 0.03;
+
+    const targetRotY = Math.max(-0.3, Math.min(0.3, mouse.x * 0.12));
+    const targetRotX = Math.max(-0.3, Math.min(0.3, -mouse.y * 0.08));
+    robot.rotation.y += (targetRotY - robot.rotation.y) * 0.05;
+    robot.rotation.x += (targetRotX - robot.rotation.x) * 0.05;
+
+    haloRing.rotation.z += 0.006;
     orbitPoints.rotation.y += 0.004;
-    orbitPoints.rotation.x = Math.sin(t * 0.5) * 0.08;
 
-    const lookY = mouse.x * 0.35;
-    const lookX = -mouse.y * 0.22;
-    headGroup.rotation.y += (lookY - headGroup.rotation.y) * 0.08;
-    headGroup.rotation.x += (lookX - headGroup.rotation.x) * 0.08;
-
-    mascot.rotation.y += ((0.28 + mouse.x * 0.18) - mascot.rotation.y) * 0.05;
-    mascot.rotation.x += ((-mouse.y * 0.1) - mascot.rotation.x) * 0.05;
-
-    const eyeScale = pulse + wake * 0.15;
-    leftEye.scale.setScalar(eyeScale);
-    rightEye.scale.setScalar(eyeScale);
-    visor.material.emissiveIntensity = 2.2 + wake * 1.4 + pulse * 0.4;
-    chestCore.material.emissiveIntensity = 1.6 + wake * 1.2 + pulse * 0.3;
-    chestLight.intensity = 1.4 + wake * 1.6;
-    visorLight.intensity = 1.8 + wake * 2;
-    bodyMat.emissiveIntensity = 0.08 + wake * 0.14;
-
-    rightArm.rotation.z = -0.08 + Math.sin(t * 1.6) * 0.06;
-    leftArm.rotation.z = 0.06 + Math.sin(t * 1.6 + 1) * 0.04;
+    const visorPulse = 0.8 + Math.sin(t * 2.2) * 0.4;
+    visorMat.emissiveIntensity = visorPulse;
+    chestGlow.intensity = 3.0 + Math.sin(t * 1.5) * 1.5;
+    groundGlow.intensity = 1.8 + Math.sin(t * 3.0) * 0.4;
 
     renderer.render(scene, camera);
   }

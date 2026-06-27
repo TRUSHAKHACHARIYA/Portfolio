@@ -1,15 +1,36 @@
 import { siteConfig } from './config.js';
 import {
   phrases,
-  skills,
+  skillCategories,
   tickerItems,
   projects,
   statusLabels,
   currentlyBuilding,
   terminalAgentLines,
 } from './data.js';
+import {
+  bootstrapAnimations,
+  initScrollAnimations,
+  refreshScrollAnimations,
+  scrollToElement,
+  revealHeroContent,
+} from './animations.js';
 
-document.documentElement.classList.add('js-ready');
+let useGsapMotion = true;
+
+function showVisibleReveals() {
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      el.classList.add('vis');
+    }
+  });
+}
+
+function markAppReady() {
+  document.documentElement.classList.add('js-ready', 'app-ready');
+  showVisibleReveals();
+}
 
 function initTyping() {
   const typEl = document.getElementById('typing-el');
@@ -43,42 +64,33 @@ function initTyping() {
   type();
 }
 
-function renderSkills(filter = 'all') {
+function renderSkills() {
   const grid = document.getElementById('skillsGrid');
   if (!grid) {
     return;
   }
 
-  const list = filter === 'all' ? skills : skills.filter((s) => s.cat === filter);
-  grid.innerHTML = list
+  grid.innerHTML = skillCategories
     .map(
-      (s) => `
-    <div class="skill-card">
-      <span class="skill-icon">${s.icon}</span>
-      <div class="skill-name">${s.name}</div>
-      <div class="skill-bar-track"><div class="skill-bar-fill" data-pct="${s.pct}"></div></div>
+      (cat) => `
+    <div class="skill-cat-card">
+      <div class="skill-cat-head">
+        <span class="skill-cat-icon">${cat.icon}</span>
+        <span class="skill-cat-title">${cat.title}</span>
+      </div>
+      <ul class="skill-cat-list">
+        ${cat.items.map((item) => `<li>${item}</li>`).join('')}
+      </ul>
     </div>
   `
     )
     .join('');
 
-  setTimeout(() => {
-    document.querySelectorAll('.skill-bar-fill').forEach((bar) => {
-      bar.style.width = `${bar.dataset.pct}%`;
-    });
-  }, 120);
+  grid.classList.add('vis');
 }
 
 function initSkills() {
   renderSkills();
-
-  document.querySelectorAll('.cat-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.cat-btn').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderSkills(btn.dataset.filter);
-    });
-  });
 }
 
 function renderProjects() {
@@ -89,23 +101,23 @@ function renderProjects() {
 
   try {
     grid.innerHTML = projects
-    .map((p) => {
-      const status = statusLabels[p.status];
-      const tagsHtml = p.tags
-        .map((t) => `<span class="proj-tag">${t.icon} ${t.label}</span>`)
-        .join('');
+      .map((p) => {
+        const status = statusLabels[p.status];
+        const tagsHtml = p.tags
+          .map((t) => `<span class="proj-tag">${t.icon} ${t.label}</span>`)
+          .join('');
 
-      let linksHtml = '';
-      if (p.links.github) {
-        linksHtml = `<a href="${p.links.github}" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>`;
-      } else if (p.links.muted) {
-        linksHtml = `<span class="proj-link-muted">${p.links.muted}</span>`;
-      }
+        let linksHtml = '';
+        if (p.links.github) {
+          linksHtml = `<a href="${p.links.github}" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>`;
+        } else if (p.links.muted) {
+          linksHtml = `<span class="proj-link-muted">${p.links.muted}</span>`;
+        }
 
-      const featuredClass = p.featured ? ' featured' : '';
-      const featuredBadge = p.featured ? '<span class="proj-featured-badge">FEATURED</span>' : '';
+        const featuredClass = p.featured ? ' featured' : '';
+        const featuredBadge = p.featured ? '<span class="proj-featured-badge">FEATURED</span>' : '';
 
-      return `
+        return `
       <article class="proj-card${featuredClass}">
         ${featuredBadge}
         <div class="proj-num">Project ${p.num}</div>
@@ -138,11 +150,22 @@ function renderProjects() {
           }
         </div>
       </article>`;
-    })
-    .join('');
+      })
+      .join('');
   } catch (err) {
     console.error('Failed to render projects:', err);
     grid.innerHTML = '<p class="s-desc">Unable to load projects. Please refresh the page.</p>';
+  }
+
+  grid.closest('#projects')?.querySelectorAll('.reveal').forEach((el) => el.classList.add('vis'));
+  grid.classList.add('vis');
+
+  if (window.bindCursorHoverables) {
+    window.bindCursorHoverables();
+  }
+
+  if (useGsapMotion) {
+    refreshScrollAnimations();
   }
 }
 
@@ -264,7 +287,7 @@ function initMobileMenu() {
       const target = document.querySelector(link.getAttribute('href'));
       closeMenu();
       if (target) {
-        setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 150);
+        setTimeout(() => scrollToElement(target), 150);
       }
     });
   });
@@ -285,28 +308,82 @@ function initTicker() {
 
 function initBuildingBlock() {
   const el = document.getElementById('buildingBlock');
-  if (!el) {
+  const block = document.querySelector('.building-block');
+  if (!el || !block) {
     return;
   }
 
-  el.innerHTML = currentlyBuilding
-    .map(
-      (item) => `
-    <div class="building-item">
-      <span class="building-arrow">→</span>
-      <span class="building-name">${item.name}</span>
-      <span class="building-detail">(${item.detail})</span>
-    </div>`
-    )
-    .join('');
+  let started = false;
+
+  function typeBuildingLines() {
+    if (started) {
+      return;
+    }
+    started = true;
+    el.innerHTML = '';
+
+    let lineIdx = 0;
+    let charIdx = 0;
+
+    function typeChar() {
+      if (lineIdx >= currentlyBuilding.length) {
+        return;
+      }
+
+      const item = currentlyBuilding[lineIdx];
+      const fullLine = `→ ${item.name}   (${item.detail})`;
+
+      if (!el.children[lineIdx]) {
+        const div = document.createElement('div');
+        div.className = 'building-item';
+        el.appendChild(div);
+      }
+
+      const lineEl = el.children[lineIdx];
+      const typed = fullLine.slice(0, charIdx);
+      lineEl.innerHTML = `<span class="building-text">${typed}</span>`;
+
+      if (charIdx < fullLine.length) {
+        charIdx++;
+        setTimeout(typeChar, 28);
+        return;
+      }
+
+      lineEl.innerHTML = `
+        <span class="building-arrow">→</span>
+        <span class="building-name">${item.name}</span>
+        <span class="building-detail">(${item.detail})</span>
+      `;
+
+      lineIdx++;
+      charIdx = 0;
+      setTimeout(typeChar, 400);
+    }
+
+    typeChar();
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        typeBuildingLines();
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.35 }
+  );
+
+  observer.observe(block);
 }
 
 function initTerminal() {
   const output = document.getElementById('terminalAgentOutput');
-  if (!output) {
+  const terminal = document.querySelector('.terminal');
+  if (!output || !terminal) {
     return;
   }
 
+  let started = false;
   let lineIndex = 0;
 
   function typeLine() {
@@ -332,29 +409,95 @@ function initTerminal() {
     setTimeout(typeLine, line.type === 'info' ? 450 : 700);
   }
 
-  setTimeout(typeLine, 2200);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting && !started) {
+        started = true;
+        setTimeout(typeLine, 1200);
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(terminal);
 }
 
-function initCursor() {
-  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768) {
+function initGlitchHover() {
+  const title = document.querySelector('.hero-title');
+  if (!title) {
     return;
   }
 
-  const cursor = document.createElement('div');
-  cursor.className = 'cursor';
-  cursor.id = 'cursor';
-  document.body.appendChild(cursor);
-  document.body.classList.add('custom-cursor');
+  title.addEventListener('mouseenter', () => {
+    title.style.animation = 'none';
+    requestAnimationFrame(() => {
+      title.style.animation = 'glitch 0.4s ease';
+    });
+  });
+}
+
+function initTokenCounter() {
+  const el = document.getElementById('hudTokens');
+  if (!el) {
+    return;
+  }
+
+  let val = 42;
+  setInterval(() => {
+    val = 40 + Math.floor(Math.random() * 18);
+    el.textContent = String(val);
+  }, 2200);
+}
+
+function initCursor() {
+  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 900) {
+    return;
+  }
+
+  const dot = document.createElement('div');
+  dot.className = 'custom-cursor';
+  dot.id = 'cursorDot';
+
+  const ring = document.createElement('div');
+  ring.className = 'custom-cursor-ring';
+  ring.id = 'cursorRing';
+
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+
+  let active = false;
 
   document.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
+    if (!active) {
+      active = true;
+      document.body.classList.add('custom-cursor');
+    }
+    dot.style.left = `${e.clientX}px`;
+    dot.style.top = `${e.clientY}px`;
+    ring.style.left = `${e.clientX}px`;
+    ring.style.top = `${e.clientY}px`;
   });
 
-  document.querySelectorAll('a, button, input, textarea, [role="button"]').forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-  });
+  function bindHoverables() {
+    document.querySelectorAll('a, button, input, textarea, [role="button"], .proj-card, .skill-cat-card').forEach((el) => {
+      if (el.dataset.cursorBound) {
+        return;
+      }
+      el.dataset.cursorBound = 'true';
+      el.addEventListener('mouseenter', () => {
+        dot.classList.add('is-hovering');
+        ring.classList.add('is-hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        dot.classList.remove('is-hovering');
+        ring.classList.remove('is-hovering');
+      });
+    });
+  }
+
+  bindHoverables();
+  window.bindCursorHoverables = bindHoverables;
 }
 
 function applySiteConfig() {
@@ -376,19 +519,112 @@ function applySiteConfig() {
     calendlyBtn.href = siteConfig.calendlyUrl;
     calendlyBtn.hidden = false;
   }
+
+  const form = document.getElementById('contactForm');
+  if (form && siteConfig.formspreeEndpoint) {
+    form.action = siteConfig.formspreeEndpoint;
+    form.method = 'POST';
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  applySiteConfig();
-  initTicker();
-  initTyping();
-  initSkills();
-  renderProjects();
-  initBuildingBlock();
-  initTerminal();
-  const observeRevealElements = initScrollReveal();
-  initNavActive();
-  initContactForm();
-  initMobileMenu();
-  initCursor();
+function initNavAnchorScroll() {
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href === '#') {
+        return;
+      }
+      const target = document.querySelector(href);
+      if (!target) {
+        return;
+      }
+      e.preventDefault();
+      scrollToElement(target);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    applySiteConfig();
+    initTicker();
+    initSkills();
+    renderProjects();
+
+    useGsapMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      && typeof window.gsap !== 'undefined';
+
+    await bootstrapAnimations({
+      onHeroComplete: () => {
+        initTyping();
+      },
+    });
+
+    if (!useGsapMotion) {
+      restoreStaticStats();
+      restoreStaticTerminal();
+    }
+
+    initBuildingBlock();
+    if (!useGsapMotion) {
+      initTerminal();
+      initScrollReveal();
+    }
+    initNavActive();
+    initNavAnchorScroll();
+    initContactForm();
+    initMobileMenu();
+    if (!useGsapMotion) {
+      initGlitchHover();
+    }
+    initTokenCounter();
+    initCursor();
+    if (window.bindCursorHoverables) {
+      window.bindCursorHoverables();
+    }
+
+    if (useGsapMotion) {
+      initScrollAnimations();
+    }
+
+    markAppReady();
+    if (!useGsapMotion) {
+      window.addEventListener('scroll', showVisibleReveals, { passive: true });
+    }
+  } catch (err) {
+    console.error('Portfolio init failed:', err);
+    document.documentElement.classList.add('app-ready');
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('vis'));
+    revealHeroContent();
+    hidePreloaderFallback();
+  }
 });
+
+function restoreStaticStats() {
+  document.querySelectorAll('.stat-n[data-count]').forEach((el) => {
+    el.textContent = `${el.dataset.count}${el.dataset.suffix || ''}`;
+  });
+}
+
+function restoreStaticTerminal() {
+  const cmd1 = document.getElementById('terminal-cmd-1');
+  const cmd2 = document.getElementById('terminal-cmd-2');
+  const output1 = document.getElementById('terminal-output-1');
+  if (cmd1) {
+    cmd1.textContent = 'cat profile.json';
+  }
+  if (cmd2) {
+    const cmdLine = terminalAgentLines.find((line) => line.type === 'cmd');
+    cmd2.textContent = cmdLine?.text || '';
+  }
+  if (output1) {
+    output1.style.opacity = '1';
+  }
+}
+
+function hidePreloaderFallback() {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    preloader.style.display = 'none';
+  }
+}

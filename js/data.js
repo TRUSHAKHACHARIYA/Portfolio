@@ -6,30 +6,32 @@ export const phrases = [
   'Production-ready NLP solutions',
 ];
 
-export const skills = [
-  { name: 'Python', pct: 92, icon: '🐍', cat: 'lang' },
-  { name: 'TypeScript', pct: 85, icon: '📘', cat: 'lang' },
-  { name: 'Next.js 14', pct: 84, icon: '▲', cat: 'lang' },
-  { name: 'LLM & RAG', pct: 90, icon: '🤖', cat: 'ml' },
-  { name: 'Machine Learning', pct: 85, icon: '🧠', cat: 'ml' },
-  { name: 'NLP', pct: 88, icon: '💬', cat: 'ml' },
-  { name: 'LangChain', pct: 90, icon: '⛓️', cat: 'nlp' },
-  { name: 'LangGraph', pct: 88, icon: '🔀', cat: 'nlp' },
-  { name: 'Claude API', pct: 90, icon: '🧬', cat: 'nlp' },
-  { name: 'OpenAI API', pct: 90, icon: '⚡', cat: 'nlp' },
-  { name: 'Prompt Engineering', pct: 92, icon: '✍️', cat: 'nlp' },
-  { name: 'LangSmith', pct: 78, icon: '📡', cat: 'nlp' },
-  { name: 'Ragie.ai', pct: 82, icon: '📄', cat: 'nlp' },
-  { name: 'FastAPI', pct: 88, icon: '🚀', cat: 'mlops' },
-  { name: 'Streamlit', pct: 85, icon: '📊', cat: 'mlops' },
-  { name: 'n8n', pct: 80, icon: '🔗', cat: 'mlops' },
-  { name: 'BullMQ', pct: 76, icon: '📬', cat: 'mlops' },
-  { name: 'Qdrant', pct: 85, icon: '🔍', cat: 'mlops' },
-  { name: 'Pinecone', pct: 82, icon: '📌', cat: 'mlops' },
-  { name: 'PostgreSQL/pgvec', pct: 80, icon: '🗄️', cat: 'mlops' },
-  { name: 'Supabase', pct: 78, icon: '☁️', cat: 'mlops' },
-  { name: 'AWS', pct: 72, icon: '☁️', cat: 'mlops' },
-  { name: 'Vercel', pct: 80, icon: '▲', cat: 'mlops' },
+export const skillCategories = [
+  {
+    title: 'AI / ML Core',
+    icon: '🤖',
+    items: ['LLMs & RAG', 'Machine Learning', 'NLP / Semantic Search', 'Prompt Engineering'],
+  },
+  {
+    title: 'Orchestration',
+    icon: '🔀',
+    items: ['LangChain', 'LangGraph', 'LangSmith', 'n8n / Make.com'],
+  },
+  {
+    title: 'Infra & Storage',
+    icon: '🗄️',
+    items: ['pgvector / Supabase', 'Qdrant / Pinecone', 'FastAPI / BullMQ', 'Next.js 14'],
+  },
+  {
+    title: 'LLM APIs',
+    icon: '⚡',
+    items: ['Claude API (Sonnet)', 'OpenAI GPT-4', 'Ragie.ai', 'AWS'],
+  },
+  {
+    title: 'Languages',
+    icon: '🐍',
+    items: ['Python', 'TypeScript', 'SQL', 'JavaScript'],
+  },
 ];
 
 export const tickerItems = [
@@ -45,11 +47,13 @@ export const currentlyBuilding = [
 ];
 
 export const terminalAgentLines = [
-  { type: 'cmd', text: 'python run_agent.py --task "ATO tax research"' },
+  { type: 'cmd', text: 'python run_agent.py --task "ATO tax research Q4"' },
   { type: 'info', text: '[INFO] Loading RAG pipeline...' },
-  { type: 'info', text: '[INFO] Querying ATO skill layer...' },
-  { type: 'ok', text: '[✓] Citation verified — s.8-1 ITAA 1997' },
-  { type: 'ok', text: '[✓] Response generated in 1.2s' },
+  { type: 'info', text: '[INFO] Querying ATO vector store... (k=12)' },
+  { type: 'info', text: '[INFO] Running citation verifier...' },
+  { type: 'ok', text: '[✓] Matched s.8-1 ITAA 1997' },
+  { type: 'ok', text: '[✓] Response generated — 1.24s latency' },
+  { type: 'ok', text: '[✓] Confidence: 0.94' },
 ];
 
 export const projects = [

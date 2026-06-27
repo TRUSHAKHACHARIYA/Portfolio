@@ -1,13 +1,24 @@
 (function initHeroScenes() {
-  if (typeof THREE === 'undefined') {
-    return;
+  function boot() {
+    if (typeof THREE === 'undefined') {
+      showRobotFallback();
+      return;
+    }
+
+    if (window.innerWidth > 900) {
+      requestAnimationFrame(() => {
+        initParticles();
+        initRobot();
+      });
+    } else {
+      showRobotFallback();
+    }
   }
 
-  const isDesktop = window.innerWidth > 768;
-
-  if (isDesktop) {
-    initParticles();
-    initRobot();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
   }
 
   function initParticles() {
@@ -24,7 +35,7 @@
     const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
     camera.position.z = 5;
 
-    const count = 2200;
+    const count = 2800;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
@@ -33,12 +44,12 @@
       positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 12;
 
-      const t = Math.random();
-      if (t < 0.65) {
+      const roll = Math.random();
+      if (roll < 0.65) {
         colors[i * 3] = 0;
         colors[i * 3 + 1] = 0.7 + Math.random() * 0.3;
         colors[i * 3 + 2] = 1;
-      } else if (t < 0.85) {
+      } else if (roll < 0.85) {
         colors[i * 3] = 0.4 + Math.random() * 0.2;
         colors[i * 3 + 1] = 0.2;
         colors[i * 3 + 2] = 0.6 + Math.random() * 0.3;
@@ -59,14 +70,14 @@
         size: 0.028,
         vertexColors: true,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.5,
         sizeAttenuation: true,
       })
     );
     scene.add(points);
 
     const lineVerts = [];
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 140; i++) {
       const a = Math.floor(Math.random() * count);
       const b = Math.floor(Math.random() * count);
       lineVerts.push(positions[a * 3], positions[a * 3 + 1], positions[a * 3 + 2]);
@@ -88,8 +99,11 @@
     });
 
     function resize() {
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
+      const w = canvas.clientWidth || window.innerWidth;
+      const h = canvas.clientHeight || window.innerHeight;
+      if (w < 1 || h < 1) {
+        return;
+      }
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
@@ -115,8 +129,36 @@
     const canvas = document.getElementById('robot-canvas');
     const container = document.getElementById('heroVis');
     if (!canvas || !container || typeof window.initMascotRobot !== 'function') {
+      showRobotFallback();
       return;
     }
-    window.initMascotRobot(canvas, container);
+
+    try {
+      window.initMascotRobot(canvas, container);
+    } catch (err) {
+      console.error('Robot scene failed:', err);
+      showRobotFallback();
+    }
+  }
+
+  function showRobotFallback() {
+    const container = document.getElementById('heroVis');
+    if (!container) {
+      return;
+    }
+    const canvas = document.getElementById('robot-canvas');
+    if (canvas) {
+      canvas.style.display = 'none';
+    }
+    if (!container.querySelector('.robot-fallback')) {
+      const fallback = document.createElement('div');
+      fallback.className = 'robot-fallback';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.innerHTML = `
+        <div class="robot-fallback-ring"></div>
+        <div class="robot-fallback-core">AI</div>
+      `;
+      container.appendChild(fallback);
+    }
   }
 })();
