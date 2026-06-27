@@ -66,7 +66,7 @@ function initTyping() {
 
 function renderSkills() {
   const grid = document.getElementById('skillsGrid');
-  if (!grid) {
+  if (!grid || !skillCategories?.length) {
     return;
   }
 
@@ -89,8 +89,23 @@ function renderSkills() {
   grid.classList.add('vis');
 }
 
+function ensureSectionContentVisible() {
+  document.querySelectorAll('#skillsGrid .skill-cat-card, #projectsGrid .proj-card').forEach((el) => {
+    el.style.opacity = '1';
+    el.style.visibility = 'visible';
+  });
+
+  if (typeof window.gsap !== 'undefined') {
+    window.gsap.set('#skillsGrid .skill-cat-card, #projectsGrid .proj-card', {
+      autoAlpha: 1,
+      clearProps: 'opacity,visibility',
+    });
+  }
+}
+
 function initSkills() {
   renderSkills();
+  ensureSectionContentVisible();
 }
 
 function renderProjects() {
@@ -167,6 +182,8 @@ function renderProjects() {
   if (useGsapMotion) {
     refreshScrollAnimations();
   }
+
+  ensureSectionContentVisible();
 }
 
 function initScrollReveal() {
@@ -345,6 +362,9 @@ function initBuildingBlock() {
 
   function typeBuildingLines() {
     if (started) {
+      return;
+    }
+    if (el.children.length > 0) {
       return;
     }
     started = true;
@@ -617,6 +637,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     markAppReady();
+    ensureSectionContentVisible();
+    window.addEventListener('load', ensureSectionContentVisible, { once: true });
     if (!useGsapMotion) {
       window.addEventListener('scroll', showVisibleReveals, { passive: true });
     }
@@ -624,6 +646,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Portfolio init failed:', err);
     initSkills();
     renderProjects();
+    ensureSectionContentVisible();
     document.documentElement.classList.add('app-ready');
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('vis'));
     revealHeroContent();

@@ -669,7 +669,10 @@ export function initScrollAnimations() {
   initScrollProgress();
 
   window.requestAnimationFrame(() => window.ScrollTrigger.refresh());
-  window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
+  window.addEventListener('load', () => {
+    window.ScrollTrigger.refresh();
+    window.gsap?.set('.skill-cat-card, .proj-card', { autoAlpha: 1 });
+  }, { once: true });
 }
 
 export function refreshScrollAnimations() {

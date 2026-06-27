@@ -930,8 +930,14 @@ html.gsap-motion.js-ready .reveal.vis {
 
 #skillsGrid .skill-cat-card,
 #projectsGrid .proj-card {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+html.gsap-motion #skillsGrid .skill-cat-card,
+html.gsap-motion #projectsGrid .proj-card {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* MOBILE NAV MENU */
