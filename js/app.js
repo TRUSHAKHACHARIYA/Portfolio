@@ -229,15 +229,12 @@ function initContactForm() {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
-
     try {
       if (siteConfig.formspreeEndpoint) {
         const res = await fetch(siteConfig.formspreeEndpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload),
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
         });
         if (!res.ok) {
           throw new Error('Form submission failed');
@@ -260,8 +257,8 @@ function initContactForm() {
       btn.style.color = 'var(--bg)';
       form.reset();
     } catch {
-      btn.textContent = 'Failed — try email';
-      btn.style.background = '#ff5f56';
+      btn.textContent = 'Failed — try email directly';
+      btn.style.background = '#ff4444';
       btn.style.color = '#fff';
     }
 
@@ -270,8 +267,30 @@ function initContactForm() {
       btn.disabled = false;
       btn.style.background = '';
       btn.style.color = '';
-    }, 3000);
+    }, 4000);
   });
+}
+
+function initScrollTop() {
+  const btn = document.getElementById('scrollTop');
+  if (!btn) {
+    return;
+  }
+
+  function toggleScrollTop() {
+    if (window.scrollY > 400) {
+      btn.hidden = false;
+    } else {
+      btn.hidden = true;
+    }
+  }
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', toggleScrollTop, { passive: true });
+  toggleScrollTop();
 }
 
 function initMobileMenu() {
@@ -582,6 +601,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initNavActive();
     initNavAnchorScroll();
     initContactForm();
+    initScrollTop();
     initMobileMenu();
     if (!useGsapMotion) {
       initGlitchHover();
