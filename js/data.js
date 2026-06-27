@@ -1,36 +1,84 @@
 export const phrases = [
+  'I ship production AI systems — not demos.',
   'Building LLM-powered applications',
   'Designing RAG systems',
   'Developing AI agents with LangGraph',
   'Semantic search with vector DBs',
-  'Production-ready NLP solutions',
 ];
 
 export const skillCategories = [
   {
+    id: 'ai-ml',
+    filter: 'AI/ML',
+    level: 'Primary',
     title: 'AI / ML Core',
     icon: '🤖',
     items: ['LLMs & RAG', 'Machine Learning', 'NLP / Semantic Search', 'Prompt Engineering'],
   },
   {
+    id: 'orchestration',
+    filter: 'Orchestration',
+    level: 'Primary',
     title: 'Orchestration',
     icon: '🔀',
     items: ['LangChain', 'LangGraph', 'LangSmith', 'n8n / Make.com'],
   },
   {
+    id: 'infra',
+    filter: 'Infra',
+    level: 'Strong',
     title: 'Infra & Storage',
     icon: '🗄️',
     items: ['pgvector / Supabase', 'Qdrant / Pinecone', 'FastAPI / BullMQ', 'Next.js 14'],
   },
   {
+    id: 'llm-apis',
+    filter: 'LLM APIs',
+    level: 'Primary',
     title: 'LLM APIs',
     icon: '⚡',
-    items: ['Claude API (Sonnet)', 'OpenAI GPT-4', 'Ragie.ai', 'AWS'],
+    items: ['Claude API (Sonnet)', 'OpenAI GPT-4', 'Ragie.ai', 'AWS Bedrock'],
   },
   {
+    id: 'languages',
+    filter: 'Languages',
+    level: 'Strong',
     title: 'Languages',
     icon: '🐍',
     items: ['Python', 'TypeScript', 'SQL', 'JavaScript'],
+  },
+];
+
+export const skillFilters = [
+  { id: 'all', label: 'All' },
+  { id: 'ai-ml', label: 'AI/ML' },
+  { id: 'orchestration', label: 'Orchestration' },
+  { id: 'infra', label: 'Infra & DB' },
+  { id: 'llm-apis', label: 'LLM APIs' },
+  { id: 'languages', label: 'Languages' },
+];
+
+export const writingPosts = [
+  {
+    title: 'Building with Amazon Bedrock',
+    excerpt: 'Exploring AWS Bedrock for production LLM workflows — model selection, RAG integration, and cost considerations.',
+    url: 'https://medium.com/@khachariyatrusha',
+    date: '2025',
+    tag: 'AWS · LLMs',
+  },
+  {
+    title: 'RAG Systems in Production',
+    excerpt: 'Lessons from shipping document intelligence platforms — retrieval pipelines, re-ranking, and citation verification.',
+    url: 'https://medium.com/@khachariyatrusha',
+    date: '2025',
+    tag: 'RAG · FastAPI',
+  },
+  {
+    title: 'More on Medium',
+    excerpt: 'Technical writing on AI agents, vector databases, and SaaS architecture.',
+    url: 'https://medium.com/@khachariyatrusha',
+    date: 'Ongoing',
+    tag: 'AI/ML Engineering',
   },
 ];
 

@@ -2,6 +2,8 @@ import { siteConfig } from './config.js';
 import {
   phrases,
   skillCategories,
+  skillFilters,
+  writingPosts,
   tickerItems,
   projects,
   statusLabels,
@@ -17,6 +19,103 @@ import {
 } from './animations.js';
 
 let useGsapMotion = true;
+let activeSkillFilter = 'all';
+
+function renderSkillCards(filter = 'all') {
+  const grid = document.getElementById('skillsGrid');
+  if (!grid || !skillCategories?.length) {
+    return;
+  }
+
+  const filtered = filter === 'all'
+    ? skillCategories
+    : skillCategories.filter((cat) => cat.id === filter);
+
+  grid.innerHTML = filtered
+    .map(
+      (cat) => `
+    <div class="skill-cat-card" data-skill-id="${cat.id}">
+      <div class="skill-cat-head">
+        <span class="skill-cat-icon">${cat.icon}</span>
+        <span class="skill-cat-title">${cat.title}</span>
+        <span class="skill-cat-level skill-level-${cat.level.toLowerCase()}">${cat.level}</span>
+      </div>
+      <ul class="skill-cat-list">
+        ${cat.items.map((item) => `<li>${item}</li>`).join('')}
+      </ul>
+    </div>
+  `
+    )
+    .join('');
+
+  grid.classList.add('vis');
+}
+
+function renderSkills() {
+  renderSkillCards(activeSkillFilter);
+}
+
+function initSkillFilters() {
+  const container = document.getElementById('skillsFilters');
+  if (!container || !skillFilters?.length) {
+    return;
+  }
+
+  container.innerHTML = skillFilters
+    .map(
+      (f) => `
+    <button
+      type="button"
+      class="skill-filter${f.id === activeSkillFilter ? ' active' : ''}"
+      data-filter="${f.id}"
+      role="tab"
+      aria-selected="${f.id === activeSkillFilter}"
+      id="skill-tab-${f.id}"
+      aria-controls="skillsGrid">
+      ${f.label}
+    </button>
+  `
+    )
+    .join('');
+
+  container.querySelectorAll('.skill-filter').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeSkillFilter = btn.dataset.filter;
+      container.querySelectorAll('.skill-filter').forEach((b) => {
+        const isActive = b.dataset.filter === activeSkillFilter;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', String(isActive));
+      });
+      renderSkillCards(activeSkillFilter);
+      ensureSectionContentVisible();
+      if (useGsapMotion) {
+        refreshScrollAnimations();
+      }
+    });
+  });
+}
+
+function renderWriting() {
+  const grid = document.getElementById('writingGrid');
+  if (!grid || !writingPosts?.length) {
+    return;
+  }
+
+  grid.innerHTML = writingPosts
+    .map(
+      (post) => `
+    <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="writing-card">
+      <span class="writing-tag">${post.tag}</span>
+      <h3 class="writing-title">${post.title}</h3>
+      <p class="writing-excerpt">${post.excerpt}</p>
+      <span class="writing-meta">${post.date} · Read on Medium →</span>
+    </a>
+  `
+    )
+    .join('');
+
+  grid.classList.add('vis');
+}
 
 function showVisibleReveals() {
   document.querySelectorAll('.reveal').forEach((el) => {
@@ -62,31 +161,6 @@ function initTyping() {
   }
 
   type();
-}
-
-function renderSkills() {
-  const grid = document.getElementById('skillsGrid');
-  if (!grid || !skillCategories?.length) {
-    return;
-  }
-
-  grid.innerHTML = skillCategories
-    .map(
-      (cat) => `
-    <div class="skill-cat-card">
-      <div class="skill-cat-head">
-        <span class="skill-cat-icon">${cat.icon}</span>
-        <span class="skill-cat-title">${cat.title}</span>
-      </div>
-      <ul class="skill-cat-list">
-        ${cat.items.map((item) => `<li>${item}</li>`).join('')}
-      </ul>
-    </div>
-  `
-    )
-    .join('');
-
-  grid.classList.add('vis');
 }
 
 function ensureSectionContentVisible() {
@@ -230,6 +304,16 @@ function initNavActive() {
   sections.forEach((s) => observer.observe(s));
 }
 
+function setFormStatus(message, type = '') {
+  const status = document.getElementById('formStatus');
+  if (!status) {
+    return;
+  }
+  status.textContent = message;
+  status.className = `form-status${type ? ` form-status-${type}` : ''}`;
+  status.hidden = !message;
+}
+
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) {
@@ -239,8 +323,16 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      setFormStatus('Please fill in all required fields.', 'error');
+      return;
+    }
+
     btn.textContent = 'Sending...';
     btn.disabled = true;
+    setFormStatus('Sending your message...', 'pending');
 
     try {
       if (siteConfig.formspreeEndpoint) {
@@ -253,26 +345,22 @@ function initContactForm() {
           throw new Error('Form submission failed');
         }
       } else {
-        btn.textContent = 'Use email link instead ↑';
-        btn.style.background = '#ff9f43';
-        btn.style.color = 'var(--bg)';
-        setTimeout(() => {
-          btn.textContent = 'Send Message';
-          btn.disabled = false;
-          btn.style.background = '';
-          btn.style.color = '';
-        }, 3500);
+        setFormStatus('Form not configured — use the email link on the left.', 'error');
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
         return;
       }
 
       btn.textContent = '✓ Message Sent!';
       btn.style.background = 'var(--green)';
       btn.style.color = 'var(--bg)';
+      setFormStatus('Message sent! I\'ll get back to you within 24–48 hours.', 'success');
       form.reset();
     } catch {
       btn.textContent = 'Failed — try email directly';
       btn.style.background = '#ff4444';
       btn.style.color = '#fff';
+      setFormStatus('Something went wrong. Email me directly at khachariyatrusha@gmail.com', 'error');
     }
 
     setTimeout(() => {
@@ -280,7 +368,8 @@ function initContactForm() {
       btn.disabled = false;
       btn.style.background = '';
       btn.style.color = '';
-    }, 4000);
+      setFormStatus('');
+    }, 5000);
   });
 }
 
@@ -320,7 +409,26 @@ function initMobileMenu() {
   }
 
   burgerBtn?.addEventListener('click', openMenu);
+  burgerBtn?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openMenu();
+    }
+  });
   closeBtn?.addEventListener('click', closeMenu);
+  closeBtn?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu?.classList.contains('open')) {
+      closeMenu();
+      burgerBtn?.focus();
+    }
+  });
 
   menu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', (e) => {
@@ -517,7 +625,26 @@ function initVercelAnalytics() {
     .catch(() => {});
 }
 
+function applyMetaTags() {
+  const setContent = (selector, value) => {
+    document.querySelector(selector)?.setAttribute('content', value);
+  };
+
+  setContent('meta[property="og:url"]', siteConfig.siteUrl);
+  setContent('meta[property="og:image"]', siteConfig.ogImage);
+  setContent('meta[name="twitter:image"]', siteConfig.ogImage);
+  document.querySelector('link[rel="canonical"]')?.setAttribute('href', siteConfig.siteUrl);
+}
+
+function initFooterYear() {
+  const el = document.getElementById('footerYear');
+  if (el) {
+    el.textContent = String(new Date().getFullYear());
+  }
+}
+
 function applySiteConfig() {
+  applyMetaTags();
   document.querySelectorAll('[data-email]').forEach((el) => {
     el.textContent = siteConfig.email;
   });
@@ -564,9 +691,12 @@ function initNavAnchorScroll() {
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     applySiteConfig();
+    initFooterYear();
     initTicker();
+    initSkillFilters();
     initSkills();
     renderProjects();
+    renderWriting();
 
     useGsapMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
       && typeof window.gsap !== 'undefined';
@@ -623,6 +753,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 function restoreStaticStats() {
   document.querySelectorAll('.stat-n[data-count]').forEach((el) => {
     el.textContent = `${el.dataset.count}${el.dataset.suffix || ''}`;
+  });
+  document.querySelectorAll('.stat-n[data-text]').forEach((el) => {
+    el.textContent = el.dataset.text;
   });
 }
 
