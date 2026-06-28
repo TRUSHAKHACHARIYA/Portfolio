@@ -11,24 +11,16 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app"/>
   <meta property="og:image" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app/assets/og-preview.jpg"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:image:alt" content="Trusha Khachariya — AI/ML Engineer Portfolio"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Trusha Khachariya — AI/ML Engineer"/>
-  <meta name="twitter:description" content="Building LLM-powered SaaS · LangChain · RAG · FastAPI"/>
   <meta name="twitter:image" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app/assets/og-preview.jpg"/>
   <link rel="canonical" href="https://portfolio-seven-phi-zyohdnoii5.vercel.app"/>
   <title>Trusha Khachariya — AI/ML Engineer</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23050a0f'/><text x='50' y='68' font-family='Arial Black,sans-serif' font-size='44' font-weight='900' fill='%2300d4ff' text-anchor='middle'>TK</text></svg>" type="image/svg+xml"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%2304080f'/><text x='50' y='68' font-family='Arial Black,sans-serif' font-size='44' fill='%2300d4ff' text-anchor='middle'>TK</text></svg>" type="image/svg+xml"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-  </noscript>
-  <link rel="stylesheet" href="css/main.css?v=17"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css?v=20"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,481 +37,271 @@
     "knowsAbout": ["LLM Engineering", "RAG Systems", "LangChain", "FastAPI", "AI Agents"]
   }
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/TextPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 </head>
 <body>
 
-<div id="preloader" aria-hidden="true">
-  <div id="preloader-logo">TK</div>
-  <div id="preloader-bar-wrap"><div id="preloader-bar"></div></div>
-</div>
-
-<a href="#about" class="skip-link">Skip to content</a>
-
-<nav>
-  <div id="scroll-progress"></div>
-  <div class="nav-inner">
-    <div class="nav-logo">
-      <span class="nav-logo-icon">🤖</span>
-      <div class="nav-logo-ring"></div>
-      TK
-    </div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#writing">Writing</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <div class="hamburger" id="burgerBtn" aria-label="Open menu" role="button" tabindex="0">
-        <span></span><span></span><span></span>
-      </div>
-      <a href="assets/Trusha_Khachariya.pdf" download="Trusha_Khachariya_Resume.pdf" class="resume-btn" id="resumeBtn">Resume ↓</a>
-      <a href="#contact" class="hire-btn">Hire Me</a>
-    </div>
+<div id="loader">
+  <div id="loader-bg-top"></div>
+  <div id="loader-bg-bot"></div>
+  <div id="loader-content">
+    <div id="loader-logo">TK</div>
+    <div id="loader-bar-track"><div id="loader-bar-fill"></div></div>
+    <div id="loader-pct">0%</div>
   </div>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <span class="mobile-close" id="mobileCloseBtn" aria-label="Close menu" role="button" tabindex="0">×</span>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#experience">Experience</a>
-  <a href="#education">Education</a>
-  <a href="#writing">Writing</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact" class="mobile-hire-btn">Hire Me</a>
 </div>
 
-<section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-overlay"></div>
-  <div class="hero-scanlines"></div>
-  <div class="hero-grid-lines"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
-  <div class="hero-content">
-    <div class="hero-copy">
-      <div class="hero-eyebrow">
-        <div class="eyebrow-dot"></div>
-        // available_for_opportunities: true
-      </div>
-      <h1 class="hero-title">
-        <span class="name">Trusha</span>
-        <span class="surname">Khachariya</span>
-      </h1>
-      <div class="hero-role">Asst. Software Engineer · AWS Certified AI Practitioner</div>
-      <p class="hero-tagline">I ship production AI systems — not demos.</p>
-      <div class="hero-typing" id="typing-el"></div>
-      <p class="hero-desc">
-        AI/ML Engineer specializing in LLM-based applications, RAG systems, and AI agents.
-        Building scalable intelligent systems with FastAPI, LangChain, and vector databases —
-        focused on production-ready NLP and semantic search.
-      </p>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-outline">Get In Touch</a>
-        <a href="https://calendly.com/khachariyatrusha" class="btn-outline" id="calendlyBtn" target="_blank" rel="noopener noreferrer">📅 Book a Call</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat" title="AI/ML experience since Jan 2025 internship at 7Span">
-          <div class="stat-n" data-count="17" data-suffix="+">0+</div>
-          <div class="stat-l">Months AI/ML</div>
-        </div>
-        <div class="stat" title="DocWise and BOTIQ AI — live on GitHub">
-          <div class="stat-n" data-text="2">2</div>
-          <div class="stat-l">SaaS Live</div>
-        </div>
-        <div class="stat" title="AWS Certified AI Practitioner — verified on Credly">
-          <div class="stat-n" data-text="AWS">AWS</div>
-          <div class="stat-l">Certified</div>
-        </div>
-        <div class="stat" title="Claude, GPT-4, Ragie.ai, AWS Bedrock">
-          <div class="stat-n" data-text="4+">4+</div>
-          <div class="stat-l">LLM APIs</div>
-        </div>
-      </div>
-    </div>
+<a href="#hero" class="skip-link">Skip to content</a>
 
-    <div class="hero-vis" id="heroVis">
-      <div class="robot-aura"></div>
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-      <canvas id="robot-canvas" aria-hidden="true"></canvas>
-      <div class="hud-panel hud-float hud-tl">
-        <span class="hud-label">// github.repos</span>
-        <span class="hud-value">8+ public</span>
-      </div>
-      <div class="hud-panel hud-float hud-tr">
-        <span class="hud-label">// aws.cert</span>
-        <span class="hud-value hud-value-green">ACTIVE ●</span>
-      </div>
-      <div class="hud-panel hud-float hud-ml">
-        <span class="hud-label">// vector.db</span>
-        <span class="hud-value hud-value-green">pgvector ●</span>
-      </div>
-      <div class="hud-panel hud-float hud-bl">
-        <span class="hud-label">// status</span>
-        <span class="hud-value hud-value-green">open_to_work</span>
-      </div>
-      <div class="hud-panel hud-float hud-br">
-        <span class="hud-label">// stack.focus</span>
-        <span class="hud-value">RAG · Agents</span>
-      </div>
+<div class="portfolio">
+
+  <nav class="nav">
+    <a href="#hero" class="nav-logo">TK</a>
+    <div class="nav-links">
+      <a href="#projects" class="text-link">Work</a>
+      <a href="#about" class="text-link">About</a>
+      <a href="https://medium.com/@khachariyatrusha" class="text-link" target="_blank" rel="noopener noreferrer">Writing</a>
+      <a href="#contact" class="nav-cta">Hire Me</a>
     </div>
+    <button type="button" class="nav-toggle" id="burgerBtn" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <button type="button" class="mobile-close" id="mobileCloseBtn" aria-label="Close menu">×</button>
+    <a href="#projects">Work</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="https://medium.com/@khachariyatrusha" target="_blank" rel="noopener noreferrer">Writing</a>
+    <a href="#contact" class="nav-cta">Hire Me</a>
   </div>
-</section>
 
-<div class="ticker-wrap">
-  <div class="ticker" id="ticker"></div>
-</div>
+  <section class="hero section" id="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-kicker">
+          <div class="hero-kicker-dot"></div>
+          <span class="eyebrow">AI / ML Engineer — Ahmedabad, India</span>
+        </div>
 
-<section id="about" class="section">
-  <div class="container">
+        <h1 class="hero-title">
+          <span class="hero-title-line" id="heroNameLine">Trusha</span>
+          <span class="hero-title-line surname" id="heroSurnameLine">Khachariya</span>
+        </h1>
+
+        <div class="hero-role-row">
+          <span class="hero-role">Asst. Software Engineer at 7Span</span>
+          <span class="hero-sep">·</span>
+          <span class="hero-cert">AWS Certified</span>
+        </div>
+
+        <p class="hero-tagline body-text">
+          I build <strong>LLM-powered systems that ship</strong> — RAG pipelines,
+          multi-agent workflows, and production SaaS. LangGraph, Claude,
+          FastAPI, and whatever solves the problem.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Work →</a>
+          <a href="assets/Trusha_Khachariya.pdf" class="btn-ghost" id="resumeBtn" download="Trusha_Khachariya_Resume.pdf">Download Resume</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num" data-count="18" data-suffix="+">0+</div>
+            <div class="stat-label">Months exp.</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-count="6" data-suffix="+">0+</div>
+            <div class="stat-label">Systems built</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-text="2">2</div>
+            <div class="stat-label">SaaS in prod.</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-text="5+">5+</div>
+            <div class="stat-label">LLM APIs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div id="robot-wrap">
+          <svg id="robot" viewBox="0 0 200 260" width="200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="100" y1="20" x2="100" y2="40" stroke="#00d4ff" stroke-width="2" opacity="0.6"/>
+            <circle cx="100" cy="16" r="5" fill="#00d4ff">
+              <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <g id="robot-head" style="transform-origin: 100px 75px;">
+              <rect x="60" y="40" width="80" height="70" rx="12" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5" opacity="0.9"/>
+              <g id="robot-eyes">
+                <rect id="eye-l" x="76" y="62" width="18" height="12" rx="4" fill="#00d4ff" opacity="0.9"/>
+                <rect id="eye-r" x="106" y="62" width="18" height="12" rx="4" fill="#00d4ff" opacity="0.9"/>
+                <rect x="79" y="64" width="5" height="3" rx="1" fill="white" opacity="0.5"/>
+                <rect x="109" y="64" width="5" height="3" rx="1" fill="white" opacity="0.5"/>
+              </g>
+              <rect x="82" y="90" width="36" height="6" rx="3" fill="#0b1525" stroke="#00d4ff" stroke-width="1" opacity="0.7"/>
+              <circle cx="60" cy="76" r="5" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5"/>
+              <circle cx="140" cy="76" r="5" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5"/>
+            </g>
+            <rect x="90" y="108" width="20" height="12" rx="3" fill="#0b1525" stroke="#00d4ff" stroke-width="1" opacity="0.6"/>
+            <rect x="45" y="118" width="110" height="90" rx="14" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5" opacity="0.9"/>
+            <rect x="65" y="134" width="70" height="40" rx="8" fill="#070e1a" stroke="#00d4ff" stroke-width="1" opacity="0.7"/>
+            <circle cx="82" cy="148" r="5" fill="#00d4ff" opacity="0.8"/>
+            <circle cx="100" cy="148" r="5" fill="#7b5ea7" opacity="0.7"/>
+            <circle cx="118" cy="148" r="5" fill="#00ff88" opacity="0.7"/>
+            <rect x="18" y="122" width="28" height="70" rx="10" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5" id="arm-l"/>
+            <rect x="154" y="122" width="28" height="70" rx="10" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5" id="arm-r"/>
+            <rect x="65" y="206" width="28" height="42" rx="8" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5"/>
+            <rect x="107" y="206" width="28" height="42" rx="8" fill="#0d1e33" stroke="#00d4ff" stroke-width="1.5"/>
+            <rect x="60" y="242" width="36" height="14" rx="6" fill="#0b1525" stroke="#00d4ff" stroke-width="1" opacity="0.9"/>
+            <rect x="104" y="242" width="36" height="14" rx="6" fill="#0b1525" stroke="#00d4ff" stroke-width="1" opacity="0.9"/>
+          </svg>
+          <div id="robot-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <section class="section" id="about">
+    <div class="section-header-row">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">The engineer behind the <em>stack</em></h2>
+      </div>
+      <div class="avail">
+        <span class="avail-dot"></span>
+        Open to work
+      </div>
+    </div>
     <div class="about-grid">
-      <div class="reveal">
-        <div class="s-label">About</div>
-        <h2 class="s-title">The Mind Behind<br/>the <span class="accent">Machine</span></h2>
-        <p class="about-para">I'm an AI/ML Engineer specializing in LLM-based applications, Retrieval-Augmented Generation (RAG), and AI agents — currently working as an Assistant Software Engineer at 7Span in Ahmedabad.</p>
-        <p class="about-para">Experienced in building scalable AI systems using FastAPI, LangChain, and vector databases like Qdrant and Pinecone, with a strong focus on NLP and semantic search.</p>
-        <p class="about-para">I'm passionate about developing production-ready intelligent applications — from multi-agent resume chatbots to document intelligence platforms powered by RAG and LLMs.</p>
-        <div class="about-tags">
-          <span class="tag">LLM Engineering</span>
-          <span class="tag">RAG Systems</span>
-          <span class="tag">NLP</span>
-          <span class="tag">AI Agents</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">Vector Databases</span>
-        </div>
-        <div class="github-stats-wrap reveal">
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=TRUSHAKHACHARIYA&amp;show_icons=true&amp;theme=dark&amp;hide_border=true&amp;bg_color=04080f&amp;title_color=00d4ff&amp;icon_color=00d4ff&amp;text_color=e8f4f8&amp;count_private=false"
-            alt="GitHub contribution stats for TRUSHAKHACHARIYA"
-            class="github-stats-img"
-            loading="lazy"
-            width="440"
-            height="160"/>
-        </div>
-        <div class="building-block reveal">
-          <div class="building-label">// currently_building.log</div>
-          <div id="buildingBlock">
-            <div class="building-item"><span class="building-arrow">→</span><span class="building-name">Aurium AI</span><span class="building-detail">(Australian Tax SaaS · Claude + LangGraph + RAG)</span></div>
-            <div class="building-item"><span class="building-arrow">→</span><span class="building-name">BOTIQ AI</span><span class="building-detail">(WhatsApp SaaS · India SMB)</span></div>
-            <div class="building-item"><span class="building-arrow">→</span><span class="building-name">DocMind</span><span class="building-detail">(BYOK Doc Q&amp;A · Ragie.ai + FastAPI)</span></div>
-          </div>
-        </div>
+      <div class="about-copy">
+        <p class="body-text">I build AI systems that ship — not demos that live in Jupyter notebooks. My stack is LangGraph, Claude, FastAPI, and whatever solves the problem fastest.</p>
+        <p class="body-text">I've gone from LangChain intern to shipping two SaaS products in production. Currently at 7Span by day, building Aurium AI by night.</p>
+        <p class="body-text"><strong>Currently building:</strong> Aurium AI, BOTIQ AI, DocMind.</p>
       </div>
-      <div class="reveal">
-        <div class="terminal">
-          <div class="t-header">
-            <div class="t-dot t-red"></div>
-            <div class="t-dot t-yel"></div>
-            <div class="t-dot t-grn"></div>
-            <span class="t-title">agent_session.log</span>
-          </div>
-          <div class="t-body">
-            <div class="terminal-line"><span class="t-prompt">❯</span> <span class="t-cmd" id="terminal-cmd-1"></span></div>
-            <div class="terminal-json" id="terminal-output-1">
-              <span class="t-brace">{</span><br/>
-              &nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Trusha Khachariya"</span>,<br/>
-              &nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Asst. Software Engineer"</span>,<br/>
-              &nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-val">"Ahmedabad, India"</span>,<br/>
-              &nbsp;&nbsp;<span class="t-key">"focus"</span>: [<br/>
-              &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-val">"LLMs"</span>, <span class="t-val">"RAG"</span>, <span class="t-val">"AI Agents"</span><br/>
-              &nbsp;&nbsp;],<br/>
-              &nbsp;&nbsp;<span class="t-key">"company"</span>: <span class="t-val">"7Span"</span>,<br/>
-              &nbsp;&nbsp;<span class="t-key">"cert"</span>: <span class="t-val">"AWS AI Practitioner"</span>,<br/>
-              &nbsp;&nbsp;<span class="t-key">"github"</span>: <span class="t-val">"@TRUSHAKHACHARIYA"</span>,<br/>
-              &nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val status-open">"open_to_opportunities"</span><br/>
-              <span class="t-brace">}</span>
-            </div>
-            <div class="terminal-line"><span class="t-prompt">❯</span> <span class="t-cmd" id="terminal-cmd-2"></span></div>
-            <div id="terminalAgentOutput"></div>
-            <div class="terminal-cursor"><span class="t-prompt">❯</span> <span class="t-cursor">_</span></div>
-          </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
         </div>
+        <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd"> cat profile.json</span></div>
+        <div class="term-line">{</div>
+        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"name"</span>: <span class="term-val">"Trusha Khachariya"</span>,</div>
+        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"role"</span>: <span class="term-val">"AI/ML Engineer"</span>,</div>
+        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"stack"</span>: [<span class="term-val">"LangGraph"</span>, <span class="term-val">"Claude"</span>, <span class="term-val">"FastAPI"</span>],</div>
+        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"building"</span>: [<span class="term-val">"Aurium AI"</span>, <span class="term-val">"BOTIQ AI"</span>],</div>
+        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_work"</span></div>
+        <div class="term-line">}</div>
+        <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cursor"></span></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="skills" class="section">
-  <div class="container">
-    <div class="reveal">
-      <div class="s-label">Skills</div>
-      <h2 class="s-title">Core <span class="accent">Capabilities</span></h2>
-      <p class="s-desc">Technologies and frameworks I use to build production AI systems — grouped by domain with proficiency level.</p>
-    </div>
-    <div class="skills-filters reveal" id="skillsFilters" role="tablist" aria-label="Filter skills by category"></div>
-    <div class="skills-grid" id="skillsGrid" role="tabpanel" aria-labelledby="skill-tab-all">
-      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🤖</span><span class="skill-cat-title">AI / ML Core</span></div><ul class="skill-cat-list"><li>LLMs &amp; RAG</li><li>Machine Learning</li><li>NLP / Semantic Search</li><li>Prompt Engineering</li></ul></div>
-      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🔀</span><span class="skill-cat-title">Orchestration</span></div><ul class="skill-cat-list"><li>LangChain</li><li>LangGraph</li><li>LangSmith</li><li>n8n / Make.com</li></ul></div>
-      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🗄️</span><span class="skill-cat-title">Infra &amp; Storage</span></div><ul class="skill-cat-list"><li>pgvector / Supabase</li><li>Qdrant / Pinecone</li><li>FastAPI / BullMQ</li><li>Next.js 14</li></ul></div>
-      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">⚡</span><span class="skill-cat-title">LLM APIs</span></div><ul class="skill-cat-list"><li>Claude API (Sonnet)</li><li>OpenAI GPT-4</li><li>Ragie.ai</li><li>AWS</li></ul></div>
-      <div class="skill-cat-card"><div class="skill-cat-head"><span class="skill-cat-icon">🐍</span><span class="skill-cat-title">Languages</span></div><ul class="skill-cat-list"><li>Python</li><li>TypeScript</li><li>SQL</li><li>JavaScript</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects" class="section">
-  <div class="container">
-    <div class="reveal">
-      <div class="s-label">Projects</div>
-      <h2 class="s-title">Things I've <span class="accent">Built</span></h2>
-      <p class="s-desc">Production AI systems from 7Span and personal GitHub — LLM agents, RAG platforms, and SaaS products.</p>
-    </div>
-    <div class="projects-grid" id="projectsGrid">
-      <article class="proj-card featured">
-        <span class="proj-featured-badge">FEATURED</span>
-        <div class="proj-num">Project 01</div>
-        <div class="proj-card-body">
-          <div class="proj-card-main">
-            <div class="proj-header"><h3 class="proj-title">DocWise</h3><span class="proj-status status-live">● LIVE</span></div>
-            <div class="proj-source">Personal SaaS</div>
-            <p class="proj-desc">Secure multi-document AI workspace — RAG, Claude chat, Pinecone search, and multi-tenant auth.</p>
-            <div class="proj-links"><a href="https://github.com/TRUSHAKHACHARIYA/DocWise" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div>
-          </div>
-        </div>
-      </article>
-      <article class="proj-card">
-        <div class="proj-num">Project 02</div>
-        <div class="proj-card-body">
-          <div class="proj-card-main">
-            <div class="proj-header"><h3 class="proj-title">BOTIQ AI</h3><span class="proj-status status-live">● LIVE</span></div>
-            <div class="proj-source">Personal SaaS · WhatsApp for Indian SMBs</div>
-            <p class="proj-desc">Multi-tenant WhatsApp Business SaaS with menu bot, lead pipeline, and Razorpay billing.</p>
-            <div class="proj-links"><a href="https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a></div>
-          </div>
-        </div>
-      </article>
-      <article class="proj-card">
-        <div class="proj-num">Project 06</div>
-        <div class="proj-card-body">
-          <div class="proj-card-main">
-            <div class="proj-header"><h3 class="proj-title">Resume Chatbot</h3><span class="proj-status status-archived">○ ARCHIVED</span></div>
-            <div class="proj-source">7Span · AIML Developer · 3 months</div>
-            <p class="proj-desc">AI resume chatbot with FastAPI, LangGraph, and LangChain multi-agent architecture.</p>
-            <div class="proj-links"><span class="proj-link-muted">Private · NDA · 7Span</span></div>
-          </div>
-        </div>
-      </article>
-      <article class="proj-card">
-        <div class="proj-num">Project 07</div>
-        <div class="proj-card-body">
-          <div class="proj-card-main">
-            <div class="proj-header"><h3 class="proj-title">Denny Solution</h3><span class="proj-status status-archived">○ ARCHIVED</span></div>
-            <div class="proj-source">7Span · AIML Developer · 2 months</div>
-            <p class="proj-desc">RAG document intelligence platform with two-stage retrieval and re-ranking.</p>
-            <div class="proj-links"><span class="proj-link-muted">Private · NDA · 7Span</span></div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="experience" class="section section-alt">
-  <div class="container exp-layout">
-    <div class="exp-sticky reveal" id="expSticky">
-      <div class="s-label">Experience</div>
-      <h2 class="s-title">Where I've <span class="accent">Worked</span></h2>
-    </div>
-    <div class="timeline reveal">
-      <div class="timeline-item">
-        <div class="tl-dot active"></div>
-        <div class="tl-date">Sep 2025 — Present</div>
-        <div class="tl-role">Asst. Software Engineer</div>
-        <div class="tl-company">7Span · Ahmedabad · Full-time</div>
-        <ul class="tl-bullets">
-          <li>Shipping personal SaaS products (DocWise, BOTIQ AI) with RAG pipelines, multi-tenant auth, and public GitHub repos</li>
-          <li>Building Aurium AI — citation-verified Australian tax RAG using LangGraph, Claude API, and Pinecone</li>
-          <li>Developing production LLM applications at 7Span with FastAPI, LangGraph, and pgvector/Qdrant semantic search</li>
-        </ul>
+  <section class="section section-projects" id="projects">
+    <div class="section-header">
+      <div>
+        <div class="eyebrow">Selected Work</div>
+        <h2 class="section-title">Things I've <em>built</em></h2>
       </div>
-      <div class="timeline-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Jan 2025 — Jul 2025</div>
-        <div class="tl-role">AI/ML Engineering Intern</div>
-        <div class="tl-company">7Span · Ahmedabad · Internship</div>
-        <ul class="tl-bullets">
-          <li>Built Resume Chatbot with multi-agent LangGraph architecture — 4 specialized sub-agents via FastAPI REST API</li>
-          <li>Delivered Denny Solution RAG platform with two-stage retrieval and re-ranking (Streamlit + Ragie.ai)</li>
-          <li>Integrated OpenAI, Claude, and Ragie APIs in production client projects at 7Span</li>
-        </ul>
+      <span class="scroll-hint">Drag or scroll →</span>
+    </div>
+    <div class="projects-scroll-wrap" id="projectsScroll">
+      <div class="projects-track" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="eyebrow">Skills</div>
+    <h2 class="section-title">Core <em>capabilities</em></h2>
+    <div class="hex-grid" id="skillsGrid"></div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="eyebrow">Experience</div>
+    <h2 class="section-title">Where I've <em>worked</em></h2>
+    <div class="exp-list">
+      <div class="exp-row">
+        <div class="exp-date">Sep 2025 —<br>Present</div>
+        <div class="exp-body">
+          <div class="exp-role">Asst. Software Engineer</div>
+          <div class="exp-co">7Span · Ahmedabad · Full-time</div>
+          <ul class="exp-bullets">
+            <li>Shipping personal SaaS products (DocWise, BOTIQ AI) with RAG pipelines, multi-tenant auth, and public GitHub repos</li>
+            <li>Building Aurium AI — citation-verified Australian tax RAG using LangGraph, Claude API, and Pinecone</li>
+            <li>Developing production LLM applications with FastAPI, LangGraph, and pgvector/Qdrant semantic search</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-row">
+        <div class="exp-date">Jan 2025 —<br>Jul 2025</div>
+        <div class="exp-body">
+          <div class="exp-role">AI/ML Engineering Intern</div>
+          <div class="exp-co">7Span · Ahmedabad · Internship</div>
+          <ul class="exp-bullets">
+            <li>Built Resume Chatbot with multi-agent LangGraph architecture — 4 specialized sub-agents via FastAPI REST API</li>
+            <li>Delivered Denny Solution RAG platform with two-stage retrieval and re-ranking (Streamlit + Ragie.ai)</li>
+            <li>Integrated OpenAI, Claude, and Ragie APIs in production client projects at 7Span</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="education" class="section">
-  <div class="container">
-    <div class="reveal">
-      <div class="s-label">Education</div>
-      <h2 class="s-title">Degrees &amp; <span class="accent">Certifications</span></h2>
-    </div>
-    <div class="edu-grid reveal">
-      <div class="edu-card">
-        <span class="edu-icon">🎓</span>
-        <div class="edu-degree">B.E. Computer Science Engineering<br/>(AI &amp; Machine Learning) — <span class="edu-grad">Graduated</span></div>
+  <section class="section" id="education">
+    <div class="eyebrow">Education</div>
+    <h2 class="section-title">Degrees &amp; <em>certifications</em></h2>
+    <div class="edu-list">
+      <div class="edu-row">
+        <div class="edu-degree">B.E. Computer Science Engineering (AI &amp; Machine Learning)</div>
         <div class="edu-school">New L J Institute of Engineering &amp; Technology, Ahmedabad</div>
-        <div class="edu-period">Oct 2023 — Jun 2025</div>
+        <div class="edu-period">Oct 2023 — Jun 2025 · Graduated</div>
       </div>
-      <div class="edu-card">
-        <span class="edu-icon">📐</span>
+      <div class="edu-row">
         <div class="edu-degree">Diploma — Computer Engineering</div>
         <div class="edu-school">OM Engineering College, Junagadh</div>
         <div class="edu-period">Jun 2020 — Jul 2023</div>
       </div>
-    </div>
-    <div class="cert-list reveal">
-      <div class="cert-card">
-        <div class="cert-badge">🏅</div>
-        <div>
-          <div class="cert-title">AWS Certified AI Practitioner</div>
-          <div class="cert-sub">Amazon Web Services · Verified Credential</div>
-          <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" target="_blank" rel="noopener noreferrer" class="cert-link">Verify on Credly →</a>
-        </div>
-      </div>
-      <div class="cert-card">
-        <div class="cert-badge">🎓</div>
-        <div>
-          <div class="cert-title">Distinction Course Completion</div>
-          <div class="cert-sub">Distinction App</div>
-          <a href="https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a" target="_blank" rel="noopener noreferrer" class="cert-link">View Certificate →</a>
-        </div>
+      <div class="edu-row">
+        <div class="edu-degree">AWS Certified AI Practitioner</div>
+        <div class="edu-school">Amazon Web Services</div>
+        <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" class="text-link edu-link" target="_blank" rel="noopener noreferrer">Verify on Credly →</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="writing" class="section section-alt">
-  <div class="container">
-    <div class="reveal">
-      <div class="s-label">Writing</div>
-      <h2 class="s-title">Thoughts on <span class="accent">AI Engineering</span></h2>
-      <p class="s-desc">Technical articles on LLMs, RAG, and production AI — published on Medium.</p>
+  <section class="section section-contact" id="contact">
+    <div class="eyebrow">Contact</div>
+    <h2 class="contact-headline">Let's build<br>something <em>remarkable</em></h2>
+    <p class="contact-sub">Open to freelance, full-time, and interesting AI projects.<br>I reply within 24 hours.</p>
+    <a href="mailto:khachariyatrusha@gmail.com" class="contact-email" data-email-link>khachariyatrusha@gmail.com ↗</a>
+    <div class="contact-socials">
+      <a href="https://github.com/TRUSHAKHACHARIYA" class="social-link text-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/trusha-khachariya-tk" class="social-link text-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://medium.com/@khachariyatrusha" class="social-link text-link" target="_blank" rel="noopener noreferrer">Medium</a>
+      <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" class="social-link text-link" target="_blank" rel="noopener noreferrer">Credly</a>
     </div>
-    <div class="writing-grid reveal" id="writingGrid"></div>
-  </div>
-</section>
+  </section>
 
-<section id="contact" class="section section-alt">
-  <div class="container">
-    <div class="reveal">
-      <div class="s-label">Contact</div>
-      <h2 class="s-title">Let's <span class="accent">Connect</span></h2>
-      <p class="s-desc">Open to new opportunities, collaborations, and interesting AI projects. Let's build something remarkable.</p>
-    </div>
-    <div class="contact-grid reveal">
-      <div>
-        <div class="contact-info-block">
-          <div class="contact-item">
-            <span class="contact-icon">✉️</span>
-            <div>
-              <div class="contact-label">Email</div>
-              <div class="contact-val" data-email>khachariyatrusha@gmail.com</div>
-              <div class="contact-note">Personal contact — also use this for resume inquiries</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">📍</span>
-            <div>
-              <div class="contact-label">Location</div>
-              <div class="contact-val">Ahmedabad, Gujarat, India</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">💼</span>
-            <div>
-              <div class="contact-label">Status</div>
-              <div class="contact-val status-open">Open to opportunities</div>
-            </div>
-          </div>
-        </div>
-        <div class="socials-grid">
-          <a href="https://github.com/TRUSHAKHACHARIYA" target="_blank" rel="noopener noreferrer" class="social-btn">
-            <span class="social-icon">🐙</span>
-            <span class="social-name">GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/trusha-khachariya-tk" target="_blank" rel="noopener noreferrer" class="social-btn">
-            <span class="social-icon">💼</span>
-            <span class="social-name">LinkedIn</span>
-          </a>
-          <a href="https://medium.com/@khachariyatrusha" target="_blank" rel="noopener noreferrer" class="social-btn">
-            <span class="social-icon">✍️</span>
-            <span class="social-name">Medium</span>
-          </a>
-          <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" target="_blank" rel="noopener noreferrer" class="social-btn">
-            <span class="social-icon">🏅</span>
-            <span class="social-name">Credly</span>
-          </a>
-          <a href="https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a" target="_blank" rel="noopener noreferrer" class="social-btn">
-            <span class="social-icon">🎓</span>
-            <span class="social-name">Distinction</span>
-          </a>
-          <a href="mailto:khachariyatrusha@gmail.com" data-email-link class="social-btn">
-            <span class="social-icon">📧</span>
-            <span class="social-name">Email</span>
-          </a>
-          <a href="https://calendly.com/khachariyatrusha" class="social-btn" target="_blank" rel="noopener noreferrer">
-            <span class="social-icon">📅</span>
-            <span class="social-name">Book Call</span>
-          </a>
-        </div>
-      </div>
-      <div>
-        <form class="form" id="contactForm" action="https://formspree.io/f/xeebgbgr" method="POST">
-          <div class="form-row">
-            <div class="form-field">
-              <label class="form-label" for="contact-name">Name</label>
-              <input class="form-input" id="contact-name" name="name" type="text" placeholder="Your name" required/>
-            </div>
-            <div class="form-field">
-              <label class="form-label" for="contact-email">Email</label>
-              <input class="form-input" id="contact-email" name="email" type="email" placeholder="your@email.com" required/>
-            </div>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="contact-subject">Subject</label>
-            <input class="form-input" id="contact-subject" name="subject" type="text" placeholder="Project idea / Opportunity"/>
-          </div>
-          <div class="form-field">
-            <label class="form-label" for="contact-message">Message</label>
-            <textarea class="form-textarea" id="contact-message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
-          </div>
-          <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
-          <div class="form-status" id="formStatus" role="status" aria-live="polite" hidden></div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+  <footer class="footer">
+    <p>© <span id="footerYear">2026</span> Trusha Khachariya · AI/ML Engineer · Ahmedabad</p>
+  </footer>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© <span id="footerYear">2026</span> · Trusha Khachariya</div>
-    <div class="footer-socials">
-      <a href="mailto:khachariyatrusha@gmail.com" data-email-link class="footer-s" title="Email">✉</a>
-      <a href="https://www.linkedin.com/in/trusha-khachariya-tk" class="footer-s" title="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
-      <a href="https://github.com/TRUSHAKHACHARIYA" class="footer-s" title="GitHub" target="_blank" rel="noopener noreferrer">🐙</a>
-      <a href="https://medium.com/@khachariyatrusha" class="footer-s" title="Medium" target="_blank" rel="noopener noreferrer">✍</a>
-    </div>
-    <div class="footer-copy"><span class="footer-brand">TK</span> · AI/ML Engineer · Ahmedabad</div>
-  </div>
-</footer>
+</div>
 
-<button type="button" id="scrollTop" class="scroll-top" aria-label="Scroll to top" hidden>↑</button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/robot-scene.js?v=17"></script>
-<script src="js/hero-three.js?v=17"></script>
-<script type="module" src="js/app.js?v=17"></script>
+<script type="module" src="js/app.js?v=20"></script>
 </body>
 </html>
