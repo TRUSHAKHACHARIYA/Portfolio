@@ -1121,6 +1121,12 @@ a, button { cursor: pointer; }
 
 .published-course-link:hover { opacity: 0.8; }
 
+.published-course-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
 /* ── Writing ── */
 .writing-grid {
   display: flex;

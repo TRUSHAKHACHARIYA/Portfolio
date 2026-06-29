@@ -161,24 +161,34 @@ export const certifications = [
 
 export const publishedCourses = [
   {
-    id: 'distinction-ml',
-    name: 'AI & Machine Learning',
+    id: 'distinction-aws-ai',
+    name: 'AWS Certified AI Practitioner (AIF-C01)',
     platform: 'Distinction',
-    desc: 'A structured course I launched on Distinction, covering practical AI and machine learning fundamentals.',
+    desc: 'A structured course I built on Distinction to prepare learners for the AWS Certified AI Practitioner exam — core AI/ML concepts, AWS AI services, and exam-focused study paths.',
     status: 'Live',
     url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
     linkLabel: 'View Course on Distinction ↗',
   },
 ];
 
-export const writingFeatured = {
-  platform: 'Medium',
-  title: 'AWS AI Practitioner Journey',
-  desc: 'My Medium article on preparing for the AWS Certified AI Practitioner exam — study resources, topics I focused on, and what showed up on test day.',
-  status: 'Published on Medium',
-  url: 'https://medium.com/@khachariyatrusha/aws-ai-practitioner-aif-c01-everything-i-studied-before-the-exam-166fb2ec3217',
-  linkLabel: 'Read on Medium ↗',
-};
+export const writingPosts = [
+  {
+    id: 'aws-ai-practitioner',
+    platform: 'Medium',
+    title: 'AWS AI Practitioner Journey',
+    desc: 'My Medium article on preparing for the AWS Certified AI Practitioner exam — study resources, topics I focused on, and what showed up on test day.',
+    status: 'Published on Medium',
+    mediumUrl: 'https://medium.com/@khachariyatrusha/aws-ai-practitioner-aif-c01-everything-i-studied-before-the-exam-166fb2ec3217',
+  },
+  {
+    id: 'okf',
+    platform: 'Medium',
+    title: 'Open Knowledge Format (OKF): Google\'s New Standard for AI-Ready Knowledge',
+    desc: 'A deep dive into Google\'s OKF v0.1 spec — how Markdown + YAML frontmatter bundles make organizational knowledge portable and agent-ready.',
+    status: 'Published on Medium',
+    mediumUrl: 'https://medium.com/@khachariyatrusha/open-knowledge-format-okf-googles-new-standard-for-ai-ready-knowledge-c49b17b7cb5f',
+  },
+];
 
 export const socialLinks = [
   { id: 'github', label: 'GitHub', url: 'https://github.com/TRUSHAKHACHARIYA' },
