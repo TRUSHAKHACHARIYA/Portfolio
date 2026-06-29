@@ -2,7 +2,6 @@ import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, so
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
 import { renderCourses } from './courses.js';
 import { renderCertifications } from './certifications.js';
-import { renderWriting } from './writing.js';
 import { renderSocialLinks } from './social.js';
 import { renderSectionMarquees } from './effects.js';
 
@@ -157,24 +156,36 @@ function initNavScroll() {
 }
 
 function initNavActive() {
-  const sections = document.querySelectorAll('section[id]');
+  const navSectionIds = ['about', 'projects', 'experience', 'contact'];
   const links = document.querySelectorAll('.nav-link[href^="#"]');
 
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          links.forEach((l) => l.classList.remove('active'));
-          document
-            .querySelectorAll(`.nav-link[href="#${entry.target.id}"]`)
-            .forEach((l) => l.classList.add('active'));
-        }
-      });
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (visible.length === 0) {
+        return;
+      }
+
+      const activeId = visible[0].target.id;
+      if (!navSectionIds.includes(activeId)) {
+        return;
+      }
+
+      links.forEach((l) => l.classList.remove('active'));
+      document.querySelectorAll(`.nav-link[href="#${activeId}"]`).forEach((l) => l.classList.add('active'));
     },
-    { threshold: 0.35 }
+    { rootMargin: '-20% 0px -60% 0px', threshold: [0.15, 0.35, 0.6] }
   );
 
-  sections.forEach((s) => observer.observe(s));
+  navSectionIds.forEach((id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      observer.observe(section);
+    }
+  });
 }
 
 function applySiteConfig() {
@@ -214,6 +225,24 @@ function initFooterYear() {
   }
 }
 
+function initContactForm() {
+  const note = document.getElementById('contactFormNote');
+  if (!note) {
+    return;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === '1' || window.location.hash.includes('sent=1')) {
+    note.hidden = false;
+  }
+
+  const form = document.querySelector('.contact-form');
+  const nextInput = form?.querySelector('input[name="_next"]');
+  if (nextInput && siteConfig.siteUrl) {
+    nextInput.value = `${siteConfig.siteUrl}/#contact?sent=1`;
+  }
+}
+
 function bootstrapApp() {
   applySiteConfig();
   initFooterYear();
@@ -223,13 +252,13 @@ function bootstrapApp() {
   renderProjects();
   renderCertifications();
   renderCourses();
-  renderWriting();
   renderSocialLinks('contactSocials', socialLinks);
   initLenis();
   initStaggeredReveal();
   initMobileMenu();
   initNavScroll();
   initNavActive();
+  initContactForm();
 }
 
 document.addEventListener('DOMContentLoaded', bootstrapApp);

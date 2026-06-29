@@ -86,7 +86,7 @@ export const skillCapabilities = [
   {
     title: 'Orchestration',
     icon: '⇄',
-    items: ['LangChain', 'LangGraph', 'LangSmith', 'n8n / Make.com'],
+    items: ['LangChain', 'LangGraph', 'LangSmith', 'DeepEval', 'n8n / Make.com'],
   },
   {
     title: 'LLM APIs',
@@ -143,19 +143,10 @@ export const publishedCourses = [
   },
 ];
 
-export const writingPosts = [
-  {
-    title: 'AWS AI Practitioner (AIF-C01): Everything I Studied Before the Exam',
-    excerpt: 'How I prepared for the AWS Certified AI Practitioner exam, the study resources I used, and what actually appeared on test day.',
-    url: 'https://medium.com/@khachariyatrusha/aws-ai-practitioner-aif-c01-everything-i-studied-before-the-exam-166fb2ec3217',
-    date: 'Jun 2026',
-    source: 'Medium',
-  },
-];
-
 export const socialLinks = [
   { id: 'github', label: 'GitHub', url: 'https://github.com/TRUSHAKHACHARIYA' },
   { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/trusha-khachariya-tk' },
+  { id: 'reddit', label: 'Reddit', url: 'https://www.reddit.com/u/Trusha216/s/IwdpF9aUdO' },
   { id: 'medium', label: 'Medium', url: 'https://medium.com/@khachariyatrusha' },
   { id: 'credly', label: 'Credly', url: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url' },
   { id: 'distinction', label: 'My Distinction Course', url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a' },
