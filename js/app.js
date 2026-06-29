@@ -1,26 +1,56 @@
-import { siteConfig, marqueeItems, hexSkills, projects } from './data.js';
+import { siteConfig, sectionMarquees, skillCapabilities, projects, projectFilters } from './data.js';
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
 import { initLoader } from './loader.js';
-import { initCustomCursor, bindProjectCursor } from './cursor.js';
 import { initRobot, bindRobotProjectEyes } from './robot.js';
+import { renderCourses } from './courses.js';
 import {
   initHeroTextReveal,
   revealHeroWords,
-  initHorizontalProjects,
-  initProjectPreviews,
+  renderSectionMarquees,
 } from './effects.js';
 
-function renderMarquee() {
-  const track = document.getElementById('marqueeTrack');
-  if (!track) {
+let activeProjectFilter = 'all';
+
+function statusLabel(status) {
+  const map = {
+    live: 'LIVE',
+    'in-dev': 'IN DEV',
+    nda: 'NDA',
+    archived: 'ARCHIVED',
+  };
+  return map[status] || status.toUpperCase();
+}
+
+function projectMatchesFilter(project) {
+  if (activeProjectFilter === 'all') {
+    return true;
+  }
+  if (activeProjectFilter === 'archived') {
+    return project.status === 'archived';
+  }
+  return project.category === activeProjectFilter;
+}
+
+function renderProjectFilters() {
+  const wrap = document.getElementById('projectFilters');
+  if (!wrap) {
     return;
   }
 
-  const itemHtml = (label) =>
-    `<span class="marquee-item">${label}</span><span class="marquee-sep">✦</span>`;
+  wrap.innerHTML = projectFilters
+    .map(
+      (f) =>
+        `<button type="button" class="project-filter${f.id === activeProjectFilter ? ' active' : ''}" data-filter="${f.id}">${f.label}</button>`
+    )
+    .join('');
 
-  const doubled = [...marqueeItems, ...marqueeItems];
-  track.innerHTML = doubled.map(itemHtml).join('');
+  wrap.querySelectorAll('.project-filter').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeProjectFilter = btn.dataset.filter;
+      renderProjectFilters();
+      renderProjects();
+    });
+  });
 }
 
 function renderSkills() {
@@ -29,25 +59,28 @@ function renderSkills() {
     return;
   }
 
-  const rows = [];
-  for (let i = 0; i < hexSkills.length; i += 4) {
-    rows.push(hexSkills.slice(i, i + 4));
-  }
-
-  grid.innerHTML = rows
+  grid.innerHTML = skillCapabilities
     .map(
-      (row, rowIdx) => `
-    <div class="hex-row${rowIdx % 2 === 1 ? ' hex-row-offset' : ''}">
-      ${row
-        .map(
-          (skill) => `
-        <div class="hex stagger-item">
-          <span class="hex-icon">${skill.icon}</span>
-          <span class="hex-name">${skill.name}</span>
-        </div>
-      `
-        )
-        .join('')}
+      (group) => `
+    <div class="skill-card glass-card stagger-item">
+      <h3 class="skill-card-title">${group.title}</h3>
+      <ul class="skill-list">
+        ${group.items
+          .map(
+            (item) => `
+          <li class="skill-item">
+            <div class="skill-item-head">
+              <span class="skill-name">${item.name}</span>
+              <span class="skill-pct">${item.level}%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" style="width: ${item.level}%" data-level="${item.level}"></div>
+            </div>
+          </li>
+        `
+          )
+          .join('')}
+      </ul>
     </div>
   `
     )
@@ -55,40 +88,59 @@ function renderSkills() {
 }
 
 function renderProjects() {
-  const track = document.getElementById('projectsGrid');
-  if (!track) {
+  const list = document.getElementById('projectsGrid');
+  if (!list) {
     return;
   }
 
-  track.innerHTML = projects
-    .map((p) => {
-      const tagsHtml = (p.shortTags || [])
-        .map((t) => `<span class="tag">${t}</span>`)
-        .join('');
+  const filtered = projects.filter(projectMatchesFilter);
 
-      const href = p.links.github || '';
-      const previewAttr = p.preview ? ` data-preview="${p.preview}"` : '';
-      const linkLabel = href ? 'GitHub →' : p.status === 'in-dev' ? 'In Dev' : 'Private';
+  if (filtered.length === 0) {
+    list.innerHTML = '<p class="projects-empty">No projects in this category.</p>';
+    return;
+  }
 
-      return `
-      <article class="project-card stagger-item"${previewAttr} data-title="${p.title}">
-        <div class="project-card-num">${p.num}</div>
-        <h3 class="project-card-title">${p.title}</h3>
-        <p class="project-card-desc">${p.desc}</p>
-        <div class="project-card-tags">${tagsHtml}</div>
-        ${
-          href
-            ? `<a href="${href}" class="project-card-link text-link" target="_blank" rel="noopener noreferrer">${linkLabel}</a>`
-            : `<span class="project-card-link muted">${linkLabel}</span>`
+  list.innerHTML = `
+    <div class="projects-list-head" aria-hidden="true">
+      <span>Project</span>
+      <span>Type · Status</span>
+      <span>Stack</span>
+      <span>Links</span>
+    </div>
+    ${filtered
+      .map((p) => {
+        const tagsHtml = (p.shortTags || []).map((t) => `<span class="tag">${t}</span>`).join('');
+        const meta = `${p.type} · ${statusLabel(p.status)}`;
+
+        let linksHtml = '';
+        if (p.status === 'nda') {
+          linksHtml = '<span class="project-nda">NDA</span>';
+        } else {
+          if (p.links.github) {
+            linksHtml += `<a href="${p.links.github}" class="text-link project-link" target="_blank" rel="noopener noreferrer">GitHub</a>`;
+          }
+          if (p.links.live) {
+            linksHtml += `<a href="${p.links.live}" class="text-link project-link" target="_blank" rel="noopener noreferrer">Live</a>`;
+          }
+          if (!p.links.github && !p.links.live) {
+            linksHtml = `<span class="project-nda">${statusLabel(p.status)}</span>`;
+          }
         }
-        <span class="project-card-cursor-label">View →</span>
-      </article>`;
-    })
-    .join('');
 
-  initProjectPreviews();
-  initHorizontalProjects();
-  bindProjectCursor();
+        return `
+        <article class="project-row stagger-item" data-category="${p.category}" data-status="${p.status}">
+          <div class="project-row-name">
+            <strong>${p.title}</strong>
+            <span class="project-row-desc">${p.desc}</span>
+          </div>
+          <div class="project-row-meta">${meta}</div>
+          <div class="project-row-stack">${tagsHtml}</div>
+          <div class="project-row-links">${linksHtml}</div>
+        </article>`;
+      })
+      .join('')}
+  `;
+
   bindRobotProjectEyes();
 }
 
@@ -131,6 +183,38 @@ function initStatCounters() {
   );
 
   observer.observe(statsEl);
+}
+
+function initSkillBarAnimation() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.skill-bar-fill').forEach((bar) => {
+      bar.style.width = `${bar.dataset.level}%`;
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        const bar = entry.target;
+        const level = bar.dataset.level;
+        bar.style.width = '0';
+        requestAnimationFrame(() => {
+          bar.style.width = `${level}%`;
+        });
+        observer.unobserve(bar);
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll('.skill-bar-fill').forEach((bar) => {
+    bar.style.width = '0';
+    observer.observe(bar);
+  });
 }
 
 function initMobileMenu() {
@@ -215,10 +299,9 @@ function applySiteConfig() {
     }
   });
 
-  const resumeBtn = document.getElementById('resumeBtn');
-  if (resumeBtn) {
-    resumeBtn.href = siteConfig.resumePath;
-  }
+  document.querySelectorAll('[data-resume-link]').forEach((el) => {
+    el.href = siteConfig.resumePath;
+  });
 }
 
 function initFooterYear() {
@@ -231,14 +314,16 @@ function initFooterYear() {
 function bootstrapApp() {
   applySiteConfig();
   initFooterYear();
-  renderMarquee();
+  renderSectionMarquees(sectionMarquees);
+  renderProjectFilters();
   renderSkills();
   renderProjects();
+  renderCourses();
   initHeroTextReveal();
-  initCustomCursor();
   initRobot();
   initLenis();
   initStaggeredReveal();
+  initSkillBarAnimation();
   initStatCounters();
   initMobileMenu();
   initNavScroll();

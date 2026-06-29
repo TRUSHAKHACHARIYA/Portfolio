@@ -46,76 +46,20 @@ export function initHeroTextReveal() {
   }
 }
 
-export function initHorizontalProjects() {
-  const wrap = document.getElementById('projectsScroll');
-  if (!wrap) {
-    return;
-  }
-
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
-
-  wrap.addEventListener('mousedown', (e) => {
-    isDown = true;
-    wrap.classList.add('grabbing');
-    startX = e.pageX - wrap.offsetLeft;
-    scrollLeft = wrap.scrollLeft;
-  });
-
-  wrap.addEventListener('mouseleave', () => {
-    isDown = false;
-    wrap.classList.remove('grabbing');
-  });
-
-  wrap.addEventListener('mouseup', () => {
-    isDown = false;
-    wrap.classList.remove('grabbing');
-  });
-
-  wrap.addEventListener('mousemove', (e) => {
-    if (!isDown) {
-      return;
-    }
-    e.preventDefault();
-    const x = e.pageX - wrap.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    wrap.scrollLeft = scrollLeft - walk;
-  });
-
-  if (window.matchMedia('(min-width: 768px)').matches) {
-    wrap.addEventListener(
-      'wheel',
-      (e) => {
-        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          e.preventDefault();
-          wrap.scrollLeft += e.deltaY * 1.2;
-        }
-      },
-      { passive: false }
-    );
-  }
-}
-
-export function initProjectPreviews() {
-  document.querySelectorAll('.project-card[data-preview]').forEach((card) => {
-    const src = card.dataset.preview;
-    if (!src) {
+export function renderSectionMarquees(sectionMarquees) {
+  document.querySelectorAll('[data-section-marquee]').forEach((el) => {
+    const index = Number(el.dataset.sectionMarquee);
+    const config = sectionMarquees[index];
+    if (!config) {
       return;
     }
 
-    let img = card.querySelector('.project-preview-img');
-    if (!img) {
-      img = document.createElement('img');
-      img.className = 'project-preview-img';
-      img.loading = 'lazy';
-      img.alt = `${card.dataset.title || 'Project'} preview`;
-      card.insertBefore(img, card.firstChild);
-    }
+    const doubled = [...config.items, ...config.items];
+    const spans = doubled
+      .map((label) => `<span>${label}</span><span class="marquee-dot">·</span>`)
+      .join('');
 
-    img.src = src;
-    img.onerror = () => {
-      img.style.display = 'none';
-    };
+    const direction = config.reverse ? ' reverse' : '';
+    el.innerHTML = `<div class="marquee-track${direction}" style="animation-duration:${config.speed}s">${spans}</div>`;
   });
 }

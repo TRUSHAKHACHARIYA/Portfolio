@@ -1,132 +1,171 @@
-export const marqueeItems = [
-  'LangGraph',
-  'Aurium AI',
-  'Claude API',
-  'RAG Pipelines',
-  'FastAPI',
-  'pgvector',
-  'Multi-Agent',
-  'BOTIQ AI',
+export const sectionMarquees = [
+  {
+    items: ['LangChain', 'FastAPI', 'Claude API', 'LangGraph', 'pgvector', 'RAG Systems', 'OpenAI GPT-4', 'Pinecone'],
+    speed: 25,
+    reverse: false,
+  },
+  {
+    items: ['SHIP FAST', 'NO DEMO GRAVEYARD', 'RAG OVER FINE-TUNING', 'AURIUM AI IN PROD', 'OPEN TO WORK'],
+    speed: 28,
+    reverse: true,
+  },
+  {
+    items: ['CLAUDE API', 'LANGGRAPH', 'PGVECTOR', 'MULTI-AGENT', 'PRODUCTION SAAS', 'BOTIQ AI'],
+    speed: 32,
+    reverse: false,
+  },
 ];
 
-export const hexSkills = [
-  { icon: '🔗', name: 'LangChain' },
-  { icon: '🔀', name: 'LangGraph' },
-  { icon: '🧬', name: 'Claude API' },
-  { icon: '⚡', name: 'OpenAI API' },
-  { icon: '🤖', name: 'RAG Systems' },
-  { icon: '✍', name: 'Prompt Eng.' },
-  { icon: '🚀', name: 'FastAPI' },
-  { icon: '🐍', name: 'Python' },
-  { icon: '🗄', name: 'pgvector' },
-  { icon: '📌', name: 'Qdrant' },
-  { icon: '▲', name: 'Next.js' },
-  { icon: '☁', name: 'AWS Cert.' },
-];
-
-export const skillGroups = [
-  {
-    label: 'AI / LLM',
-    items: [
-      'LangChain',
-      'LangGraph',
-      'Claude API',
-      'OpenAI API',
-      'RAG Systems',
-      'Prompt Engineering',
-    ],
-  },
-  {
-    label: 'Backend / Data',
-    items: [
-      'FastAPI',
-      'Python',
-      'Supabase / pgvector',
-      'Qdrant',
-      'Pinecone',
-      'PostgreSQL',
-    ],
-  },
-  {
-    label: 'Frontend / Tools',
-    items: [
-      'Next.js',
-      'n8n Automation',
-      'Docker',
-      'Streamlit',
-      'AWS (Certified)',
-      'LangSmith',
-    ],
-  },
+export const projectFilters = [
+  { id: 'all', label: 'All' },
+  { id: 'personal', label: 'Personal SaaS' },
+  { id: '7span', label: '7Span' },
+  { id: 'archived', label: 'Archived' },
 ];
 
 export const projects = [
   {
-    num: '01',
-    title: 'Aurium AI',
-    desc: 'Australian tax SaaS · multi-tenant RAG · Claude Sonnet · pgvector',
-    year: '2025',
-    status: 'in-dev',
-    featured: true,
-    shortTags: ['SaaS', 'LangGraph', 'FastAPI'],
-    goldTags: ['SaaS'],
-    preview: '',
-    links: {},
-  },
-  {
-    num: '02',
-    title: 'BOTIQ AI',
-    desc: 'WhatsApp Business SaaS · menu bot · lead pipeline · Razorpay',
-    year: '2025',
-    status: 'live',
-    shortTags: ['SaaS', 'FastAPI', 'WhatsApp'],
-    goldTags: ['SaaS'],
-    preview: 'assets/previews/botiq.gif',
-    links: { github: 'https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot' },
-  },
-  {
-    num: '03',
     title: 'DocWise',
-    desc: 'Multi-document AI workspace · RAG · Claude · Pinecone · multi-tenant',
-    year: '2025',
+    category: 'personal',
+    type: 'Personal SaaS',
     status: 'live',
-    shortTags: ['RAG', 'Claude', 'Next.js'],
-    goldTags: ['SaaS'],
-    preview: 'assets/previews/docwise.gif',
+    desc: 'Multi-document AI workspace with RAG, Claude, Pinecone, and multi-tenant auth.',
+    shortTags: ['RAG', 'Claude', 'Pinecone', 'Next.js'],
     links: { github: 'https://github.com/TRUSHAKHACHARIYA/DocWise' },
   },
   {
-    num: '04',
+    title: 'BOTIQ AI',
+    category: 'personal',
+    type: 'WhatsApp SaaS',
+    status: 'live',
+    desc: 'WhatsApp Business SaaS with menu bot, lead pipeline, and Razorpay billing.',
+    shortTags: ['WhatsApp', 'FastAPI', 'Razorpay'],
+    links: { github: 'https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot' },
+  },
+  {
+    title: 'Aurium AI',
+    category: 'personal',
+    type: 'Personal SaaS',
+    status: 'in-dev',
+    desc: 'Australian tax SaaS with citation-verified RAG, LangGraph, and pgvector.',
+    shortTags: ['SaaS', 'LangGraph', 'FastAPI'],
+    links: {},
+  },
+  {
     title: 'DocMind',
-    desc: 'BYOK document Q&A · Ragie.ai · FastAPI · semantic search',
-    year: '2025',
+    category: 'personal',
+    type: 'Personal SaaS',
     status: 'in-dev',
+    desc: 'BYOK document Q&A using Ragie.ai, FastAPI, and semantic search.',
     shortTags: ['RAG', 'BYOK', 'FastAPI'],
-    goldTags: [],
-    preview: '',
     links: {},
   },
   {
-    num: '05',
     title: 'HIRE Framework',
-    desc: 'AI recruiter evaluation · n8n workflows · LangChain scoring',
-    year: '2024',
+    category: 'personal',
+    type: 'Personal SaaS',
     status: 'in-dev',
+    desc: 'AI recruiter evaluation with n8n workflows and LangChain scoring.',
     shortTags: ['n8n', 'LangChain', 'Agents'],
-    goldTags: [],
-    preview: '',
     links: {},
   },
   {
-    num: '06',
     title: 'Resume Chatbot',
-    desc: 'Multi-agent LangGraph · FastAPI · OpenAI/Claude · 7Span',
-    year: '2025',
-    status: 'archived',
+    category: '7span',
+    type: '7Span',
+    status: 'nda',
+    desc: 'Multi-agent LangGraph resume assistant with FastAPI and specialized sub-agents.',
     shortTags: ['LangGraph', 'FastAPI', 'NLP'],
-    goldTags: [],
-    preview: '',
     links: {},
+  },
+  {
+    title: 'Denny Solution',
+    category: '7span',
+    type: '7Span',
+    status: 'nda',
+    desc: 'RAG platform with two-stage retrieval and re-ranking using Streamlit and Ragie.ai.',
+    shortTags: ['RAG', 'Ragie.ai', 'Streamlit'],
+    links: {},
+  },
+];
+
+export const skillCapabilities = [
+  {
+    title: 'AI & Machine Learning',
+    items: [
+      { name: 'LangChain', level: 80 },
+      { name: 'RAG Systems', level: 80 },
+      { name: 'LangGraph', level: 60 },
+      { name: 'Prompt Engineering', level: 75 },
+    ],
+  },
+  {
+    title: 'LLM Orchestration',
+    items: [
+      { name: 'Multi-Agent Systems', level: 70 },
+      { name: 'LangSmith', level: 55 },
+      { name: 'n8n Automation', level: 65 },
+      { name: 'Vector Pipelines', level: 75 },
+    ],
+  },
+  {
+    title: 'Infrastructure & Databases',
+    items: [
+      { name: 'pgvector', level: 65 },
+      { name: 'Qdrant', level: 60 },
+      { name: 'Pinecone', level: 65 },
+      { name: 'PostgreSQL', level: 70 },
+    ],
+  },
+  {
+    title: 'LLM Providers & APIs',
+    items: [
+      { name: 'Claude API', level: 80 },
+      { name: 'OpenAI API', level: 75 },
+      { name: 'Ragie.ai', level: 65 },
+      { name: 'Embeddings APIs', level: 70 },
+    ],
+  },
+  {
+    title: 'Programming Languages',
+    items: [
+      { name: 'Python', level: 90 },
+      { name: 'TypeScript', level: 55 },
+      { name: 'SQL', level: 70 },
+      { name: 'JavaScript', level: 65 },
+    ],
+  },
+  {
+    title: 'Dev Tools',
+    items: [
+      { name: 'Git', level: 85 },
+      { name: 'Docker', level: 70 },
+      { name: 'VS Code', level: 90 },
+      { name: 'Vercel / AWS', level: 65 },
+    ],
+  },
+];
+
+export const courses = [
+  {
+    id: 'distinction-ml',
+    name: 'AI & Machine Learning',
+    platform: 'Distinction',
+    status: 'Completed',
+    certUrl: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
+    summary:
+      'Covers supervised learning, model evaluation, feature engineering, and practical ML workflows for real-world datasets.',
+    nextSteps: 'Deepen into LLM fine-tuning, RAG evaluation metrics, and MLOps with FastAPI deployments.',
+  },
+  {
+    id: 'aws-ai',
+    name: 'AWS Certified AI Practitioner',
+    platform: 'AWS / Skill Builder',
+    status: 'Completed',
+    certUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
+    summary:
+      'Foundational AWS AI services, responsible AI, generative AI concepts, and cloud-native ML deployment patterns.',
+    nextSteps: 'Explore SageMaker pipelines, Bedrock integrations, and production monitoring on AWS.',
   },
 ];
 
@@ -134,4 +173,5 @@ export const siteConfig = {
   email: 'khachariyatrusha@gmail.com',
   resumePath: 'assets/Trusha_Khachariya.pdf',
   siteUrl: 'https://portfolio-seven-phi-zyohdnoii5.vercel.app',
+  distinctionUrl: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
 };

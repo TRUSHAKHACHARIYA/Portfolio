@@ -240,9 +240,11 @@ window.initMascotRobot = function initMascotRobot(canvas, container) {
   }
 
   const clock = new THREE.Clock();
+  let projectHover = false;
+  let animationId = null;
 
   function animate() {
-    requestAnimationFrame(animate);
+    animationId = requestAnimationFrame(animate);
     const t = clock.getElapsedTime();
 
     robot.position.y = -0.15 + Math.sin(t * 0.8) * 0.08;
@@ -258,13 +260,37 @@ window.initMascotRobot = function initMascotRobot(canvas, container) {
     haloRing.rotation.z += 0.006;
     orbitPoints.rotation.y += 0.004;
 
-    const visorPulse = 0.8 + Math.sin(t * 2.2) * 0.4;
+    const visorPulse = projectHover ? 3 : 0.8 + Math.sin(t * 2.2) * 0.4;
     visorMat.emissiveIntensity = visorPulse;
-    chestGlow.intensity = 3.0 + Math.sin(t * 1.5) * 1.5;
+    chestGlow.intensity = projectHover ? 6 : 3.0 + Math.sin(t * 1.5) * 1.5;
     groundGlow.intensity = 1.8 + Math.sin(t * 3.0) * 0.4;
 
     renderer.render(scene, camera);
   }
 
   animate();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    } else if (!animationId) {
+      animate();
+    }
+  });
+
+  return {
+    setProjectHover(active) {
+      projectHover = active;
+    },
+    destroy() {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+      resizeObserver?.disconnect();
+      renderer.dispose();
+    },
+  };
 };

@@ -66,7 +66,7 @@ export function initStaggeredReveal() {
         el.classList.add('section-visible');
 
         const items = el.querySelectorAll(
-          '.eyebrow, .section-title, .body-text, .project-card, .hex, .exp-row, .edu-row, .terminal, .hero-kicker, .hero-role-row, .hero-tagline, .hero-actions, .hero-stats, .contact-headline, .contact-sub, .contact-email, .social-link'
+          '.eyebrow, .section-title, .section-sub, .body-text, .project-row, .skill-card, .exp-row, .edu-row, .course-row, .terminal, .hero-kicker, .hero-role-row, .hero-tagline, .hero-actions, .hero-stats, .contact-headline, .contact-sub, .contact-email, .social-link, .project-filter'
         );
 
         items.forEach((item, i) => {

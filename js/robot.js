@@ -1,82 +1,31 @@
-export function initRobot() {
-  const robotHead = document.getElementById('robot-head');
-  const robotEyes = document.getElementById('robot-eyes');
-  const robotWrap = document.getElementById('robot-wrap');
-  const armL = document.getElementById('arm-l');
+let robotApi = null;
 
-  if (!robotHead || !robotWrap) {
+export function initRobot() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  if (armL && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    armL.style.transformOrigin = '18px 122px';
-    armL.style.animation = 'robot-wave 1.2s ease-in-out 2.2s 1';
+  if (window.innerWidth <= 768 || typeof THREE === 'undefined') {
+    return;
   }
 
-  document.addEventListener('mousemove', (e) => {
-    const rect = robotWrap.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) / window.innerWidth;
-    const dy = (e.clientY - cy) / window.innerHeight;
-    const rotY = dx * 12;
-    const rotX = -dy * 8;
-
-    if (!robotHead.dataset.lookDown) {
-      robotHead.style.transform = `rotateY(${rotY}deg) rotateX(${rotX}deg)`;
-    }
-
-    if (robotEyes) {
-      robotEyes.style.transform = `translateX(${dx * 5}px) translateY(${dy * 3}px)`;
-    }
-  });
-
-  function onScroll() {
-    const scrolled = window.scrollY > window.innerHeight * 0.55;
-    if (scrolled) {
-      robotHead.dataset.lookDown = 'true';
-      robotHead.style.transform = 'rotateX(20deg)';
-    } else {
-      delete robotHead.dataset.lookDown;
-    }
+  const canvas = document.getElementById('robot-canvas');
+  const container = document.querySelector('.hero-visual');
+  if (!canvas || !container || typeof window.initMascotRobot !== 'function') {
+    return;
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  document.querySelectorAll('.project-card').forEach((card) => {
-    card.addEventListener('mouseenter', () => {
-      document.querySelectorAll('#eye-l, #eye-r').forEach((eye) => {
-        eye.setAttribute('fill', '#ffffff');
-        eye.setAttribute('opacity', '1');
-      });
-    });
-    card.addEventListener('mouseleave', () => {
-      document.querySelectorAll('#eye-l, #eye-r').forEach((eye) => {
-        eye.setAttribute('fill', '#00d4ff');
-        eye.setAttribute('opacity', '0.9');
-      });
-    });
-  });
+  robotApi = window.initMascotRobot(canvas, container);
 }
 
 export function bindRobotProjectEyes() {
-  document.querySelectorAll('.project-card').forEach((card) => {
-    if (card.dataset.eyesBound) {
-      return;
-    }
+  if (!robotApi?.setProjectHover) {
+    return;
+  }
+
+  document.querySelectorAll('.project-row:not([data-eyes-bound])').forEach((card) => {
     card.dataset.eyesBound = 'true';
-    card.addEventListener('mouseenter', () => {
-      document.querySelectorAll('#eye-l, #eye-r').forEach((eye) => {
-        eye.setAttribute('fill', '#ffffff');
-        eye.setAttribute('opacity', '1');
-      });
-    });
-    card.addEventListener('mouseleave', () => {
-      document.querySelectorAll('#eye-l, #eye-r').forEach((eye) => {
-        eye.setAttribute('fill', '#00d4ff');
-        eye.setAttribute('opacity', '0.9');
-      });
-    });
+    card.addEventListener('mouseenter', () => robotApi.setProjectHover(true));
+    card.addEventListener('mouseleave', () => robotApi.setProjectHover(false));
   });
 }
