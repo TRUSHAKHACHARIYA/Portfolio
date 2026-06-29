@@ -13,7 +13,7 @@ export function renderWriting() {
       <h3 class="published-course-title">${writingFeatured.title}</h3>
       <p class="published-course-desc">${writingFeatured.desc}</p>
       <p class="published-course-status">● ${writingFeatured.status}</p>
-      <a href="${siteConfig.mediumUrl}" class="published-course-link" id="mediumProfileLink" target="_blank" rel="noopener noreferrer">${writingFeatured.linkLabel}</a>
+      <a href="${writingFeatured.url || siteConfig.mediumUrl}" class="published-course-link" id="mediumProfileLink" target="_blank" rel="noopener noreferrer">${writingFeatured.linkLabel}</a>
     </article>
   `;
 }

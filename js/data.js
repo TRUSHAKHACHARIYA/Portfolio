@@ -173,10 +173,11 @@ export const publishedCourses = [
 
 export const writingFeatured = {
   platform: 'Medium',
-  title: 'Thoughts on AI Engineering',
-  desc: 'Technical articles on LLMs, RAG pipelines, cloud AI certifications, and production agent systems.',
+  title: 'AWS AI Practitioner Journey',
+  desc: 'My Medium article on preparing for the AWS Certified AI Practitioner exam — study resources, topics I focused on, and what showed up on test day.',
   status: 'Published on Medium',
-  linkLabel: 'Read all articles on Medium ↗',
+  url: 'https://medium.com/@khachariyatrusha/aws-ai-practitioner-aif-c01-everything-i-studied-before-the-exam-166fb2ec3217',
+  linkLabel: 'Read on Medium ↗',
 };
 
 export const socialLinks = [
