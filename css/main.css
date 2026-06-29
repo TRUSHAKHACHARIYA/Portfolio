@@ -131,6 +131,7 @@ a, button { cursor: pointer; }
 }
 
 .section-about { background: rgba(255, 255, 255, 0.015); }
+.section-poc { background: rgba(255, 255, 255, 0.015); }
 .section-experience { background: rgba(255, 255, 255, 0.015); }
 .section-events { background: rgba(255, 255, 255, 0.015); }
 .section-writing { background: rgba(255, 255, 255, 0.015); }
@@ -706,6 +707,25 @@ a, button { cursor: pointer; }
   border: 1px solid var(--border-subtle);
   padding: 3px 10px;
   border-radius: 4px;
+}
+
+.project-badge-poc {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.project-status-poc {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a78bfa;
 }
 
 .project-badge-company {

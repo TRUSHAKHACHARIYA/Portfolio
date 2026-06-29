@@ -77,6 +77,23 @@ export const projects = [
   },
 ];
 
+export const pocProjects = [
+  {
+    title: 'LangGraph & LangChain Demo',
+    context: 'POC · LLM Orchestration',
+    desc: 'Demonstrates stateful LangGraph workflows and LangChain prompt chaining — multi-step retrieve, generate, and state-update nodes for building agent-style LLM apps.',
+    shortTags: ['LangGraph', 'LangChain', 'OpenAI', 'Python'],
+    github: 'https://github.com/TRUSHAKHACHARIYA/LangGraph-LangChain-Demo',
+  },
+  {
+    title: 'Model Context Protocol Demo',
+    context: 'POC · MCP',
+    desc: 'Bollywood movie recommendation app using MCP to store user genre preferences and recommendation history for personalized, context-aware suggestions.',
+    shortTags: ['MCP', 'Python', 'Flask', 'Context Protocol'],
+    github: 'https://github.com/TRUSHAKHACHARIYA/Model-Contex-Protocol_Demo',
+  },
+];
+
 export const skillCapabilities = [
   {
     title: 'AI / ML Core',

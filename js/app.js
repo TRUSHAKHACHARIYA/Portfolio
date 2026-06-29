@@ -3,6 +3,7 @@ import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js
 import { renderCourses } from './courses.js';
 import { renderCertifications } from './certifications.js';
 import { renderWriting } from './writing.js';
+import { renderPocProjects } from './poc.js';
 import { renderSocialLinks } from './social.js';
 import { renderSectionMarquees } from './effects.js';
 
@@ -251,6 +252,7 @@ function bootstrapApp() {
   renderAboutTags();
   renderSkills();
   renderProjects();
+  renderPocProjects();
   renderCertifications();
   renderCourses();
   renderWriting();
