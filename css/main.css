@@ -139,6 +139,11 @@ a, button { cursor: pointer; }
   background: rgba(245, 200, 66, 0.02);
 }
 
+.section-certifications {
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+}
+
 .stagger-item {
   opacity: 0;
   transform: translateY(18px);
@@ -589,6 +594,28 @@ a, button { cursor: pointer; }
 }
 
 /* ── Projects ── */
+.projects-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.project-group-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 16px;
+}
+
+.project-group-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: -8px 0 16px;
+  max-width: 520px;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -633,6 +660,48 @@ a, button { cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+}
+
+.project-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.project-badge-personal {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.project-badge-work {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.project-badge-company {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  padding: 3px 10px;
+  border-radius: 4px;
 }
 
 .project-status-live {
@@ -842,7 +911,228 @@ a, button { cursor: pointer; }
   color: var(--text-muted);
 }
 
-/* ── Courses ── */
+/* ── Certifications ── */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.cert-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.cert-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-3px);
+}
+
+.cert-card-featured {
+  grid-column: 1 / -1;
+  background: rgba(245, 200, 66, 0.04);
+  border-color: rgba(245, 200, 66, 0.22);
+  padding: 32px 36px;
+}
+
+.cert-card-featured:hover {
+  border-color: rgba(245, 200, 66, 0.4);
+}
+
+.cert-featured-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.cert-issuer {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.cert-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+
+.cert-card-featured .cert-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+}
+
+.cert-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.cert-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s;
+}
+
+.cert-link:hover { opacity: 0.8; }
+
+/* ── Published courses ── */
+.published-course-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.published-course-card {
+  grid-column: 1 / -1;
+  background: rgba(245, 200, 66, 0.04);
+  border: 1px solid rgba(245, 200, 66, 0.22);
+  border-radius: 12px;
+  padding: 32px 36px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.published-course-card:hover {
+  border-color: rgba(245, 200, 66, 0.4);
+  transform: translateY(-3px);
+}
+
+.published-course-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+
+.published-course-provider {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.published-course-title {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+
+.published-course-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 14px;
+  max-width: 640px;
+}
+
+.published-course-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+
+.published-course-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: opacity 0.2s;
+}
+
+.published-course-link:hover { opacity: 0.8; }
+
+/* ── Writing ── */
+.writing-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.writing-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px 28px;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.writing-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+.writing-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.writing-card-excerpt {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  max-width: 640px;
+}
+
+.writing-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.writing-card-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.writing-card-link:hover { opacity: 0.8; }
+
+.writing-profile-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.writing-profile-link:hover { opacity: 0.8; }
+
+/* ── Courses (legacy aliases) ── */
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -897,7 +1187,7 @@ a, button { cursor: pointer; }
 
 .course-link:hover { opacity: 0.8; }
 
-/* ── Writing ── */
+/* ── Writing (legacy) ── */
 .writing-link {
   font-size: 0.9rem;
   font-weight: 600;

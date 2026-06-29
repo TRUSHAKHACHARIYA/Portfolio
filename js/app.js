@@ -2,6 +2,8 @@ import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, so
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
 import { initLoader } from './loader.js';
 import { renderCourses } from './courses.js';
+import { renderCertifications } from './certifications.js';
+import { renderWriting } from './writing.js';
 import { renderSocialLinks } from './social.js';
 import { renderSectionMarquees } from './effects.js';
 
@@ -46,48 +48,70 @@ function renderSkills() {
     .join('');
 }
 
+function projectTypeBadge(type) {
+  const badges = {
+    personal: '<span class="project-badge-personal">PERSONAL</span>',
+    '7span': '<span class="project-badge-work">7SPAN</span>',
+  };
+  return badges[type] || '';
+}
+
+function renderProjectCard(p) {
+  const status = statusMeta(p.status);
+  const tagsHtml = (p.shortTags || []).map((t) => `<span class="tech-pill">${t}</span>`).join('');
+  const typeBadge = projectTypeBadge(p.type);
+  const featuredBadge = p.featured ? '<span class="project-badge-featured">FEATURED</span>' : '';
+
+  let linksHtml = '';
+  if (p.status === 'nda') {
+    linksHtml = '<span class="project-link-nda">Under NDA</span>';
+  } else if (p.status === 'in-dev') {
+    linksHtml = '<span class="project-link-nda">Coming soon</span>';
+  } else {
+    if (p.links.github) {
+      linksHtml += `<a href="${p.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>`;
+    }
+    if (p.links.live) {
+      linksHtml += `<a href="${p.links.live}" class="project-link project-link-primary" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>`;
+    }
+  }
+
+  return `
+    <article class="project-card stagger-item" data-status="${p.status}" data-type="${p.type}">
+      <div class="project-meta-row">
+        <span class="${status.cls}">${status.label === 'LIVE' ? '● LIVE' : status.label === 'IN PROGRESS' ? '⟳ IN PROGRESS' : status.label}</span>
+        <div class="project-badges">${typeBadge}${featuredBadge}</div>
+      </div>
+      <div>
+        <h3 class="project-title">${p.title}</h3>
+        <p class="project-context">${p.context}</p>
+      </div>
+      <p class="project-description">${p.desc}</p>
+      <div class="project-tech">${tagsHtml}</div>
+      <div class="project-links">${linksHtml}</div>
+    </article>`;
+}
+
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
   if (!grid) {
     return;
   }
 
-  grid.innerHTML = projects
-    .map((p) => {
-      const status = statusMeta(p.status);
-      const tagsHtml = (p.shortTags || []).map((t) => `<span class="tech-pill">${t}</span>`).join('');
-      const featuredBadge = p.featured ? '<span class="project-badge-featured">FEATURED</span>' : '<span></span>';
+  const personal = projects.filter((p) => p.type === 'personal');
+  const work = projects.filter((p) => p.type === '7span');
 
-      let linksHtml = '';
-      if (p.status === 'nda') {
-        linksHtml = '<span class="project-link-nda">Under NDA</span>';
-      } else if (p.status === 'in-dev') {
-        linksHtml = '<span class="project-link-nda">Coming soon</span>';
-      } else {
-        if (p.links.github) {
-          linksHtml += `<a href="${p.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>`;
-        }
-        if (p.links.live) {
-          linksHtml += `<a href="${p.links.live}" class="project-link project-link-primary" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>`;
-        }
-      }
-
-      return `
-      <article class="project-card stagger-item" data-status="${p.status}">
-        <div class="project-meta-row">
-          <span class="${status.cls}">${status.label === 'LIVE' ? '● LIVE' : status.label === 'IN PROGRESS' ? '⟳ IN PROGRESS' : status.label}</span>
-          ${featuredBadge}
-        </div>
-        <div>
-          <h3 class="project-title">${p.title}</h3>
-          <p class="project-context">${p.context}</p>
-        </div>
-        <p class="project-description">${p.desc}</p>
-        <div class="project-tech">${tagsHtml}</div>
-        <div class="project-links">${linksHtml}</div>
-      </article>`;
-    })
-    .join('');
+  grid.innerHTML = `
+    <div class="project-group">
+      <h3 class="project-group-label">Personal Projects</h3>
+      <div class="projects-grid">${personal.map(renderProjectCard).join('')}</div>
+    </div>
+    <div class="project-group">
+      <h3 class="project-group-label">7Span Work</h3>
+      <p class="project-group-sub">Production systems built as part of my role at 7Span.</p>
+      <div class="projects-grid">${work.map(renderProjectCard).join('')}</div>
+    </div>
+  `;
 }
 
 function initMobileMenu() {
@@ -198,7 +222,9 @@ function bootstrapApp() {
   renderAboutTags();
   renderSkills();
   renderProjects();
+  renderCertifications();
   renderCourses();
+  renderWriting();
   renderSocialLinks('contactSocials', socialLinks);
   initLenis();
   initStaggeredReveal();

@@ -12,7 +12,8 @@ export const projects = [
   {
     num: '01',
     title: 'DocWise',
-    context: 'Personal SaaS · Document AI',
+    type: 'personal',
+    context: 'Personal Project · Document AI',
     status: 'live',
     featured: true,
     desc: 'Secure multi-document AI workspace with RAG, Claude chat, Pinecone search, and multi-tenant auth.',
@@ -22,7 +23,8 @@ export const projects = [
   {
     num: '02',
     title: 'BOTIQ AI',
-    context: 'Personal SaaS · WhatsApp SMB',
+    type: 'personal',
+    context: 'Personal Project · WhatsApp SMB',
     status: 'live',
     featured: false,
     desc: 'WhatsApp Business SaaS with menu bot, lead pipeline, and Razorpay billing.',
@@ -31,32 +33,46 @@ export const projects = [
   },
   {
     num: '03',
-    title: 'Resume Chatbot',
-    context: '7Span · AIML',
-    status: 'nda',
-    featured: false,
-    desc: 'Multi-agent LangGraph resume assistant with FastAPI and specialized sub-agents.',
-    shortTags: ['LangGraph', 'FastAPI', 'LangChain'],
-    links: {},
-  },
-  {
-    num: '04',
-    title: 'Denny Solution',
-    context: '7Span · AIML',
-    status: 'nda',
-    featured: false,
-    desc: 'RAG platform with two-stage retrieval and re-ranking using Streamlit and Ragie.ai.',
-    shortTags: ['RAG', 'Ragie.ai', 'Streamlit'],
-    links: {},
-  },
-  {
-    num: '05',
     title: 'Aurium AI',
-    context: 'Australian Tax SaaS',
+    type: 'personal',
+    context: 'Personal Project · Australian Tax SaaS',
     status: 'in-dev',
     featured: false,
     desc: 'Claude + LangGraph + RAG citation-verified tax research tool. ETA: Soon.',
     shortTags: ['LangGraph', 'Claude', 'pgvector'],
+    links: {},
+  },
+  {
+    num: '04',
+    title: 'Resume AI',
+    type: '7span',
+    context: '7Span · Work Project · AIML',
+    status: 'nda',
+    featured: false,
+    desc: 'Multi-agent LangGraph resume assistant with FastAPI and specialized sub-agents, built as part of my role at 7Span.',
+    shortTags: ['LangGraph', 'FastAPI', 'LangChain'],
+    links: {},
+  },
+  {
+    num: '05',
+    title: 'Denny Solution',
+    type: '7span',
+    context: '7Span · Work Project · AIML',
+    status: 'live',
+    featured: false,
+    desc: 'RAG platform with two-stage retrieval and re-ranking using Streamlit and Ragie.ai, built as part of my role at 7Span.',
+    shortTags: ['RAG', 'Ragie.ai', 'Streamlit'],
+    links: {},
+  },
+  {
+    num: '06',
+    title: 'BMax',
+    type: '7span',
+    context: '7Span · Max Nutrifit · Prompt Engineering & Evals',
+    status: 'live',
+    featured: false,
+    desc: 'AI nutrition and fitness coaching platform for Max Nutrifit. I lead prompt engineering and LLM eval workflows to keep production responses accurate and on-brand.',
+    shortTags: ['Prompt Engineering', 'LLM Evals', 'OpenAI', 'AI Coach'],
     links: {},
   },
 ];
@@ -89,22 +105,51 @@ export const skillCapabilities = [
   },
 ];
 
-export const courses = [
+export const degrees = [
+  {
+    period: 'Oct 2023 · Jun 2025',
+    title: 'B.E. Computer Science (AI & Machine Learning)',
+    institution: 'New L J Institute of Engineering & Technology, Ahmedabad',
+    icon: '🎓',
+  },
+  {
+    period: 'Jun 2020 · Jul 2023',
+    title: 'Diploma · Computer Engineering',
+    institution: 'OM Engineering College, Junagadh',
+    icon: '📘',
+  },
+];
+
+export const certifications = [
   {
     id: 'aws-ai',
     name: 'AWS Certified AI Practitioner',
-    platform: 'Amazon Web Services',
+    issuer: 'Amazon Web Services',
+    featured: true,
     status: 'Verified',
-    certUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
-    linkLabel: 'Verify on Credly ↗',
+    credlyUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
   },
+];
+
+export const publishedCourses = [
   {
     id: 'distinction-ml',
     name: 'AI & Machine Learning',
     platform: 'Distinction',
-    status: 'Completed',
-    certUrl: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
-    linkLabel: 'View Certificate ↗',
+    desc: 'A structured course I launched on Distinction covering practical AI and machine learning fundamentals.',
+    status: 'Live',
+    url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
+    linkLabel: 'View Course on Distinction ↗',
+  },
+];
+
+export const writingPosts = [
+  {
+    title: 'AWS AI Practitioner (AIF-C01): Everything I Studied Before the Exam',
+    excerpt: 'How I prepared for the AWS Certified AI Practitioner exam, study resources, and what actually showed up on test day.',
+    url: 'https://medium.com/@khachariyatrusha/aws-ai-practitioner-aif-c01-everything-i-studied-before-the-exam-166fb2ec3217',
+    date: 'Jun 2026',
+    source: 'Medium',
   },
 ];
 
@@ -113,7 +158,7 @@ export const socialLinks = [
   { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/trusha-khachariya-tk' },
   { id: 'medium', label: 'Medium', url: 'https://medium.com/@khachariyatrusha' },
   { id: 'credly', label: 'Credly', url: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url' },
-  { id: 'distinction', label: 'Distinction', url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a' },
+  { id: 'distinction', label: 'My Distinction Course', url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a' },
   { id: 'email', label: 'Email', url: 'mailto:khachariyatrusha@gmail.com' },
   { id: 'calendly', label: 'Book Call', url: 'https://calendly.com/khachariyatrusha' },
 ];

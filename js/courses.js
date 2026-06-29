@@ -1,4 +1,4 @@
-import { courses } from './data.js';
+import { publishedCourses } from './data.js';
 
 export function renderCourses() {
   const grid = document.getElementById('coursesGrid');
@@ -6,14 +6,16 @@ export function renderCourses() {
     return;
   }
 
-  grid.innerHTML = courses
+  grid.innerHTML = publishedCourses
     .map(
       (course) => `
-    <article class="course-card stagger-item">
-      <p class="course-provider">${course.platform}</p>
-      <h3 class="course-title">${course.name}</h3>
-      <p class="course-status">✓ ${course.status}</p>
-      <a href="${course.certUrl}" class="course-link" target="_blank" rel="noopener noreferrer">${course.linkLabel || 'View Certificate ↗'}</a>
+    <article class="published-course-card stagger-item">
+      <p class="published-course-label">Published Course</p>
+      <p class="published-course-provider">${course.platform}</p>
+      <h3 class="published-course-title">${course.name}</h3>
+      <p class="published-course-desc">${course.desc}</p>
+      <p class="published-course-status">● Live on Distinction</p>
+      <a href="${course.url}" class="published-course-link" target="_blank" rel="noopener noreferrer">${course.linkLabel}</a>
     </article>
   `
     )

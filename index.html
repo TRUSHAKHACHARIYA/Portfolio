@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/main.css?v=24"/>
+  <link rel="stylesheet" href="css/main.css?v=29"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -91,7 +91,7 @@
         <a href="#contact" class="btn-ghost">Get in Touch</a>
       </div>
       <hr class="hero-divider"/>
-      <p class="hero-meta">AWS Certified · 2 SaaS Live · 4+ LLM APIs · 7Span</p>
+      <p class="hero-meta">AWS Certified AI Practitioner · 2 SaaS Live · 4+ LLM APIs · 7Span</p>
     </div>
   </section>
 
@@ -107,7 +107,7 @@
         <div class="about-copy">
           <p class="body-text">I'm an AI/ML Engineer at 7Span in Ahmedabad, building LLM-powered systems that ship to production, not just notebooks.</p>
           <p class="body-text">My focus is RAG pipelines, multi-agent orchestration, and intelligent SaaS. I've built everything from multi-tenant WhatsApp bots to citation-verified Australian tax research tools powered by Claude.</p>
-          <p class="body-text">AWS Certified AI Practitioner. Currently building Aurium AI, BOTIQ AI, and DocMind, all in public.</p>
+          <p class="body-text">AWS Certified AI Practitioner. At 7Span I work on Resume AI and Denny Solution. Personally, I'm building Aurium AI, BOTIQ AI, and DocWise.</p>
           <div class="about-tags" id="aboutTags"></div>
         </div>
         <div class="terminal">
@@ -146,9 +146,9 @@
       <header class="section-header">
         <span class="section-eyebrow">Projects</span>
         <h2 class="section-heading">Things I've built</h2>
-        <p class="section-subtext">Production systems, personal SaaS, and client work at 7Span.</p>
+        <p class="section-subtext">Personal SaaS I build on the side, plus production systems from my work at 7Span.</p>
       </header>
-      <div class="projects-grid" id="projectsGrid"></div>
+      <div class="projects-groups" id="projectsGrid"></div>
     </div>
   </section>
 
@@ -162,7 +162,7 @@
         <article class="experience-entry stagger-item">
           <p class="experience-period">Sep 2025 · Present</p>
           <h3 class="experience-role">AI/ML Engineer · 7Span · Ahmedabad</h3>
-          <p class="experience-description">Building production LLM systems: RAG pipelines with LangGraph, multi-agent architectures, and personal SaaS (DocWise, BOTIQ AI).</p>
+          <p class="experience-description">At 7Span: production LLM systems including Resume AI and Denny Solution. Personally: DocWise, BOTIQ AI, and Aurium AI.</p>
           <div class="project-tech">
             <span class="tech-pill">FastAPI</span>
             <span class="tech-pill">LangGraph</span>
@@ -173,7 +173,7 @@
         <article class="experience-entry stagger-item">
           <p class="experience-period">Jan 2025 · Jul 2025</p>
           <h3 class="experience-role">AI/ML Engineering Intern · 7Span</h3>
-          <p class="experience-description">Built Resume Chatbot (multi-agent LangGraph) and Denny Solution RAG platform. Integrated OpenAI, Claude, and Ragie APIs.</p>
+          <p class="experience-description">Built Resume AI (multi-agent LangGraph) and Denny Solution RAG platform at 7Span. Integrated OpenAI, Claude, and Ragie APIs.</p>
           <div class="project-tech">
             <span class="tech-pill">LangChain</span>
             <span class="tech-pill">Ragie.ai</span>
@@ -189,9 +189,10 @@
     <div class="container">
       <header class="section-header">
         <span class="section-eyebrow">Education</span>
-        <h2 class="section-heading">Degrees &amp; certifications</h2>
+        <h2 class="section-heading">Degrees</h2>
+        <p class="section-subtext">Formal engineering education in computer science and AI.</p>
       </header>
-      <div class="education-list">
+      <div class="education-list" id="educationList">
         <article class="education-card stagger-item">
           <div class="education-icon" aria-hidden="true">🎓</div>
           <div>
@@ -208,26 +209,29 @@
             <p class="education-institution">OM Engineering College, Junagadh</p>
           </div>
         </article>
-        <article class="education-card stagger-item">
-          <div class="education-icon" aria-hidden="true">🏅</div>
-          <div>
-            <p class="education-period">AWS Certified</p>
-            <h3 class="education-title">AWS Certified AI Practitioner</h3>
-            <p class="education-institution">Amazon Web Services</p>
-            <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" class="course-link" target="_blank" rel="noopener noreferrer">Verify on Credly ↗</a>
-          </div>
-        </article>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-certifications" id="certifications">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Certifications</span>
+        <h2 class="section-heading">AWS credentials</h2>
+        <p class="section-subtext">Industry certifications that back my cloud and AI engineering work.</p>
+      </header>
+      <div class="cert-grid" id="certificationsGrid"></div>
     </div>
   </section>
 
   <section class="section section-courses" id="courses">
     <div class="container">
       <header class="section-header">
-        <span class="section-eyebrow">Learning &amp; Courses</span>
-        <h2 class="section-heading">Certifications &amp; structured learning</h2>
+        <span class="section-eyebrow">Courses I Publish</span>
+        <h2 class="section-heading">Teaching on Distinction</h2>
+        <p class="section-subtext">Structured courses I've launched for learners on Distinction.</p>
       </header>
-      <div class="course-grid" id="coursesGrid"></div>
+      <div class="published-course-grid" id="coursesGrid"></div>
     </div>
   </section>
 
@@ -238,7 +242,8 @@
         <h2 class="section-heading">Thoughts on AI Engineering</h2>
         <p class="section-subtext">Published on Medium.</p>
       </header>
-      <a href="https://medium.com/@khachariyatrusha" class="writing-link" id="mediumProfileLink" target="_blank" rel="noopener noreferrer">Read all articles on Medium ↗</a>
+      <div class="writing-grid" id="writingGrid"></div>
+      <a href="https://medium.com/@khachariyatrusha" class="writing-profile-link" id="mediumProfileLink" target="_blank" rel="noopener noreferrer">Read all articles on Medium ↗</a>
     </div>
   </section>
 
@@ -288,6 +293,6 @@
   </div>
 </footer>
 
-<script type="module" src="js/app.js?v=24"></script>
+<script type="module" src="js/app.js?v=32"></script>
 </body>
 </html>
