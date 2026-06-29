@@ -1,6 +1,5 @@
 import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, socialLinks } from './data.js';
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
-import { initLoader } from './loader.js';
 import { renderCourses } from './courses.js';
 import { renderCertifications } from './certifications.js';
 import { renderWriting } from './writing.js';
@@ -233,6 +232,4 @@ function bootstrapApp() {
   initNavActive();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initLoader(bootstrapApp);
-});
+document.addEventListener('DOMContentLoaded', bootstrapApp);
