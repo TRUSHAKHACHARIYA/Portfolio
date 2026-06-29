@@ -38,7 +38,7 @@ export const projects = [
     context: 'Personal Project · Australian Tax SaaS',
     status: 'in-dev',
     featured: false,
-    desc: 'Claude + LangGraph + RAG citation-verified tax research tool. ETA: Soon.',
+    desc: 'Claude, LangGraph, and RAG-powered, citation-verified tax research tool. Coming soon.',
     shortTags: ['LangGraph', 'Claude', 'pgvector'],
     links: {},
   },
@@ -46,7 +46,7 @@ export const projects = [
     num: '04',
     title: 'Resume AI',
     type: '7span',
-    context: '7Span · Work Project · AIML',
+    context: '7Span · Work Project · AI/ML',
     status: 'nda',
     featured: false,
     desc: 'Multi-agent LangGraph resume assistant with FastAPI and specialized sub-agents, built as part of my role at 7Span.',
@@ -57,7 +57,7 @@ export const projects = [
     num: '05',
     title: 'Denny Solution',
     type: '7span',
-    context: '7Span · Work Project · AIML',
+    context: '7Span · Work Project · AI/ML',
     status: 'live',
     featured: false,
     desc: 'RAG platform with two-stage retrieval and re-ranking using Streamlit and Ragie.ai, built as part of my role at 7Span.',
@@ -68,11 +68,11 @@ export const projects = [
     num: '06',
     title: 'BMax',
     type: '7span',
-    context: '7Span · Max Nutrifit · Prompt Engineering & Evals',
+    context: '7Span · Max NutriFit · Prompt Engineering & Evals',
     status: 'live',
     featured: false,
-    desc: 'AI nutrition and fitness coaching platform for Max Nutrifit. I lead prompt engineering and LLM eval workflows to keep production responses accurate and on-brand.',
-    shortTags: ['Prompt Engineering', 'LLM Evals', 'OpenAI', 'AI Coach'],
+    desc: 'AI nutrition and fitness coaching platform for Max NutriFit. I own prompt engineering and LLM evaluation workflows to keep production responses accurate and on-brand.',
+    shortTags: ['Prompt Engineering', 'LLM Evaluation', 'OpenAI', 'AI Coach'],
     links: {},
   },
 ];
@@ -136,7 +136,7 @@ export const publishedCourses = [
     id: 'distinction-ml',
     name: 'AI & Machine Learning',
     platform: 'Distinction',
-    desc: 'A structured course I launched on Distinction covering practical AI and machine learning fundamentals.',
+    desc: 'A structured course I launched on Distinction, covering practical AI and machine learning fundamentals.',
     status: 'Live',
     url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
     linkLabel: 'View Course on Distinction ↗',
@@ -146,7 +146,7 @@ export const publishedCourses = [
 export const writingPosts = [
   {
     title: 'AWS AI Practitioner (AIF-C01): Everything I Studied Before the Exam',
-    excerpt: 'How I prepared for the AWS Certified AI Practitioner exam, study resources, and what actually showed up on test day.',
+    excerpt: 'How I prepared for the AWS Certified AI Practitioner exam, the study resources I used, and what actually appeared on test day.',
     url: 'https://medium.com/@khachariyatrusha/aws-ai-practitioner-aif-c01-everything-i-studied-before-the-exam-166fb2ec3217',
     date: 'Jun 2026',
     source: 'Medium',
@@ -160,7 +160,6 @@ export const socialLinks = [
   { id: 'credly', label: 'Credly', url: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url' },
   { id: 'distinction', label: 'My Distinction Course', url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a' },
   { id: 'email', label: 'Email', url: 'mailto:khachariyatrusha@gmail.com' },
-  { id: 'calendly', label: 'Book Call', url: 'https://calendly.com/khachariyatrusha' },
 ];
 
 export const siteConfig = {
@@ -169,5 +168,4 @@ export const siteConfig = {
   resumeUpdated: 'June 2026',
   siteUrl: 'https://portfolio-seven-phi-zyohdnoii5.vercel.app',
   mediumUrl: 'https://medium.com/@khachariyatrusha',
-  calendlyUrl: 'https://calendly.com/khachariyatrusha',
 };

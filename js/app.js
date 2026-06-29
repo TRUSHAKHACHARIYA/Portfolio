@@ -107,7 +107,7 @@ function renderProjects() {
     </div>
     <div class="project-group">
       <h3 class="project-group-label">7Span Work</h3>
-      <p class="project-group-sub">Production systems built as part of my role at 7Span.</p>
+      <p class="project-group-sub">Production systems I've built as part of my role at 7Span.</p>
       <div class="projects-grid">${work.map(renderProjectCard).join('')}</div>
     </div>
   `;
