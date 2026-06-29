@@ -2,6 +2,7 @@ import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, so
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
 import { renderCourses } from './courses.js';
 import { renderCertifications } from './certifications.js';
+import { renderWriting } from './writing.js';
 import { renderSocialLinks } from './social.js';
 import { renderSectionMarquees } from './effects.js';
 
@@ -252,6 +253,7 @@ function bootstrapApp() {
   renderProjects();
   renderCertifications();
   renderCourses();
+  renderWriting();
   renderSocialLinks('contactSocials', socialLinks);
   initLenis();
   initStaggeredReveal();

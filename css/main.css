@@ -132,6 +132,7 @@ a, button { cursor: pointer; }
 
 .section-about { background: rgba(255, 255, 255, 0.015); }
 .section-experience { background: rgba(255, 255, 255, 0.015); }
+.section-events { background: rgba(255, 255, 255, 0.015); }
 .section-writing { background: rgba(255, 255, 255, 0.015); }
 .section-contact { background: rgba(255, 255, 255, 0.015); }
 .section-courses {
@@ -923,6 +924,14 @@ a, button { cursor: pointer; }
 .education-institution {
   font-size: 0.82rem;
   color: var(--text-muted);
+}
+
+.event-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: 10px;
+  max-width: 640px;
 }
 
 /* ── Certifications ── */

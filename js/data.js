@@ -171,6 +171,14 @@ export const publishedCourses = [
   },
 ];
 
+export const writingFeatured = {
+  platform: 'Medium',
+  title: 'Thoughts on AI Engineering',
+  desc: 'Technical articles on LLMs, RAG pipelines, cloud AI certifications, and production agent systems.',
+  status: 'Published on Medium',
+  linkLabel: 'Read all articles on Medium ↗',
+};
+
 export const socialLinks = [
   { id: 'github', label: 'GitHub', url: 'https://github.com/TRUSHAKHACHARIYA' },
   { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/trusha-khachariya-tk' },
