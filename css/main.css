@@ -1005,6 +1005,39 @@ a, button { cursor: pointer; }
 
 .cert-link:hover { opacity: 0.8; }
 
+.cert-modules {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 640px;
+}
+
+.cert-module {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+}
+
+.cert-module-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.cert-module-link {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+}
+
 /* ── Published courses ── */
 .published-course-grid {
   display: grid;

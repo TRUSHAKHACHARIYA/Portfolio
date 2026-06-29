@@ -126,8 +126,36 @@ export const certifications = [
     name: 'AWS Certified AI Practitioner',
     issuer: 'Amazon Web Services',
     featured: true,
+    featuredLabel: 'Primary Certification',
     status: 'Verified',
-    credlyUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
+    verifyUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
+    linkLabel: 'Verify on Credly ↗',
+  },
+  {
+    id: 'anthropic-cpn',
+    name: 'Anthropic CPN Learning Path',
+    issuer: 'Anthropic',
+    featured: true,
+    featuredLabel: 'Learning Path',
+    status: 'Completed · 4 modules',
+    modules: [
+      {
+        name: 'Introduction to Agent Skills',
+        verifyUrl: 'https://verify.skilljar.com/c/2bz6a496ic66',
+      },
+      {
+        name: 'Building with the Claude API',
+        verifyUrl: 'https://verify.skilljar.com/c/7bx8tq25bszv',
+      },
+      {
+        name: 'Introduction to Model Context Protocol',
+        verifyUrl: 'https://verify.skilljar.com/c/owu37ugd8xr3',
+      },
+      {
+        name: 'Claude Code in Action',
+        verifyUrl: 'https://verify.skilljar.com/c/9wgte6dvwpqq',
+      },
+    ],
   },
 ];
 
