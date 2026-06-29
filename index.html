@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Trusha Khachariya · AI/ML Engineer building LLM-powered SaaS · LangChain · RAG · FastAPI · AI Agents"/>
+  <meta name="description" content="Trusha Khachariya · AI/ML Engineer · LLM Systems &amp; Production RAG"/>
   <meta name="author" content="Trusha Khachariya"/>
   <meta name="theme-color" content="#04080f"/>
   <meta property="og:title" content="Trusha Khachariya · AI/ML Engineer"/>
-  <meta property="og:description" content="Building LLM-powered SaaS · LangChain · RAG · FastAPI · AI Agents"/>
+  <meta property="og:description" content="LLM Systems &amp; Production RAG · LangChain · FastAPI · AI Agents"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app"/>
   <meta property="og:image" content="https://portfolio-seven-phi-zyohdnoii5.vercel.app/assets/og-preview.jpg"/>
@@ -19,8 +19,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%2304080f'/><text x='50' y='68' font-family='Arial Black,sans-serif' font-size='44' fill='%2300d4ff' text-anchor='middle'>TK</text></svg>" type="image/svg+xml"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/main.css?v=22"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/main.css?v=24"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,254 +53,241 @@
 
 <a href="#hero" class="skip-link">Skip to content</a>
 
-<div class="portfolio">
-
-  <nav class="nav">
-    <a href="#hero" class="nav-logo">TK</a>
-    <div class="nav-links">
-      <a href="#projects" class="text-link">Work</a>
-      <a href="#about" class="text-link">About</a>
-      <a href="https://medium.com/@khachariyatrusha" class="text-link" target="_blank" rel="noopener noreferrer">Writing</a>
-      <a href="assets/Trusha_Khachariya.pdf" class="nav-cta" data-resume-link download="Trusha_Khachariya_Resume.pdf">Resume ↓</a>
-    </div>
-    <button type="button" class="nav-toggle" id="burgerBtn" aria-label="Open menu">
-      <span></span><span></span>
-    </button>
-  </nav>
-
-  <div class="mobile-menu" id="mobileMenu" hidden>
-    <button type="button" class="mobile-close" id="mobileCloseBtn" aria-label="Close menu">×</button>
-    <a href="#projects">Work</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#courses">Courses</a>
-    <a href="https://medium.com/@khachariyatrusha" target="_blank" rel="noopener noreferrer">Writing</a>
-    <a href="#contact">Get In Touch</a>
-    <a href="assets/Trusha_Khachariya.pdf" class="nav-cta" data-resume-link download="Trusha_Khachariya_Resume.pdf">Resume ↓</a>
+<nav class="nav">
+  <a href="#hero" class="nav-logo">TK</a>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="assets/Trusha_Khachariya.pdf" class="nav-cta" data-resume-link target="_blank" rel="noopener noreferrer">Resume ↓</a>
   </div>
+  <button type="button" class="nav-toggle" id="burgerBtn" aria-label="Open menu">
+    <span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <button type="button" class="mobile-close" id="mobileCloseBtn" aria-label="Close menu">×</button>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+  <a href="assets/Trusha_Khachariya.pdf" class="nav-cta" data-resume-link target="_blank" rel="noopener noreferrer">Resume ↓</a>
+</div>
+
+<main class="portfolio">
 
   <section class="hero section" id="hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <div class="hero-kicker">
-          <div class="hero-kicker-dot"></div>
-          <span class="eyebrow">AI / ML Engineer · Ahmedabad, India</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="hero-title-line name" id="heroNameLine">Trusha</span>
-          <span class="hero-title-line surname" id="heroSurnameLine">Khachariya</span>
-        </h1>
-
-        <div class="hero-role-row">
-          <span class="hero-role">AI/ML Engineer</span>
-          <span class="hero-sep">·</span>
-          <span class="hero-cert">AWS Certified AI Practitioner</span>
-        </div>
-
-        <p class="hero-tagline body-text">
-          I build <strong>LLM-powered systems that ship</strong>: RAG pipelines,
-          multi-agent workflows, and production SaaS. LangGraph, Claude,
-          FastAPI, and whatever solves the problem.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">View Projects →</a>
-          <a href="#contact" class="btn-ghost">Get In Touch</a>
-        </div>
-
-        <div class="hero-stats glass-card">
-          <div class="stat">
-            <div class="stat-num" data-count="18" data-suffix="+">0+</div>
-            <div class="stat-label">Months exp.</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num" data-count="6" data-suffix="+">0+</div>
-            <div class="stat-label">Systems built</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num" data-text="2">2</div>
-            <div class="stat-label">SaaS in prod.</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num" data-text="5+">5+</div>
-            <div class="stat-label">LLM APIs</div>
-          </div>
-        </div>
+    <div class="container hero-inner">
+      <p class="hero-status">// open to opportunities</p>
+      <h1 class="hero-name">Trusha Khachariya</h1>
+      <p class="hero-role">AI/ML Engineer</p>
+      <p class="hero-bio">
+        I build production LLM systems: RAG pipelines, AI agents, and intelligent SaaS. Not demos.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn-outline">View Projects</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
       </div>
-
-      <div class="hero-visual hero-vis">
-        <canvas id="robot-canvas"></canvas>
-      </div>
+      <hr class="hero-divider"/>
+      <p class="hero-meta">AWS Certified · 2 SaaS Live · 4+ LLM APIs · 7Span</p>
     </div>
   </section>
 
   <div class="marquee-section" data-section-marquee="0"></div>
 
-  <section class="section" id="about">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">01</span>
-      <div class="section-header-row">
-        <div>
-          <div class="eyebrow">About</div>
-          <h2 class="section-title">The engineer behind the <em>stack</em></h2>
+  <section class="section section-about" id="about">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">About</span>
+        <h2 class="section-heading">The Mind Behind the Machine</h2>
+      </header>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="body-text">I'm an AI/ML Engineer at 7Span in Ahmedabad, building LLM-powered systems that ship to production, not just notebooks.</p>
+          <p class="body-text">My focus is RAG pipelines, multi-agent orchestration, and intelligent SaaS. I've built everything from multi-tenant WhatsApp bots to citation-verified Australian tax research tools powered by Claude.</p>
+          <p class="body-text">AWS Certified AI Practitioner. Currently building Aurium AI, BOTIQ AI, and DocMind, all in public.</p>
+          <div class="about-tags" id="aboutTags"></div>
         </div>
-        <div class="avail">
-          <span class="avail-dot"></span>
-          Open to work
-        </div>
-      </div>
-    </div>
-    <div class="about-grid">
-      <div class="about-copy">
-        <p class="body-text">I build AI systems that ship, not demos that live in Jupyter notebooks. My stack is LangGraph, Claude, FastAPI, and whatever solves the problem fastest.</p>
-        <p class="body-text">I've gone from LangChain intern to shipping two SaaS products in production. Currently at 7Span by day, building Aurium AI by night.</p>
-        <p class="body-text"><strong>Currently building:</strong> Aurium AI, BOTIQ AI, DocMind.</p>
-      </div>
-      <div class="terminal glass-card">
-        <div class="terminal-bar">
-          <div class="dot dot-r"></div>
-          <div class="dot dot-y"></div>
-          <div class="dot dot-g"></div>
-        </div>
-        <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd"> cat profile.json</span></div>
-        <div class="term-line">{</div>
-        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"name"</span>: <span class="term-val">"Trusha Khachariya"</span>,</div>
-        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"role"</span>: <span class="term-val">"AI/ML Engineer"</span>,</div>
-        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"stack"</span>: [<span class="term-val">"LangGraph"</span>, <span class="term-val">"Claude"</span>, <span class="term-val">"FastAPI"</span>],</div>
-        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"building"</span>: [<span class="term-val">"Aurium AI"</span>, <span class="term-val">"BOTIQ AI"</span>],</div>
-        <div class="term-line">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_work"</span></div>
-        <div class="term-line">}</div>
-        <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cursor"></span></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="marquee-section marquee-reverse" data-section-marquee="1"></div>
-
-  <section class="section section-alt section-projects" id="projects">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">02</span>
-      <div class="section-header">
-        <div>
-          <div class="eyebrow">Selected Work</div>
-          <h2 class="section-title">Things I've <em>built</em></h2>
-          <p class="section-sub body-text">Production systems, personal SaaS, and client work at 7Span.</p>
-        </div>
-      </div>
-    </div>
-    <div class="project-filters" id="projectFilters"></div>
-    <div class="projects-list" id="projectsGrid"></div>
-  </section>
-
-  <div class="marquee-section" data-section-marquee="2"></div>
-
-  <section class="section" id="skills">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">03</span>
-      <div class="eyebrow">Skills</div>
-      <h2 class="section-title">Core <em>capabilities</em></h2>
-      <p class="section-sub body-text">Technologies and frameworks I use to build production AI systems.</p>
-    </div>
-    <div class="skills-grid" id="skillsGrid"></div>
-  </section>
-
-  <section class="section section-alt" id="experience">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">04</span>
-      <div class="eyebrow">Experience</div>
-      <h2 class="section-title">Where I've <em>worked</em></h2>
-    </div>
-    <div class="exp-list">
-      <div class="exp-row glass-card">
-        <div class="exp-date">Sep 2025 ·<br>Present</div>
-        <div class="exp-body">
-          <div class="exp-role">AI/ML Engineer</div>
-          <div class="exp-co">7Span · Ahmedabad · Full-time</div>
-          <ul class="exp-bullets">
-            <li>Shipping personal SaaS products (DocWise, BOTIQ AI) with RAG pipelines, multi-tenant auth, and public GitHub repos</li>
-            <li>Building Aurium AI: citation-verified Australian tax RAG using LangGraph, Claude API, and Pinecone</li>
-            <li>Developing production LLM applications with FastAPI, LangGraph, and pgvector/Qdrant semantic search</li>
-          </ul>
-        </div>
-      </div>
-      <div class="exp-row glass-card">
-        <div class="exp-date">Jan 2025 ·<br>Jul 2025</div>
-        <div class="exp-body">
-          <div class="exp-role">AI/ML Engineering Intern</div>
-          <div class="exp-co">7Span · Ahmedabad · Internship</div>
-          <ul class="exp-bullets">
-            <li>Built Resume Chatbot with multi-agent LangGraph architecture and 4 specialized sub-agents via FastAPI REST API</li>
-            <li>Delivered Denny Solution RAG platform with two-stage retrieval and re-ranking (Streamlit + Ragie.ai)</li>
-            <li>Integrated OpenAI, Claude, and Ragie APIs in production client projects at 7Span</li>
-          </ul>
+        <div class="terminal">
+          <div class="terminal-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd"> cat profile.json</span></div>
+          <div class="term-line">{</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"name"</span>: <span class="term-val">"Trusha Khachariya"</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"role"</span>: <span class="term-val">"AI/ML Engineer"</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"specialization"</span>: [<span class="term-val">"LLM Systems"</span>, <span class="term-val">"RAG Pipelines"</span>, <span class="term-val">"AI Agents"</span>],</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"building"</span>: [<span class="term-val">"Aurium AI"</span>, <span class="term-val">"BOTIQ AI"</span>],</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_work"</span></div>
+          <div class="term-line">}</div>
+          <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cursor"></span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="education">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">05</span>
-      <div class="eyebrow">Education</div>
-      <h2 class="section-title">Degrees &amp; <em>certifications</em></h2>
+  <section class="section section-skills" id="skills">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Core Capabilities</span>
+        <h2 class="section-heading">What I use to build production AI</h2>
+        <p class="section-subtext">Grouped by domain for quick scanning.</p>
+      </header>
+      <div class="capabilities-grid" id="skillsGrid"></div>
     </div>
-    <div class="edu-list">
-      <div class="edu-row glass-card">
-        <div class="edu-degree">B.E. Computer Science Engineering (AI &amp; Machine Learning)</div>
-        <div class="edu-school">New L J Institute of Engineering &amp; Technology, Ahmedabad</div>
-        <div class="edu-period">Oct 2023 · Jun 2025 · Graduated</div>
-      </div>
-      <div class="edu-row glass-card">
-        <div class="edu-degree">Diploma · Computer Engineering</div>
-        <div class="edu-school">OM Engineering College, Junagadh</div>
-        <div class="edu-period">Jun 2020 · Jul 2023</div>
-      </div>
-      <div class="edu-row glass-card">
-        <div class="edu-degree">AWS Certified AI Practitioner</div>
-        <div class="edu-school">Amazon Web Services</div>
-        <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" class="text-link edu-link" target="_blank" rel="noopener noreferrer">Verify on Credly →</a>
+  </section>
+
+  <section class="section section-projects" id="projects">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Projects</span>
+        <h2 class="section-heading">Things I've built</h2>
+        <p class="section-subtext">Production systems, personal SaaS, and client work at 7Span.</p>
+      </header>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section-experience" id="experience">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Experience</span>
+        <h2 class="section-heading">Where I've worked</h2>
+      </header>
+      <div class="experience-timeline">
+        <article class="experience-entry stagger-item">
+          <p class="experience-period">Sep 2025 · Present</p>
+          <h3 class="experience-role">AI/ML Engineer · 7Span · Ahmedabad</h3>
+          <p class="experience-description">Building production LLM systems: RAG pipelines with LangGraph, multi-agent architectures, and personal SaaS (DocWise, BOTIQ AI).</p>
+          <div class="project-tech">
+            <span class="tech-pill">FastAPI</span>
+            <span class="tech-pill">LangGraph</span>
+            <span class="tech-pill">pgvector</span>
+            <span class="tech-pill">Claude API</span>
+          </div>
+        </article>
+        <article class="experience-entry stagger-item">
+          <p class="experience-period">Jan 2025 · Jul 2025</p>
+          <h3 class="experience-role">AI/ML Engineering Intern · 7Span</h3>
+          <p class="experience-description">Built Resume Chatbot (multi-agent LangGraph) and Denny Solution RAG platform. Integrated OpenAI, Claude, and Ragie APIs.</p>
+          <div class="project-tech">
+            <span class="tech-pill">LangChain</span>
+            <span class="tech-pill">Ragie.ai</span>
+            <span class="tech-pill">Streamlit</span>
+            <span class="tech-pill">OpenAI</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt" id="courses">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">06</span>
-      <div class="eyebrow">Learning &amp; Courses</div>
-      <h2 class="section-title">Continuous <em>learning</em></h2>
-      <p class="section-sub body-text">Certifications and courses that shaped my AI engineering foundation.</p>
+  <section class="section section-education" id="education">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Education</span>
+        <h2 class="section-heading">Degrees &amp; certifications</h2>
+      </header>
+      <div class="education-list">
+        <article class="education-card stagger-item">
+          <div class="education-icon" aria-hidden="true">🎓</div>
+          <div>
+            <p class="education-period">Oct 2023 · Jun 2025</p>
+            <h3 class="education-title">B.E. Computer Science (AI &amp; Machine Learning)</h3>
+            <p class="education-institution">New L J Institute of Engineering &amp; Technology, Ahmedabad</p>
+          </div>
+        </article>
+        <article class="education-card stagger-item">
+          <div class="education-icon" aria-hidden="true">📘</div>
+          <div>
+            <p class="education-period">Jun 2020 · Jul 2023</p>
+            <h3 class="education-title">Diploma · Computer Engineering</h3>
+            <p class="education-institution">OM Engineering College, Junagadh</p>
+          </div>
+        </article>
+        <article class="education-card stagger-item">
+          <div class="education-icon" aria-hidden="true">🏅</div>
+          <div>
+            <p class="education-period">AWS Certified</p>
+            <h3 class="education-title">AWS Certified AI Practitioner</h3>
+            <p class="education-institution">Amazon Web Services</p>
+            <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" class="course-link" target="_blank" rel="noopener noreferrer">Verify on Credly ↗</a>
+          </div>
+        </article>
+      </div>
     </div>
-    <div class="courses-grid" id="coursesGrid"></div>
+  </section>
+
+  <section class="section section-courses" id="courses">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Learning &amp; Courses</span>
+        <h2 class="section-heading">Certifications &amp; structured learning</h2>
+      </header>
+      <div class="course-grid" id="coursesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section-writing" id="writing">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Writing</span>
+        <h2 class="section-heading">Thoughts on AI Engineering</h2>
+        <p class="section-subtext">Published on Medium.</p>
+      </header>
+      <a href="https://medium.com/@khachariyatrusha" class="writing-link" id="mediumProfileLink" target="_blank" rel="noopener noreferrer">Read all articles on Medium ↗</a>
+    </div>
+  </section>
+
+  <section class="section section-resume" id="resume">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Resume</span>
+        <h2 class="section-heading">Download or preview my latest CV</h2>
+      </header>
+      <div class="resume-card stagger-item">
+        <div class="resume-info">
+          <p class="resume-filename">📄 Trusha_Khachariya.pdf</p>
+          <p class="resume-title">AI/ML Engineer · AWS Certified AI Practitioner</p>
+          <p class="resume-tags">LangChain · RAG · FastAPI · LangGraph · Vector DBs</p>
+          <p class="resume-updated">Last updated: <span id="resumeUpdated">June 2026</span></p>
+        </div>
+        <div class="resume-actions">
+          <a href="assets/Trusha_Khachariya.pdf" class="btn-download" data-resume-link download="Trusha_Khachariya_Resume.pdf">Download PDF ↓</a>
+          <a href="assets/Trusha_Khachariya.pdf" class="btn-view-online" data-resume-link target="_blank" rel="noopener noreferrer">View Online ↗</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section section-contact" id="contact">
-    <div class="section-heading-wrap">
-      <span class="section-index" aria-hidden="true">07</span>
-      <div class="eyebrow">Contact</div>
-      <h2 class="contact-headline">Let's build<br>something <em>remarkable</em></h2>
-      <p class="contact-sub">Open to freelance, full-time, and interesting AI projects.<br>I reply within 24 hours.</p>
-    </div>
-    <a href="mailto:khachariyatrusha@gmail.com" class="contact-email" data-email-link>khachariyatrusha@gmail.com ↗</a>
-    <div class="contact-socials">
-      <a href="https://github.com/TRUSHAKHACHARIYA" class="social-link text-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/trusha-khachariya-tk" class="social-link text-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://medium.com/@khachariyatrusha" class="social-link text-link" target="_blank" rel="noopener noreferrer">Medium</a>
-      <a href="https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url" class="social-link text-link" target="_blank" rel="noopener noreferrer">Credly</a>
-      <a href="https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a" class="social-link text-link" target="_blank" rel="noopener noreferrer">Distinction</a>
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Contact</span>
+        <h2 class="section-heading">Open to opportunities</h2>
+        <p class="section-subtext">Collabs, freelance, and interesting AI work. I reply within 24 hours.</p>
+      </header>
+      <p class="contact-line">
+        <a href="mailto:khachariyatrusha@gmail.com" class="contact-email" data-email-link>khachariyatrusha@gmail.com</a>
+        <span class="contact-sep">·</span>
+        <span class="contact-location">Ahmedabad, Gujarat, India</span>
+      </p>
+      <div class="social-grid" id="contactSocials"></div>
     </div>
   </section>
 
-  <footer class="footer">
-    <p>© <span id="footerYear">2026</span> Trusha Khachariya · AI/ML Engineer · Ahmedabad</p>
-  </footer>
+</main>
 
-</div>
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>TK · AI/ML Engineer · Ahmedabad</span>
+    <span>© <span id="footerYear">2026</span> Trusha Khachariya</span>
+  </div>
+</footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/robot-scene.js?v=22"></script>
-<script type="module" src="js/app.js?v=22"></script>
+<script type="module" src="js/app.js?v=24"></script>
 </body>
 </html>

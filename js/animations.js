@@ -66,12 +66,14 @@ export function initStaggeredReveal() {
         el.classList.add('section-visible');
 
         const items = el.querySelectorAll(
-          '.eyebrow, .section-title, .section-sub, .body-text, .project-row, .skill-card, .exp-row, .edu-row, .course-row, .terminal, .hero-kicker, .hero-role-row, .hero-tagline, .hero-actions, .hero-stats, .contact-headline, .contact-sub, .contact-email, .social-link, .project-filter'
+          '.section-eyebrow, .section-heading, .section-subtext, .body-text, .stagger-item, .terminal, .hero-status, .hero-name, .hero-role, .hero-bio, .hero-cta-group, .hero-divider, .hero-meta, .resume-card, .contact-line, .writing-link'
         );
 
         items.forEach((item, i) => {
-          item.classList.add('stagger-item');
-          item.style.transitionDelay = `${i * 80}ms`;
+          if (!item.classList.contains('stagger-item')) {
+            item.classList.add('stagger-item');
+          }
+          item.style.transitionDelay = `${Math.min(i * 50, 300)}ms`;
           item.classList.add('vis');
         });
 

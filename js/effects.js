@@ -55,11 +55,11 @@ export function renderSectionMarquees(sectionMarquees) {
     }
 
     const doubled = [...config.items, ...config.items];
-    const spans = doubled
-      .map((label) => `<span>${label}</span><span class="marquee-dot">·</span>`)
+    const pills = doubled
+      .map((label) => `<span class="marquee-item">${label}</span>`)
       .join('');
 
     const direction = config.reverse ? ' reverse' : '';
-    el.innerHTML = `<div class="marquee-track${direction}" style="animation-duration:${config.speed}s">${spans}</div>`;
+    el.innerHTML = `<div class="marquee-container"><div class="marquee-track${direction}" style="animation-duration:${config.speed}s">${pills}</div></div>`;
   });
 }

@@ -1,56 +1,26 @@
-import { siteConfig, sectionMarquees, skillCapabilities, projects, projectFilters } from './data.js';
+import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, socialLinks } from './data.js';
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
 import { initLoader } from './loader.js';
-import { initRobot, bindRobotProjectEyes } from './robot.js';
 import { renderCourses } from './courses.js';
-import {
-  initHeroTextReveal,
-  revealHeroWords,
-  renderSectionMarquees,
-} from './effects.js';
+import { renderSocialLinks } from './social.js';
+import { renderSectionMarquees } from './effects.js';
 
-let activeProjectFilter = 'all';
-
-function statusLabel(status) {
+function statusMeta(status) {
   const map = {
-    live: 'LIVE',
-    'in-dev': 'IN DEV',
-    nda: 'NDA',
-    archived: 'ARCHIVED',
+    live: { cls: 'project-status-live', label: 'LIVE' },
+    'in-dev': { cls: 'project-status-progress', label: 'IN PROGRESS' },
+    nda: { cls: 'project-status-nda', label: 'NDA' },
+    archived: { cls: 'project-status-archived', label: 'ARCHIVED' },
   };
-  return map[status] || status.toUpperCase();
+  return map[status] || map['in-dev'];
 }
 
-function projectMatchesFilter(project) {
-  if (activeProjectFilter === 'all') {
-    return true;
-  }
-  if (activeProjectFilter === 'archived') {
-    return project.status === 'archived';
-  }
-  return project.category === activeProjectFilter;
-}
-
-function renderProjectFilters() {
-  const wrap = document.getElementById('projectFilters');
+function renderAboutTags() {
+  const wrap = document.getElementById('aboutTags');
   if (!wrap) {
     return;
   }
-
-  wrap.innerHTML = projectFilters
-    .map(
-      (f) =>
-        `<button type="button" class="project-filter${f.id === activeProjectFilter ? ' active' : ''}" data-filter="${f.id}">${f.label}</button>`
-    )
-    .join('');
-
-  wrap.querySelectorAll('.project-filter').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      activeProjectFilter = btn.dataset.filter;
-      renderProjectFilters();
-      renderProjects();
-    });
-  });
+  wrap.innerHTML = aboutTags.map((t) => `<span class="tech-pill">${t}</span>`).join('');
 }
 
 function renderSkills() {
@@ -62,24 +32,13 @@ function renderSkills() {
   grid.innerHTML = skillCapabilities
     .map(
       (group) => `
-    <div class="skill-card glass-card stagger-item">
-      <h3 class="skill-card-title">${group.title}</h3>
-      <ul class="skill-list">
-        ${group.items
-          .map(
-            (item) => `
-          <li class="skill-item">
-            <div class="skill-item-head">
-              <span class="skill-name">${item.name}</span>
-              <span class="skill-pct">${item.level}%</span>
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" style="width: ${item.level}%" data-level="${item.level}"></div>
-            </div>
-          </li>
-        `
-          )
-          .join('')}
+    <div class="capability-card stagger-item">
+      <div class="capability-card-header">
+        <span class="capability-icon" aria-hidden="true">${group.icon}</span>
+        <span>${group.title}</span>
+      </div>
+      <ul class="capability-list">
+        ${group.items.map((item) => `<li class="skill-item">${item}</li>`).join('')}
       </ul>
     </div>
   `
@@ -88,133 +47,47 @@ function renderSkills() {
 }
 
 function renderProjects() {
-  const list = document.getElementById('projectsGrid');
-  if (!list) {
+  const grid = document.getElementById('projectsGrid');
+  if (!grid) {
     return;
   }
 
-  const filtered = projects.filter(projectMatchesFilter);
+  grid.innerHTML = projects
+    .map((p) => {
+      const status = statusMeta(p.status);
+      const tagsHtml = (p.shortTags || []).map((t) => `<span class="tech-pill">${t}</span>`).join('');
+      const featuredBadge = p.featured ? '<span class="project-badge-featured">FEATURED</span>' : '<span></span>';
 
-  if (filtered.length === 0) {
-    list.innerHTML = '<p class="projects-empty">No projects in this category.</p>';
-    return;
-  }
-
-  list.innerHTML = `
-    <div class="projects-list-head" aria-hidden="true">
-      <span>Project</span>
-      <span>Type · Status</span>
-      <span>Stack</span>
-      <span>Links</span>
-    </div>
-    ${filtered
-      .map((p) => {
-        const tagsHtml = (p.shortTags || []).map((t) => `<span class="tag">${t}</span>`).join('');
-        const meta = `${p.type} · ${statusLabel(p.status)}`;
-
-        let linksHtml = '';
-        if (p.status === 'nda') {
-          linksHtml = '<span class="project-nda">NDA</span>';
-        } else {
-          if (p.links.github) {
-            linksHtml += `<a href="${p.links.github}" class="text-link project-link" target="_blank" rel="noopener noreferrer">GitHub</a>`;
-          }
-          if (p.links.live) {
-            linksHtml += `<a href="${p.links.live}" class="text-link project-link" target="_blank" rel="noopener noreferrer">Live</a>`;
-          }
-          if (!p.links.github && !p.links.live) {
-            linksHtml = `<span class="project-nda">${statusLabel(p.status)}</span>`;
-          }
+      let linksHtml = '';
+      if (p.status === 'nda') {
+        linksHtml = '<span class="project-link-nda">Under NDA</span>';
+      } else if (p.status === 'in-dev') {
+        linksHtml = '<span class="project-link-nda">Coming soon</span>';
+      } else {
+        if (p.links.github) {
+          linksHtml += `<a href="${p.links.github}" class="project-link" target="_blank" rel="noopener noreferrer">GitHub ↗</a>`;
         }
-
-        return `
-        <article class="project-row stagger-item" data-category="${p.category}" data-status="${p.status}">
-          <div class="project-row-name">
-            <strong>${p.title}</strong>
-            <span class="project-row-desc">${p.desc}</span>
-          </div>
-          <div class="project-row-meta">${meta}</div>
-          <div class="project-row-stack">${tagsHtml}</div>
-          <div class="project-row-links">${linksHtml}</div>
-        </article>`;
-      })
-      .join('')}
-  `;
-
-  bindRobotProjectEyes();
-}
-
-function initStatCounters() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    return;
-  }
-
-  const statsEl = document.querySelector('.hero-stats');
-  if (!statsEl) {
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      if (!entries[0].isIntersecting) {
-        return;
+        if (p.links.live) {
+          linksHtml += `<a href="${p.links.live}" class="project-link project-link-primary" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>`;
+        }
       }
 
-      statsEl.querySelectorAll('[data-count]').forEach((el) => {
-        const target = Number(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        let current = 0;
-        const step = Math.max(1, Math.floor(target / 30));
-
-        function tick() {
-          current = Math.min(current + step, target);
-          el.textContent = `${current}${suffix}`;
-          if (current < target) {
-            requestAnimationFrame(tick);
-          }
-        }
-
-        tick();
-      });
-
-      observer.disconnect();
-    },
-    { threshold: 0.5 }
-  );
-
-  observer.observe(statsEl);
-}
-
-function initSkillBarAnimation() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.skill-bar-fill').forEach((bar) => {
-      bar.style.width = `${bar.dataset.level}%`;
-    });
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) {
-          return;
-        }
-        const bar = entry.target;
-        const level = bar.dataset.level;
-        bar.style.width = '0';
-        requestAnimationFrame(() => {
-          bar.style.width = `${level}%`;
-        });
-        observer.unobserve(bar);
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  document.querySelectorAll('.skill-bar-fill').forEach((bar) => {
-    bar.style.width = '0';
-    observer.observe(bar);
-  });
+      return `
+      <article class="project-card stagger-item" data-status="${p.status}">
+        <div class="project-meta-row">
+          <span class="${status.cls}">${status.label === 'LIVE' ? '● LIVE' : status.label === 'IN PROGRESS' ? '⟳ IN PROGRESS' : status.label}</span>
+          ${featuredBadge}
+        </div>
+        <div>
+          <h3 class="project-title">${p.title}</h3>
+          <p class="project-context">${p.context}</p>
+        </div>
+        <p class="project-description">${p.desc}</p>
+        <div class="project-tech">${tagsHtml}</div>
+        <div class="project-links">${linksHtml}</div>
+      </article>`;
+    })
+    .join('');
 }
 
 function initMobileMenu() {
@@ -262,7 +135,7 @@ function initNavScroll() {
 
 function initNavActive() {
   const sections = document.querySelectorAll('section[id]');
-  const links = document.querySelectorAll('.nav-links a[href^="#"]');
+  const links = document.querySelectorAll('.nav-link[href^="#"]');
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -270,7 +143,7 @@ function initNavActive() {
         if (entry.isIntersecting) {
           links.forEach((l) => l.classList.remove('active'));
           document
-            .querySelectorAll(`.nav-links a[href="#${entry.target.id}"]`)
+            .querySelectorAll(`.nav-link[href="#${entry.target.id}"]`)
             .forEach((l) => l.classList.add('active'));
         }
       });
@@ -294,14 +167,21 @@ function applySiteConfig() {
 
   document.querySelectorAll('[data-email-link]').forEach((el) => {
     el.href = `mailto:${siteConfig.email}`;
-    if (el.classList.contains('contact-email')) {
-      el.textContent = `${siteConfig.email} ↗`;
-    }
   });
 
   document.querySelectorAll('[data-resume-link]').forEach((el) => {
     el.href = siteConfig.resumePath;
   });
+
+  const mediumLink = document.getElementById('mediumProfileLink');
+  if (mediumLink) {
+    mediumLink.href = siteConfig.mediumUrl;
+  }
+
+  const resumeDate = document.getElementById('resumeUpdated');
+  if (resumeDate) {
+    resumeDate.textContent = siteConfig.resumeUpdated;
+  }
 }
 
 function initFooterYear() {
@@ -315,20 +195,16 @@ function bootstrapApp() {
   applySiteConfig();
   initFooterYear();
   renderSectionMarquees(sectionMarquees);
-  renderProjectFilters();
+  renderAboutTags();
   renderSkills();
   renderProjects();
   renderCourses();
-  initHeroTextReveal();
-  initRobot();
+  renderSocialLinks('contactSocials', socialLinks);
   initLenis();
   initStaggeredReveal();
-  initSkillBarAnimation();
-  initStatCounters();
   initMobileMenu();
   initNavScroll();
   initNavActive();
-  revealHeroWords(400);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

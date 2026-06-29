@@ -23,7 +23,7 @@ export function bindRobotProjectEyes() {
     return;
   }
 
-  document.querySelectorAll('.project-row:not([data-eyes-bound])').forEach((card) => {
+  document.querySelectorAll('.project-card:not([data-eyes-bound])').forEach((card) => {
     card.dataset.eyesBound = 'true';
     card.addEventListener('mouseenter', () => robotApi.setProjectHover(true));
     card.addEventListener('mouseleave', () => robotApi.setProjectHover(false));

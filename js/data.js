@@ -1,177 +1,128 @@
 export const sectionMarquees = [
   {
-    items: ['LangChain', 'FastAPI', 'Claude API', 'LangGraph', 'pgvector', 'RAG Systems', 'OpenAI GPT-4', 'Pinecone'],
-    speed: 25,
-    reverse: false,
-  },
-  {
-    items: ['SHIP FAST', 'NO DEMO GRAVEYARD', 'RAG OVER FINE-TUNING', 'AURIUM AI IN PROD', 'OPEN TO WORK'],
+    items: ['LangChain', 'FastAPI', 'Claude API', 'LangGraph', 'pgvector', 'RAG Systems', 'Pinecone', 'LangSmith'],
     speed: 28,
-    reverse: true,
-  },
-  {
-    items: ['CLAUDE API', 'LANGGRAPH', 'PGVECTOR', 'MULTI-AGENT', 'PRODUCTION SAAS', 'BOTIQ AI'],
-    speed: 32,
     reverse: false,
   },
 ];
 
-export const projectFilters = [
-  { id: 'all', label: 'All' },
-  { id: 'personal', label: 'Personal SaaS' },
-  { id: '7span', label: '7Span' },
-  { id: 'archived', label: 'Archived' },
-];
+export const aboutTags = ['LangGraph', 'RAG', 'FastAPI', 'Claude API', 'Multi-Agent', 'pgvector', 'Next.js', 'AWS'];
 
 export const projects = [
   {
+    num: '01',
     title: 'DocWise',
-    category: 'personal',
-    type: 'Personal SaaS',
+    context: 'Personal SaaS · Document AI',
     status: 'live',
-    desc: 'Multi-document AI workspace with RAG, Claude, Pinecone, and multi-tenant auth.',
-    shortTags: ['RAG', 'Claude', 'Pinecone', 'Next.js'],
+    featured: true,
+    desc: 'Secure multi-document AI workspace with RAG, Claude chat, Pinecone search, and multi-tenant auth.',
+    shortTags: ['Claude API', 'Pinecone', 'FastAPI', 'Next.js'],
     links: { github: 'https://github.com/TRUSHAKHACHARIYA/DocWise' },
   },
   {
+    num: '02',
     title: 'BOTIQ AI',
-    category: 'personal',
-    type: 'WhatsApp SaaS',
+    context: 'Personal SaaS · WhatsApp SMB',
     status: 'live',
+    featured: false,
     desc: 'WhatsApp Business SaaS with menu bot, lead pipeline, and Razorpay billing.',
-    shortTags: ['WhatsApp', 'FastAPI', 'Razorpay'],
+    shortTags: ['WhatsApp API', 'Razorpay', 'Node.js', 'FastAPI'],
     links: { github: 'https://github.com/TRUSHAKHACHARIYA/Whatsapp-Bot' },
   },
   {
-    title: 'Aurium AI',
-    category: 'personal',
-    type: 'Personal SaaS',
-    status: 'in-dev',
-    desc: 'Australian tax SaaS with citation-verified RAG, LangGraph, and pgvector.',
-    shortTags: ['SaaS', 'LangGraph', 'FastAPI'],
-    links: {},
-  },
-  {
-    title: 'DocMind',
-    category: 'personal',
-    type: 'Personal SaaS',
-    status: 'in-dev',
-    desc: 'BYOK document Q&A using Ragie.ai, FastAPI, and semantic search.',
-    shortTags: ['RAG', 'BYOK', 'FastAPI'],
-    links: {},
-  },
-  {
-    title: 'HIRE Framework',
-    category: 'personal',
-    type: 'Personal SaaS',
-    status: 'in-dev',
-    desc: 'AI recruiter evaluation with n8n workflows and LangChain scoring.',
-    shortTags: ['n8n', 'LangChain', 'Agents'],
-    links: {},
-  },
-  {
+    num: '03',
     title: 'Resume Chatbot',
-    category: '7span',
-    type: '7Span',
+    context: '7Span · AIML',
     status: 'nda',
+    featured: false,
     desc: 'Multi-agent LangGraph resume assistant with FastAPI and specialized sub-agents.',
-    shortTags: ['LangGraph', 'FastAPI', 'NLP'],
+    shortTags: ['LangGraph', 'FastAPI', 'LangChain'],
     links: {},
   },
   {
+    num: '04',
     title: 'Denny Solution',
-    category: '7span',
-    type: '7Span',
+    context: '7Span · AIML',
     status: 'nda',
+    featured: false,
     desc: 'RAG platform with two-stage retrieval and re-ranking using Streamlit and Ragie.ai.',
     shortTags: ['RAG', 'Ragie.ai', 'Streamlit'],
+    links: {},
+  },
+  {
+    num: '05',
+    title: 'Aurium AI',
+    context: 'Australian Tax SaaS',
+    status: 'in-dev',
+    featured: false,
+    desc: 'Claude + LangGraph + RAG citation-verified tax research tool. ETA: Soon.',
+    shortTags: ['LangGraph', 'Claude', 'pgvector'],
     links: {},
   },
 ];
 
 export const skillCapabilities = [
   {
-    title: 'AI & Machine Learning',
-    items: [
-      { name: 'LangChain', level: 80 },
-      { name: 'RAG Systems', level: 80 },
-      { name: 'LangGraph', level: 60 },
-      { name: 'Prompt Engineering', level: 75 },
-    ],
+    title: 'AI / ML Core',
+    icon: '◈',
+    items: ['LLMs & RAG', 'Machine Learning', 'NLP / Semantic Search', 'Prompt Engineering'],
   },
   {
-    title: 'LLM Orchestration',
-    items: [
-      { name: 'Multi-Agent Systems', level: 70 },
-      { name: 'LangSmith', level: 55 },
-      { name: 'n8n Automation', level: 65 },
-      { name: 'Vector Pipelines', level: 75 },
-    ],
+    title: 'Orchestration',
+    icon: '⇄',
+    items: ['LangChain', 'LangGraph', 'LangSmith', 'n8n / Make.com'],
   },
   {
-    title: 'Infrastructure & Databases',
-    items: [
-      { name: 'pgvector', level: 65 },
-      { name: 'Qdrant', level: 60 },
-      { name: 'Pinecone', level: 65 },
-      { name: 'PostgreSQL', level: 70 },
-    ],
+    title: 'LLM APIs',
+    icon: '⚡',
+    items: ['Claude API', 'OpenAI GPT-4', 'Ragie.ai', 'AWS Bedrock'],
   },
   {
-    title: 'LLM Providers & APIs',
-    items: [
-      { name: 'Claude API', level: 80 },
-      { name: 'OpenAI API', level: 75 },
-      { name: 'Ragie.ai', level: 65 },
-      { name: 'Embeddings APIs', level: 70 },
-    ],
+    title: 'Infra & Storage',
+    icon: '⚙',
+    items: ['pgvector / Supabase', 'Qdrant / Pinecone', 'FastAPI', 'Next.js 14'],
   },
   {
-    title: 'Programming Languages',
-    items: [
-      { name: 'Python', level: 90 },
-      { name: 'TypeScript', level: 55 },
-      { name: 'SQL', level: 70 },
-      { name: 'JavaScript', level: 65 },
-    ],
-  },
-  {
-    title: 'Dev Tools',
-    items: [
-      { name: 'Git', level: 85 },
-      { name: 'Docker', level: 70 },
-      { name: 'VS Code', level: 90 },
-      { name: 'Vercel / AWS', level: 65 },
-    ],
+    title: 'Languages',
+    icon: '{}',
+    items: ['Python', 'TypeScript', 'SQL', 'JavaScript'],
   },
 ];
 
 export const courses = [
+  {
+    id: 'aws-ai',
+    name: 'AWS Certified AI Practitioner',
+    platform: 'Amazon Web Services',
+    status: 'Verified',
+    certUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
+    linkLabel: 'Verify on Credly ↗',
+  },
   {
     id: 'distinction-ml',
     name: 'AI & Machine Learning',
     platform: 'Distinction',
     status: 'Completed',
     certUrl: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
-    summary:
-      'Covers supervised learning, model evaluation, feature engineering, and practical ML workflows for real-world datasets.',
-    nextSteps: 'Deepen into LLM fine-tuning, RAG evaluation metrics, and MLOps with FastAPI deployments.',
+    linkLabel: 'View Certificate ↗',
   },
-  {
-    id: 'aws-ai',
-    name: 'AWS Certified AI Practitioner',
-    platform: 'AWS / Skill Builder',
-    status: 'Completed',
-    certUrl: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url',
-    summary:
-      'Foundational AWS AI services, responsible AI, generative AI concepts, and cloud-native ML deployment patterns.',
-    nextSteps: 'Explore SageMaker pipelines, Bedrock integrations, and production monitoring on AWS.',
-  },
+];
+
+export const socialLinks = [
+  { id: 'github', label: 'GitHub', url: 'https://github.com/TRUSHAKHACHARIYA' },
+  { id: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/trusha-khachariya-tk' },
+  { id: 'medium', label: 'Medium', url: 'https://medium.com/@khachariyatrusha' },
+  { id: 'credly', label: 'Credly', url: 'https://www.credly.com/badges/83350457-f130-4255-9f55-73f12cde7d52/public_url' },
+  { id: 'distinction', label: 'Distinction', url: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a' },
+  { id: 'email', label: 'Email', url: 'mailto:khachariyatrusha@gmail.com' },
+  { id: 'calendly', label: 'Book Call', url: 'https://calendly.com/khachariyatrusha' },
 ];
 
 export const siteConfig = {
   email: 'khachariyatrusha@gmail.com',
   resumePath: 'assets/Trusha_Khachariya.pdf',
+  resumeUpdated: 'June 2026',
   siteUrl: 'https://portfolio-seven-phi-zyohdnoii5.vercel.app',
-  distinctionUrl: 'https://distinction.app/courses/7f3bd25b-5efd-4aa3-a2c8-5e21b666676a',
+  mediumUrl: 'https://medium.com/@khachariyatrusha',
+  calendlyUrl: 'https://calendly.com/khachariyatrusha',
 };
