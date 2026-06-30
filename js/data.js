@@ -81,6 +81,7 @@ export const pocProjects = [
   {
     title: 'LangGraph & LangChain Demo',
     context: 'POC · LLM Orchestration',
+    status: 'complete',
     desc: 'Demonstrates stateful LangGraph workflows and LangChain prompt chaining — multi-step retrieve, generate, and state-update nodes for building agent-style LLM apps.',
     shortTags: ['LangGraph', 'LangChain', 'OpenAI', 'Python'],
     github: 'https://github.com/TRUSHAKHACHARIYA/LangGraph-LangChain-Demo',
@@ -88,9 +89,26 @@ export const pocProjects = [
   {
     title: 'Model Context Protocol Demo',
     context: 'POC · MCP',
+    status: 'complete',
     desc: 'Bollywood movie recommendation app using MCP to store user genre preferences and recommendation history for personalized, context-aware suggestions.',
     shortTags: ['MCP', 'Python', 'Flask', 'Context Protocol'],
     github: 'https://github.com/TRUSHAKHACHARIYA/Model-Contex-Protocol_Demo',
+  },
+  {
+    title: 'Vectorless RAG',
+    context: 'POC · Document Q&A',
+    status: 'in-dev',
+    desc: 'FAQ and document Q&A using BM25 keyword retrieval and Ollama local LLM — no embeddings, no vector DB, zero cost.',
+    shortTags: ['BM25', 'Ollama', 'FastAPI', 'LangChain'],
+    github: 'https://github.com/TRUSHAKHACHARIYA/vectorless-rag-poc',
+  },
+  {
+    title: 'Firecrawl Web Scraper Dashboard',
+    context: 'POC · Web Scraping',
+    status: 'in-dev',
+    desc: 'Production-ready scraper dashboard using the Firecrawl API — scrape, crawl, and map any site into clean Markdown with a FastAPI backend and React/Vite frontend.',
+    shortTags: ['Firecrawl', 'FastAPI', 'React', 'Vite'],
+    github: 'https://github.com/TRUSHAKHACHARIYA/firecrawl-poc',
   },
 ];
 
