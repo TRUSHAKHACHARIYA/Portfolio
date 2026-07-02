@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "description": "Trusha Khachariya · AI/ML Engineer Portfolio",
+  "description": "Trusha Khachariya \u00b7 AI/ML Engineer Portfolio",
   "scripts": {
-    "dev": "npx serve . -l 3000"
+    "dev": "node init && npx serve . -l 3000"
   }
 }

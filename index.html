@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/main.css?v=54"/>
+  <link rel="stylesheet" href="css/main.css?v=55"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -82,12 +82,13 @@
 
   <section class="hero section" id="hero">
     <div class="container hero-inner">
-      <p class="hero-status">Open to opportunities</p>
+      <p class="hero-status">Open to AI/ML Engineer roles</p>
       <h1 class="hero-name">Trusha Khachariya</h1>
-      <p class="hero-role">AI/ML Engineer</p>
+      <p class="hero-role">Building AI products, agents, and RAG systems</p>
       <p class="hero-bio">
-        I build production LLM systems: RAG pipelines, AI agents, and intelligent SaaS. Not just demos.
+        I build production LLM systems: RAG pipelines, AI agents, and intelligent SaaS. Not just demos — <strong>2 live SaaS products shipped</strong> and <strong>4+ production AI systems</strong> in use.
       </p>
+      <div class="hero-stats" id="heroStats"></div>
       <div class="hero-cta-group">
         <a href="#projects" class="btn-outline">View Projects</a>
         <a href="#contact" class="btn-ghost">Get in Touch</a>
@@ -107,9 +108,8 @@
       </header>
       <div class="about-grid">
         <div class="about-copy">
-          <p class="body-text">I'm an AI/ML Engineer at 7Span in Ahmedabad, building LLM-powered systems that ship to production, not just notebooks.</p>
-          <p class="body-text">My focus is RAG pipelines, multi-agent orchestration, and intelligent SaaS. I've built everything from multi-tenant WhatsApp bots to citation-verified Australian tax research tools powered by Claude.</p>
-          <p class="body-text">I'm an AWS Certified AI Practitioner. At 7Span, I work on Resume AI and Denny Solution. On the side, I'm building Aurium AI, BOTIQ AI, and DocWise.</p>
+          <p class="body-text">I'm an AI/ML Engineer at 7Span in Ahmedabad. I ship production LLM systems — RAG pipelines, multi-agent orchestration, and SaaS products — not notebook prototypes.</p>
+          <p class="body-text">I also teach: I built an AWS Certified AI Practitioner prep course on Distinction and publish technical writing on Medium. That combination of building + explaining is how I work best.</p>
           <div class="about-tags" id="aboutTags"></div>
         </div>
         <div class="terminal" role="region" aria-label="Profile terminal preview">
@@ -120,11 +120,13 @@
           </div>
           <div class="term-line"><span class="term-prompt">❯</span><span class="term-cmd"> cat profile.json</span></div>
           <div class="term-line">{</div>
-          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"name"</span>: <span class="term-val">"Trusha Khachariya"</span>,</div>
-          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"role"</span>: <span class="term-val">"AI/ML Engineer"</span>,</div>
-          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"specialization"</span>: [<span class="term-val">"LLM Systems"</span>, <span class="term-val">"RAG Pipelines"</span>, <span class="term-val">"AI Agents"</span>],</div>
-          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"building"</span>: [<span class="term-val">"Aurium AI"</span>, <span class="term-val">"BOTIQ AI"</span>, <span class="term-val">"DocWise"</span>],</div>
-          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_opportunities"</span></div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"location"</span>: <span class="term-val">"Ahmedabad, India"</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"experience"</span>: <span class="term-val">"2+ years in AI/ML"</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"live_saas"</span>: <span class="term-val">2</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"production_systems"</span>: <span class="term-val">"4+"</span>,</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"stack"</span>: [<span class="term-val">"LangGraph"</span>, <span class="term-val">"FastAPI"</span>, <span class="term-val">"Claude"</span>, <span class="term-val">"pgvector"</span>],</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"teaching"</span>: [<span class="term-val">"Distinction course"</span>, <span class="term-val">"Medium"</span>],</div>
+          <div class="term-line">&nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-val">"open_to_ai_ml_roles"</span></div>
           <div class="term-line">}</div>
           <div class="term-line"><span class="term-prompt">❯</span> <span class="term-cursor"></span></div>
         </div>
@@ -143,14 +145,47 @@
     </div>
   </section>
 
+  <section class="section section-certifications" id="certifications">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Certifications</span>
+        <h2 class="section-heading">Credentials & Training</h2>
+        <p class="section-subtext">AWS certification and Anthropic Claude training, all verifiable online.</p>
+      </header>
+      <div class="cert-grid" id="certificationsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section-courses" id="courses">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Published Courses</span>
+        <h2 class="section-heading">Teaching on Distinction</h2>
+        <p class="section-subtext">Courses I've built on Distinction, including my AWS Certified AI Practitioner prep course.</p>
+      </header>
+      <div class="published-course-grid" id="coursesGrid"></div>
+    </div>
+  </section>
+
+  <section class="section section-writing" id="writing">
+    <div class="container">
+      <header class="section-header">
+        <span class="section-eyebrow">Writing</span>
+        <h2 class="section-heading">Technical Writing</h2>
+        <p class="section-subtext">Articles published on Medium — exam prep, AI standards, and production patterns.</p>
+      </header>
+      <div class="published-course-grid" id="writingGrid"></div>
+    </div>
+  </section>
+
   <section class="section section-projects" id="projects">
     <div class="container">
       <header class="section-header">
         <span class="section-eyebrow">Projects</span>
-        <h2 class="section-heading">Things I've built</h2>
-        <p class="section-subtext">Personal SaaS products I build on the side, plus production systems from my work at 7Span.</p>
+        <h2 class="section-heading">Production work that matters</h2>
+        <p class="section-subtext">Four strongest builds — problem, solution, stack, and outcome. Everything else lives in POCs below.</p>
       </header>
-      <div class="projects-groups" id="projectsGrid"></div>
+      <div id="projectsGrid"></div>
     </div>
   </section>
 
@@ -158,8 +193,8 @@
     <div class="container">
       <header class="section-header">
         <span class="section-eyebrow">Proof of Concept</span>
-        <h2 class="section-heading">AI Experiments & Demos</h2>
-        <p class="section-subtext">Hands-on POCs exploring LangGraph, LangChain, MCP, vectorless RAG, and web scraping — including work in progress.</p>
+        <h2 class="section-heading">Experiments & Side Builds</h2>
+        <p class="section-subtext">In-progress ideas, open-source demos, and additional 7Span experiments — lighter weight than the main projects above.</p>
       </header>
       <div class="projects-grid" id="pocGrid"></div>
     </div>
@@ -170,41 +205,9 @@
       <header class="section-header">
         <span class="section-eyebrow">Experience</span>
         <h2 class="section-heading">Where I've worked</h2>
+        <p class="section-subtext">Roles with measurable outcomes — not just responsibilities.</p>
       </header>
-      <div class="experience-timeline">
-        <article class="experience-entry stagger-item">
-          <p class="experience-period">Sep 2025 · Present</p>
-          <h3 class="experience-role">AI/ML Engineer · 7Span · Ahmedabad</h3>
-          <p class="experience-description">At 7Span, I build production LLM systems including Resume AI and Denny Solution. On the side, I'm building DocWise, BOTIQ AI, and Aurium AI.</p>
-          <div class="project-tech">
-            <span class="tech-pill">FastAPI</span>
-            <span class="tech-pill">LangGraph</span>
-            <span class="tech-pill">pgvector</span>
-            <span class="tech-pill">Claude API</span>
-          </div>
-        </article>
-        <article class="experience-entry stagger-item">
-          <p class="experience-period">Jan 2025 · Jul 2025</p>
-          <h3 class="experience-role">AI/ML Engineering Intern · 7Span</h3>
-          <p class="experience-description">Built Resume AI (multi-agent LangGraph) and the Denny Solution RAG platform at 7Span. Integrated OpenAI, Claude, and the Ragie API.</p>
-          <div class="project-tech">
-            <span class="tech-pill">LangChain</span>
-            <span class="tech-pill">Ragie.ai</span>
-            <span class="tech-pill">Streamlit</span>
-            <span class="tech-pill">OpenAI</span>
-          </div>
-        </article>
-        <article class="experience-entry stagger-item">
-          <p class="experience-period">Oct 2023 · Dec 2023</p>
-          <h3 class="experience-role">AI & ML Intern · Acmegrade · Remote · Bengaluru</h3>
-          <p class="experience-description">Remote AI & ML internship with Acmegrade, based in Bengaluru, Karnataka. Worked on applied machine learning projects using Google Colab, Jupyter Notebook, and Kaggle datasets.</p>
-          <div class="project-tech">
-            <span class="tech-pill">Google Colab</span>
-            <span class="tech-pill">Jupyter Notebook</span>
-            <span class="tech-pill">Kaggle</span>
-          </div>
-        </article>
-      </div>
+      <div class="experience-timeline" id="experienceTimeline"></div>
     </div>
   </section>
 
@@ -263,39 +266,6 @@
           </div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="section section-certifications" id="certifications">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-eyebrow">Certifications</span>
-        <h2 class="section-heading">Credentials & Training</h2>
-        <p class="section-subtext">AWS certification and Anthropic Claude training, all verifiable online.</p>
-      </header>
-      <div class="cert-grid" id="certificationsGrid"></div>
-    </div>
-  </section>
-
-  <section class="section section-courses" id="courses">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-eyebrow">Published Courses</span>
-        <h2 class="section-heading">Teaching on Distinction</h2>
-        <p class="section-subtext">Courses I've built on Distinction, including my AWS Certified AI Practitioner prep course.</p>
-      </header>
-      <div class="published-course-grid" id="coursesGrid"></div>
-    </div>
-  </section>
-
-  <section class="section section-writing" id="writing">
-    <div class="container">
-      <header class="section-header">
-        <span class="section-eyebrow">Writing</span>
-        <h2 class="section-heading">Technical Writing</h2>
-        <p class="section-subtext">Articles published on Medium.</p>
-      </header>
-      <div class="published-course-grid" id="writingGrid"></div>
     </div>
   </section>
 
@@ -363,6 +333,6 @@
   </div>
 </footer>
 
-<script type="module" src="js/app.js?v=54"></script>
+<script type="module" src="js/app.js?v=55"></script>
 </body>
 </html>

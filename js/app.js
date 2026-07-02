@@ -1,4 +1,4 @@
-import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, socialLinks } from './data.js';
+import { siteConfig, sectionMarquees, skillCapabilities, projects, aboutTags, socialLinks, heroStats, experience } from './data.js';
 import { initLenis, initStaggeredReveal, scrollToElement } from './animations.js';
 import { renderCourses } from './courses.js';
 import { renderCertifications } from './certifications.js';
@@ -56,6 +56,24 @@ function projectTypeBadge(type) {
   return badges[type] || '';
 }
 
+function renderHeroStats() {
+  const grid = document.getElementById('heroStats');
+  if (!grid) {
+    return;
+  }
+
+  grid.innerHTML = heroStats
+    .map(
+      (stat) => `
+    <div class="hero-stat stagger-item">
+      <span class="hero-stat-value">${stat.value}</span>
+      <span class="hero-stat-label">${stat.label}</span>
+    </div>
+  `
+    )
+    .join('');
+}
+
 function renderProjectCard(p) {
   const status = statusMeta(p.status);
   const tagsHtml = (p.shortTags || []).map((t) => `<span class="tech-pill">${t}</span>`).join('');
@@ -86,8 +104,12 @@ function renderProjectCard(p) {
         <h3 class="project-title">${p.title}</h3>
         <p class="project-context">${p.context}</p>
       </div>
-      <p class="project-description">${p.desc}</p>
+      <div class="project-details">
+        <p class="project-detail"><span class="project-detail-label">Role</span>${p.role}</p>
+        <p class="project-detail"><span class="project-detail-label">Responsibilities</span>${p.responsibilities}</p>
+      </div>
       <div class="project-tech">${tagsHtml}</div>
+      <p class="project-outcome"><span class="project-detail-label">Impact</span>${p.outcome}</p>
       <div class="project-links">${linksHtml}</div>
     </article>`;
 }
@@ -98,20 +120,30 @@ function renderProjects() {
     return;
   }
 
-  const personal = projects.filter((p) => p.type === 'personal');
-  const work = projects.filter((p) => p.type === '7span');
+  grid.innerHTML = `<div class="projects-grid">${projects.map(renderProjectCard).join('')}</div>`;
+}
 
-  grid.innerHTML = `
-    <div class="project-group">
-      <h3 class="project-group-label">Personal Projects</h3>
-      <div class="projects-grid">${personal.map(renderProjectCard).join('')}</div>
-    </div>
-    <div class="project-group">
-      <h3 class="project-group-label">7Span Work</h3>
-      <p class="project-group-sub">Production systems I've built as part of my role at 7Span.</p>
-      <div class="projects-grid">${work.map(renderProjectCard).join('')}</div>
-    </div>
-  `;
+function renderExperience() {
+  const timeline = document.getElementById('experienceTimeline');
+  if (!timeline) {
+    return;
+  }
+
+  timeline.innerHTML = experience
+    .map(
+      (entry) => `
+    <article class="experience-entry stagger-item">
+      <p class="experience-period">${entry.period}</p>
+      <h3 class="experience-role">${entry.role}</h3>
+      <p class="experience-description">${entry.description}</p>
+      <p class="experience-outcome">${entry.outcome}</p>
+      <div class="project-tech">
+        ${entry.tags.map((tag) => `<span class="tech-pill">${tag}</span>`).join('')}
+      </div>
+    </article>
+  `
+    )
+    .join('');
 }
 
 function initMobileMenu() {
@@ -249,13 +281,15 @@ function bootstrapApp() {
   applySiteConfig();
   initFooterYear();
   renderSectionMarquees(sectionMarquees);
+  renderHeroStats();
   renderAboutTags();
   renderSkills();
-  renderProjects();
-  renderPocProjects();
   renderCertifications();
   renderCourses();
   renderWriting();
+  renderProjects();
+  renderPocProjects();
+  renderExperience();
   renderSocialLinks('contactSocials', socialLinks);
   initLenis();
   initStaggeredReveal();
