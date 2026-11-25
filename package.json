@@ -5,6 +5,6 @@
   "private": true,
   "description": "Trusha Khachariya \u00b7 AI/ML Engineer Portfolio",
   "scripts": {
-    "dev": "node init && npx serve . -l 3000"
+    "dev": "npx serve . -l 3000"
   }
 }
